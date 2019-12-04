@@ -1,45 +1,61 @@
-import React, {useEffect, useState, useRef} from 'react';
-import anime from 'animejs/lib/anime.es.js';
+import React, { useEffect, useState, useRef } from 'react';
+import anime from 'animejs/lib/anime.js';
+import Head from 'next/head'
 import "../styles.css";
+import Navigation from './navigation';
 
 const Index = () => {
-    const suggestions = ['toffe pee', 'developer', 'pintjesdrinker'];
-    const [suggestion, setSuggestion] = useState(suggestions[0]);
     const textWrapper = useRef(null);
-    const triggerCharacters = (newSuggestion) => {
-        console.log(newSuggestion);
-        textWrapper.current.innerHTML = newSuggestion.replace(/\S/g, "<span class='letter'>$&</span>");
-        var sentenceDelay = 600;
-    
-          // Trigger for each sentence
-          setTimeout(function() {
-            const spans = textWrapper.current.querySelectorAll('span');
-            var spanCounter = 0;
-            var spanDelay = 75;
+    const suggestions = ['een nerd', 'een badmintonner', 'een squasher'];
+    const speed = 100;
+    let charCounter = 0;
+    let currentIndex = 0;
+    let currentText = suggestions[0];
+    let timeOut = null;
+    let forward = true;
 
-            spans.forEach((el) => {
-                setTimeout(() => {
-                    el.classList.toggle('active');
-                  }, (spanCounter * spanDelay));
-          
-                  spanCounter++; 
-            });
-          }, (sentenceDelay));
-      }
+    const createAnimation = () => {
+        if (charCounter < currentText.length && charCounter > -1) {
+            textWrapper.current.innerHTML = forward ? textWrapper.current.innerHTML + currentText.charAt(charCounter) : textWrapper.current.innerHTML.replace(/(\s+)?.$/, '');
+            charCounter = forward ? charCounter + 1 : charCounter - 1;
+            timeOut = setTimeout(createAnimation, speed);
+        } else if (charCounter === currentText.length) {
+            forward = false;
+            charCounter -= 1;
+            timeOut = setTimeout(createAnimation, speed * 4);
+        } else if (charCounter === -1) {
+            currentIndex = currentIndex + 1 === suggestions.length ? 0 : currentIndex + 1;
+            currentText = suggestions[currentIndex];
+            charCounter = 0;
+            forward = true;
+            timeOut = setTimeout(createAnimation, speed);
+        }
+    };
+
     useEffect(() => {
-        if (textWrapper.current) {
-            triggerCharacters(suggestions[0]);
-            setInterval(() => {
-                console.log(Math.floor(Math.random() * suggestions.length));
-                const newSuggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
-                setSuggestion(newSuggestion);
-                triggerCharacters(newSuggestion);
-            }, 5000);
+        createAnimation();
+        return function cleanup() {
+            clearTimeout(timeOut);
         }
     }, []);
+
     return (
         <div>
-            <p>Thomas is een <span ref={textWrapper} className="sentence">{suggestion}</span></p>
+            <Head>
+                <title>Thomas Ledoux' Portfolio</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet"></link>
+            </Head>
+            <Navigation></Navigation>
+            <section className="hero-section">
+                <div className="hero-content">
+                    <h1>Thomas is <span className="skills-wrapper" ref={textWrapper}></span></h1>
+                </div>
+                <div className="hero-illustration">
+                    <img src="/hero-illu.svg" />
+                </div>
+            </section>
+            <div className="container"></div>
         </div>
     )
 };

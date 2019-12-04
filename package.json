@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p 8080",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 8080"
   },
   "type": "module",
   "keywords": [],
