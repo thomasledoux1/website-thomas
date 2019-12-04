@@ -1,13 +1,14 @@
 import React, {useEffect, useState, useRef} from 'react';
+import anime from 'animejs/lib/anime.es.js';
 import "../styles.css";
 
 const Index = () => {
     const suggestions = ['toffe pee', 'developer', 'pintjesdrinker'];
     const [suggestion, setSuggestion] = useState(suggestions[0]);
     const textWrapper = useRef(null);
-    function triggerCharacters() {
-        console.log(suggestion);
-        textWrapper.current.innerHTML = suggestion.replace(/\S/g, "<span class='letter'>$&</span>");
+    const triggerCharacters = (newSuggestion) => {
+        console.log(newSuggestion);
+        textWrapper.current.innerHTML = newSuggestion.replace(/\S/g, "<span class='letter'>$&</span>");
         var sentenceDelay = 600;
     
           // Trigger for each sentence
@@ -17,7 +18,7 @@ const Index = () => {
             var spanDelay = 75;
 
             spans.forEach((el) => {
-                setTimeout(function() {
+                setTimeout(() => {
                     el.classList.toggle('active');
                   }, (spanCounter * spanDelay));
           
@@ -27,11 +28,12 @@ const Index = () => {
       }
     useEffect(() => {
         if (textWrapper.current) {
-            triggerCharacters();
+            triggerCharacters(suggestions[0]);
             setInterval(() => {
                 console.log(Math.floor(Math.random() * suggestions.length));
-                setSuggestion(suggestions[Math.floor(Math.random() * suggestions.length)]);
-                triggerCharacters();
+                const newSuggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
+                setSuggestion(newSuggestion);
+                triggerCharacters(newSuggestion);
             }, 5000);
         }
     }, []);
