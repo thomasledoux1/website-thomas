@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import anime from 'animejs/lib/anime.js';
 import Head from 'next/head'
-import "../styles.css";
+import "../styles.scss";
 import Navigation from './navigation';
 
 const Index = () => {
@@ -55,7 +55,11 @@ const Index = () => {
                     <img src="/hero-illu.svg" />
                 </div>
             </section>
-            <div className="container"></div>
+            <section id="personal" className="container">
+                <div>
+
+                </div>
+            </section>
         </div>
     )
 };

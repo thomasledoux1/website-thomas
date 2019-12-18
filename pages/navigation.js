@@ -1,7 +1,15 @@
 const Navigation = () => {
     return (
         <nav>
-            <a href="#" className="logo">thmsldx</a>
+            <a href="#" className="logo">
+                <div className="letter">t</div>
+                <div className="letter">h</div>
+                <div className="letter">m</div>
+                <div className="letter">s</div>
+                <div className="letter">l</div>
+                <div className="letter">d</div>
+                <div className="letter">x</div>
+            </a>
             <ul>
                 <li>
                     <a href="#personal">Personal</a>

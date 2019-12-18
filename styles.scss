@@ -1,0 +1,175 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Nunito';
+}
+
+.skills-wrapper {
+    font-weight: bold;
+}
+
+.logo {
+    font-weight: bold;
+}
+
+nav {
+    position: fixed;
+    height: 60px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    z-index: 2;
+    top: 0;
+}
+
+.logo {
+    &:hover {
+        .letter {
+            animation: bounce .3s ease alternate;
+
+            @for $i from 1 through 3 {
+                &:nth-child($i) {
+                    animation-delay: $i * 0.1;
+                }
+            }
+        }
+
+        .letter:nth-child(1) {
+            animation-delay: .1s;
+        }
+
+        .letter:nth-child(2) {
+            animation-delay: .2s;
+        }
+
+        .letter:nth-child(3) {
+            animation-delay: .3s;
+        }
+
+        .letter:nth-child(4) {
+            animation-delay: .4s;
+        }
+
+        .letter:nth-child(5) {
+            animation-delay: .5s;
+        }
+
+        .letter:nth-child(6) {
+            animation-delay: .6s;
+        }
+
+        .letter:nth-child(7) {
+            animation-delay: .7s;
+        }
+    }
+
+    .letter {
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        top: 0px;
+        top: 0px;
+    }
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+}
+
+nav ul li:hover {
+
+    a:before,
+    a:after {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+nav ul li a {
+    text-decoration: none;
+    margin: 0 10px;
+    color: black;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+
+nav ul li a:before,
+nav ul li a:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 0px;
+    height: 5px;
+    margin: 5px 0 0;
+    transition: all 0.3s ease-in-out;
+    // transition-duration: 0.75s;
+    opacity: 0;
+    background-color: darken(#6c63ff, 5%);
+}
+
+nav ul li a:hover {
+    cursor: pointer;
+
+}
+
+.hero-section {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    min-height: 100vh;
+    padding-top: 60px;
+    background: #6c63ff10;
+}
+
+.hero-content {
+    min-width: 400px;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+}
+
+.hero-illustration {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-illustration img {
+    max-width: 100%;
+    max-height: 300px;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@keyframes bounce {
+    50% {
+        top: -5px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
