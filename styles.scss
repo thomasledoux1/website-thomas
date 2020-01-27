@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: 'Nunito';
@@ -20,12 +24,13 @@ body {
 nav {
     position: fixed;
     height: 60px;
-    padding: 0 15px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     width: 100%;
     z-index: 2;
     top: 0;
+    background-color: #f0efff;
 }
 
 .logo {
@@ -84,9 +89,13 @@ nav a {
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    margin-left: auto;
+    display: none;
+
+    @media only screen and (min-width: 769px) {
+        list-style: none;
+        display: none;
+        margin-left: auto;
+    }
 }
 
 nav ul li:hover {
@@ -133,15 +142,25 @@ nav ul li a:hover {
     padding-right: 15px;
     display: flex;
     min-height: 100vh;
-    padding-top: 60px;
-    background: #6c63ff10;
+    background: #f0efff;
+    flex-direction: column;
+    padding-top: 15%;
+
+    @media only screen and (min-width: 769px) {
+        flex-direction: row;
+        padding-top: 60px;
+    }
 }
 
 .hero-content {
-    min-width: 400px;
+    width: 100%;
     display: flex;
     align-items: center;
-    padding-left: 50px;
+
+    @media only screen and (min-width: 769px) {
+        width: 50%;
+        padding-left: 50px;
+    }
 }
 
 .hero-illustration {
@@ -149,19 +168,105 @@ nav ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 15%;
+
+    @media only screen and (min-width: 769px) {
+        margin-top: 0;
+        width: 50%;
+    }
 }
 
-.hero-illustration img {
+.hero-illustration svg {
     max-width: 100%;
     max-height: 300px;
 }
 
+.hero-scroll {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-decoration: none;
+    animation: bounceArrow 3s ease infinite;
+
+    &:before {
+        content: '';
+        width: 16px;
+        height: 26px;
+        display: block;
+        background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='angle-down' class='svg-inline--fa fa-angle-down fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath fill='currentColor' d='M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z'%3E%3C/path%3E%3C/svg%3E");
+    }
+}
+
+.navigation-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.navigation-mobile {
+    position: absolute;
+    right: 5px;
+
+    &:before {
+        width: 25px;
+        height: 25px;
+        content: '';
+        display: block;
+        background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='24px' height='24px' viewBox='0 0 24 24' style='enable-background:new 0 0 24 24;' xml:space='preserve'%3E%3Cg id='Icons' style='opacity:0.75;'%3E%3Cpath id='menu' d='M6,15h12c0.553,0,1,0.447,1,1v1c0,0.553-0.447,1-1,1H6c-0.553,0-1-0.447-1-1v-1C5,15.447,5.447,15,6,15z M5,11v1 c0,0.553,0.447,1,1,1h12c0.553,0,1-0.447,1-1v-1c0-0.553-0.447-1-1-1H6C5.447,10,5,10.447,5,11z M5,6v1c0,0.553,0.447,1,1,1h12 c0.553,0,1-0.447,1-1V6c0-0.553-0.447-1-1-1H6C5.447,5,5,5.447,5,6z'/%3E%3C/g%3E%3Cg id='Guides' style='display:none;'%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    @media only screen and (min-width: 769px) {
+        display: none;
+    }
+}
+
 .container {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
     margin-right: auto;
     margin-left: auto;
+}
+
+#textBalloon {
+    animation: appear 2s ease;
+}
+
+#personal {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.personal-illustration {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        height: 360px;
+        width: 450px;
+    }
+
+    @media only screen and (min-width: 769px) {
+        width: 50%;
+        padding-left: 50px;
+    }
+}
+
+.personal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+
+    @media only screen and (min-width: 769px) {
+        width: 50%;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
 }
 
 @keyframes bounce {
@@ -171,5 +276,33 @@ nav ul li a:hover {
 
     100% {
         top: 0;
+    }
+}
+
+@keyframes bounceArrow {
+    5% {
+        bottom: 5px;
+    }
+
+    10% {
+        bottom: 0;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
