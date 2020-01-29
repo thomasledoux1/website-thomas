@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import anime from 'animejs/lib/anime.js';
-import Head from 'next/head'
+import Head from 'next/head';
+import Swiper from 'swiper';
 import "../styles.scss";
 import Navigation from './navigation';
 
 const Index = () => {
     const textWrapper = useRef(null);
+    const swiperRef = useRef(null);
     const suggestions = ['een nerd', 'een badmintonner', 'een squasher'];
     const speed = 100;
     let charCounter = 0;
@@ -32,6 +33,17 @@ const Index = () => {
         }
     };
 
+    const openCarlierSwiper = () => {
+        new Swiper(swiperRef.current, {
+            loop: true,
+            on: {
+                init: () => {
+                    swiperRef.current.classList.add('show');
+                }
+            }
+        });
+    };
+
     useEffect(() => {
         createAnimation();
         return function cleanup() {
@@ -45,9 +57,10 @@ const Index = () => {
                 <title>Thomas Ledoux' Portfolio</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet"></link>
+                <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css"></link>
             </Head>
             <Navigation></Navigation>
-            <section className="hero-section">
+            <section className="container">
                 <div className="hero-content">
                     <h1>Thomas is <span className="skills-wrapper" ref={textWrapper}></span></h1>
                 </div>
@@ -171,10 +184,36 @@ const Index = () => {
                 <div className="personal-content">
                     <h1>Personal Information</h1>
                     <p>Hi, I'm Thomas. I'm 28 years old, living in Ghent. I'm a professional Frontend Developer, currently working at The Reference.</p>
-                    <p>I studied Modern Languages and Sciences at Atheneum Wispelberg. In college I studied Applied Computer Sciences at Hogeschool Gent, and got my Professional Bachelor there.</p>
+                    <p>I studied Applied Computer Sciences at Hogeschool Gent. I chose for the Mobile Development track, and went on Erasmus to Barcelona to learn more about Swift and Java. At my internship I created an iOS app in Swift for Rialto.</p>
+                    <p>After graduating I worked for the startup Happs as a full-stack developer, where I created and maintained the website. I also created an app for a client in React Native during this period.</p>
                 </div>
             </section>
-        </div >
+            <section id="portfolio" className="container">
+                <div className="portfolio__phoneWrapper">
+                    <svg height="550" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 427.86 884.49">
+                        <path d="M294,194.4c-14.2,3-28.6,14.8-35.6,29l-3.9,8-.3,402.3L254,1036l2.1,6.2c4.4,13.2,15.4,25.3,28.6,31.6l7.8,3.7H642.7l8.5-4.2c16-7.9,27.5-22.9,29.8-38.8.7-4.7,1-135.2.8-403.5l-.3-396.5-2.2-5.7c-6.7-17.6-22.8-31.6-39.7-34.7C630.7,192.5,301.5,192.7,294,194.4ZM664.4,297.6c1.5.6,1.6,31.8,1.6,344.5V986H471.5c-172.2,0-194.5-.2-194.5-1.5,0-.8-.4-1.5-1-1.5s-1-115-1-343V297H468.9C575.6,297,663.5,297.3,664.4,297.6Z" transform="translate(-254 -193.01)" />
+                        <path d="M276.4,328c0,16.8.2,23.6.3,15.2s.2-22.1,0-30.5S276.4,311.2,276.4,328Z" transform="translate(-254 -193.01)" />
+                        <image onClick={openCarlierSwiper} width="360" height="360" transform="translate(46 125.99) scale(0.42 0.41)" xlinkHref="carlierlogo.jpg" />
+                        <image width="400" height="400" transform="translate(245 134.64) scale(0.34 0.33)" xlinkHref="rialtologo.png" />
+                        <image width="800" height="432" transform="translate(98.06 297.99) scale(0.29 0.38)" xlinkHref="happslogo.png" />
+                    </svg>
+                    <div ref={swiperRef} className="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="/login.jpg" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="/kinderen.jpg" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="/resultaten.jpg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
     )
 };
 

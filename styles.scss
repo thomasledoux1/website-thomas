@@ -89,12 +89,20 @@ nav a {
 }
 
 nav ul {
-    display: none;
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+}
+
+nav ul li {
+    margin-top: 10px;
+
+    &:first-of-type {
+        margin-top: 0;
+    }
 
     @media only screen and (min-width: 769px) {
-        list-style: none;
-        display: none;
-        margin-left: auto;
+        margin-top: 0;
     }
 }
 
@@ -110,9 +118,13 @@ nav ul li:hover {
 nav ul li a {
     text-decoration: none;
     margin: 0 10px;
-    color: black;
     transition: all 0.2s ease-in-out;
     position: relative;
+    color: white;
+
+    @media only screen and (min-width: 769px) {
+        color: black;
+    }
 }
 
 nav ul li a:before,
@@ -120,36 +132,23 @@ nav ul li a:after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -10px;
+    bottom: -5px;
     width: 0px;
     height: 5px;
     margin: 5px 0 0;
     transition: all 0.3s ease-in-out;
     // transition-duration: 0.75s;
     opacity: 0;
-    background-color: darken(#6c63ff, 5%);
+    background-color: white;
+
+    @media only screen and (min-width: 769px) {
+        background-color: darken(#6c63ff, 5%);
+    }
 }
 
 nav ul li a:hover {
     cursor: pointer;
 
-}
-
-.hero-section {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    display: flex;
-    min-height: 100vh;
-    background: #f0efff;
-    flex-direction: column;
-    padding-top: 15%;
-
-    @media only screen and (min-width: 769px) {
-        flex-direction: row;
-        padding-top: 60px;
-    }
 }
 
 .hero-content {
@@ -201,18 +200,104 @@ nav ul li a:hover {
 .navigation-wrapper {
     position: relative;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.navigation-mobile {
+.navigation {
+    display: flex;
     position: absolute;
-    right: 5px;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 10px 0;
+    margin: 0;
+    top: 28px;
+    background: rgb(108, 99, 255);
+    transform: translateX(calc(100% + 20px));
+    transition: transform .25s ease;
 
-    &:before {
-        width: 25px;
-        height: 25px;
-        content: '';
+    &.slideIn {
+        transform: translateX(0);
+    }
+
+    @media only screen and (min-width: 769px) {
+        transform: none;
+        flex-direction: row;
+        background: 0 0;
+        position: unset;
+        justify-content: flex-end;
+        width: auto;
+    }
+}
+
+.navigation-mobile-icon {
+    width: 20px;
+    height: 25px;
+    position: relative;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+
+    &.open {
+        span:nth-child(1) {
+            top: 9px;
+            -webkit-transform: rotate(135deg);
+            -moz-transform: rotate(135deg);
+            -o-transform: rotate(135deg);
+            transform: rotate(135deg);
+        }
+
+        span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+
+        span:nth-child(3) {
+            top: 9px;
+            -webkit-transform: rotate(-135deg);
+            -moz-transform: rotate(-135deg);
+            -o-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+        }
+    }
+
+    span {
         display: block;
-        background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='24px' height='24px' viewBox='0 0 24 24' style='enable-background:new 0 0 24 24;' xml:space='preserve'%3E%3Cg id='Icons' style='opacity:0.75;'%3E%3Cpath id='menu' d='M6,15h12c0.553,0,1,0.447,1,1v1c0,0.553-0.447,1-1,1H6c-0.553,0-1-0.447-1-1v-1C5,15.447,5.447,15,6,15z M5,11v1 c0,0.553,0.447,1,1,1h12c0.553,0,1-0.447,1-1v-1c0-0.553-0.447-1-1-1H6C5.447,10,5,10.447,5,11z M5,6v1c0,0.553,0.447,1,1,1h12 c0.553,0,1-0.447,1-1V6c0-0.553-0.447-1-1-1H6C5.447,5,5,5.447,5,6z'/%3E%3C/g%3E%3Cg id='Guides' style='display:none;'%3E%3C/g%3E%3C/svg%3E");
+        position: absolute;
+        height: 4px;
+        width: 100%;
+        background: black;
+        border-radius: 4px;
+        opacity: 1;
+        left: 0;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+        transition: .25s ease-in-out;
+
+        &:nth-child(1) {
+            top: 0;
+        }
+
+        &:nth-child(2) {
+            top: 9px;
+        }
+
+        &:nth-child(3) {
+            top: 18px;
+        }
     }
 
     @media only screen and (min-width: 769px) {
@@ -222,20 +307,28 @@ nav ul li a:hover {
 
 .container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
     padding-right: 20px;
     padding-left: 20px;
     margin-right: auto;
     margin-left: auto;
+    padding-top: 15%;
+    min-height: 100vh;
+    justify-content: center;
+
+    @media only screen and (min-width: 769px) {
+        flex-direction: row;
+        padding-top: 60px;
+    }
+
+    &:nth-of-type(even) {
+        background-color: #f0efff;
+    }
 }
 
 #textBalloon {
     animation: appear 2s ease;
-}
-
-#personal {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 .personal-illustration {
@@ -269,6 +362,28 @@ nav ul li a:hover {
     }
 }
 
+.portfolio__phoneWrapper {
+    position: relative;
+}
+
+.swiper-container {
+    position: absolute;
+    top: 65px;
+    left: 14px;
+    height: 428px;
+    width: 242px;
+    display: none;
+
+    &.show {
+        display: block;
+    }
+
+    .swiper-slide img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
 @keyframes bounce {
     50% {
         top: -5px;
@@ -276,6 +391,18 @@ nav ul li a:hover {
 
     100% {
         top: 0;
+    }
+}
+
+@keyframes slide-in {
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slide-out {
+    100% {
+        transform: translateX(calc(-100% - 20px));
     }
 }
 

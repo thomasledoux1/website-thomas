@@ -1,4 +1,12 @@
+import React, { useRef } from 'react';
 const Navigation = () => {
+    const navigationRef = useRef(null);
+    const mobileIconRef = useRef(null);
+    const openMobileNav = () => {
+        mobileIconRef.current.classList.toggle('open');
+        navigationRef.current.classList.toggle('slideIn');
+    };
+
     return (
         <nav>
             <div className="navigation-wrapper">
@@ -11,7 +19,7 @@ const Navigation = () => {
                     <div className="letter">d</div>
                     <div className="letter">x</div>
                 </a>
-                <ul className="navigation-desktop">
+                <ul ref={navigationRef} className="navigation">
                     <li>
                         <a href="#personal">Personal</a>
                     </li>
@@ -25,7 +33,11 @@ const Navigation = () => {
                         <a href="#contact">Contact</a>
                     </li>
                 </ul>
-                <span className="navigation-mobile"></span>
+                <div ref={mobileIconRef} onClick={openMobileNav} className="navigation-mobile-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </nav>
     )
