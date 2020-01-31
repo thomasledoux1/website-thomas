@@ -6,6 +6,8 @@
 
 html {
     scroll-behavior: smooth;
+    --backgroundColor: #f0efff;
+    --mainColor: #6c63ff;
 }
 
 body {
@@ -313,7 +315,7 @@ nav ul li a:hover {
     padding-left: 20px;
     margin-right: auto;
     margin-left: auto;
-    padding-top: 15%;
+    padding-top: 60px;
     min-height: 100vh;
     justify-content: center;
 
@@ -362,25 +364,60 @@ nav ul li a:hover {
     }
 }
 
-.portfolio__phoneWrapper {
+.portfolio-content {
     position: relative;
+    align-items: center;
+    flex-direction: column;
 }
 
 .swiper-container {
-    position: absolute;
-    top: 65px;
-    left: 14px;
-    height: 428px;
-    width: 242px;
-    display: none;
+    width: 65vw;
 
-    &.show {
-        display: block;
+    .swiper-wrapper {
+        align-items: center;
     }
 
-    .swiper-slide img {
-        max-width: 100%;
-        height: auto;
+    .swiper-slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border: 5px solid var(--backgroundColor);
+        border-radius: 10px;
+
+        img {
+            max-width: 40%;
+            height: auto;
+        }
+    }
+}
+
+.swiper-pagination {
+    position: relative;
+
+    &-bullet {
+        margin-right: 5px;
+
+        &-active {
+            background: var(--mainColor);
+        }
+    }
+}
+
+.swiper-button-next {
+    right: 5vw;
+}
+
+.swiper-button-prev {
+    left: 5vw;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    top: calc(50% + 30px);
+
+    &:after {
+        color: var(--mainColor);
     }
 }
 

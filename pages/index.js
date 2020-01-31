@@ -7,7 +7,7 @@ import Navigation from './navigation';
 const Index = () => {
     const textWrapper = useRef(null);
     const swiperRef = useRef(null);
-    const suggestions = ['een nerd', 'een badmintonner', 'een squasher'];
+    const suggestions = ['developer', 'badminton player', 'squasher', 'travel lover'];
     const speed = 100;
     let charCounter = 0;
     let currentIndex = 0;
@@ -33,19 +33,24 @@ const Index = () => {
         }
     };
 
-    const openCarlierSwiper = () => {
-        new Swiper(swiperRef.current, {
-            loop: true,
-            on: {
-                init: () => {
-                    swiperRef.current.classList.add('show');
-                }
-            }
-        });
-    };
-
     useEffect(() => {
         createAnimation();
+        new Swiper(swiperRef.current, {
+            centeredSlides: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            centeredSlides: true,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            themeColor: '#6c63ff',
+        });
         return function cleanup() {
             clearTimeout(timeOut);
         }
@@ -62,7 +67,7 @@ const Index = () => {
             <Navigation></Navigation>
             <section className="container">
                 <div className="hero-content">
-                    <h1>Thomas is <span className="skills-wrapper" ref={textWrapper}></span></h1>
+                    <h1>Thomas is a <span className="skills-wrapper" ref={textWrapper}></span></h1>
                 </div>
                 <div className="hero-illustration">
                     <svg width="893px" height="690px" viewBox="0 0 893 690" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -188,30 +193,34 @@ const Index = () => {
                     <p>After graduating I worked for the startup Happs as a full-stack developer, where I created and maintained the website. I also created an app for a client in React Native during this period.</p>
                 </div>
             </section>
-            <section id="portfolio" className="container">
-                <div className="portfolio__phoneWrapper">
-                    <svg height="550" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 427.86 884.49">
-                        <path d="M294,194.4c-14.2,3-28.6,14.8-35.6,29l-3.9,8-.3,402.3L254,1036l2.1,6.2c4.4,13.2,15.4,25.3,28.6,31.6l7.8,3.7H642.7l8.5-4.2c16-7.9,27.5-22.9,29.8-38.8.7-4.7,1-135.2.8-403.5l-.3-396.5-2.2-5.7c-6.7-17.6-22.8-31.6-39.7-34.7C630.7,192.5,301.5,192.7,294,194.4ZM664.4,297.6c1.5.6,1.6,31.8,1.6,344.5V986H471.5c-172.2,0-194.5-.2-194.5-1.5,0-.8-.4-1.5-1-1.5s-1-115-1-343V297H468.9C575.6,297,663.5,297.3,664.4,297.6Z" transform="translate(-254 -193.01)" />
-                        <path d="M276.4,328c0,16.8.2,23.6.3,15.2s.2-22.1,0-30.5S276.4,311.2,276.4,328Z" transform="translate(-254 -193.01)" />
-                        <image onClick={openCarlierSwiper} width="360" height="360" transform="translate(46 125.99) scale(0.42 0.41)" xlinkHref="carlierlogo.jpg" />
-                        <image width="400" height="400" transform="translate(245 134.64) scale(0.34 0.33)" xlinkHref="rialtologo.png" />
-                        <image width="800" height="432" transform="translate(98.06 297.99) scale(0.29 0.38)" xlinkHref="happslogo.png" />
-                    </svg>
-                    <div ref={swiperRef} className="swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="/login.jpg" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="/kinderen.jpg" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="/resultaten.jpg" />
-                            </div>
+            <section id="portfolio" className="container portfolio-content">
+                <div ref={swiperRef} className="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="/logorialto.png" />
+                            <p>At my internship for <a href="https://www.getrialto.com/">Rialto</a> I created an iOS app from scratch in Swift where real estate companies could easily manage their listings.</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/logokaraton.png" />
+                            <p>For Happs Development I created and maintained the website <a href="https://www.karaton.be">Karaton</a> where speech therapists and parents of dyslexic could follow up on the progress their children/patients are making in the Karaton game.</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/logocarlier.jpg" />
+                            <p>While working at <a href="https://www.happsdevelopment.com/">Happs Development</a> I also created a mobile application for a speech therapist to help children with discalculia to learn how to count and do simple math exercises in a fun game form. The game can be found here: <a href="https://apps.apple.com/be/app/rekenen-automatisatie/id1444642448">iOS</a> & <a href="https://play.google.com/store/apps/details?id=com.carlierkathleen.rekenen&hl=nl">Android</a></p>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/logocarglass.jpg" />
+                            <p>At my current job at <a href="https://www.reference.be/">The Reference</a> I help maintain the website for Carglass. Many new features have been added since I joined the team, and we managed to optimize the booking flows a lot.</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/logonalo.jpg" />
+                            <p>One of the other clients I work for at The Reference is <a href="https://www.nationale-loterij.be/"></a>Nationale Loterij. For this client we constantly create new features on a monthly basis, with a modern look.</p>
                         </div>
                     </div>
                 </div>
-
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </section>
         </div>
     )
