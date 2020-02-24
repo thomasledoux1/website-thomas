@@ -2,7 +2,21 @@ import React, { useRef } from 'react';
 const Navigation = () => {
     const navigationRef = useRef(null);
     const mobileIconRef = useRef(null);
-    const openMobileNav = () => {
+    const toggleMobileNav = (e, id) => {
+        if (id) {
+            if (id !== 'home') {
+                e.preventDefault();
+                document.getElementById(id).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            } else {
+                window.scroll({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            }
+        }
         mobileIconRef.current.classList.toggle('open');
         navigationRef.current.classList.toggle('slideIn');
     };
@@ -10,7 +24,7 @@ const Navigation = () => {
     return (
         <nav>
             <div className="navigation-wrapper">
-                <a href="#" className="logo">
+                <a onClick={(e) => toggleMobileNav(e, 'home')} href="#" className="logo">
                     <div className="letter">t</div>
                     <div className="letter">h</div>
                     <div className="letter">m</div>
@@ -21,19 +35,16 @@ const Navigation = () => {
                 </a>
                 <ul ref={navigationRef} className="navigation">
                     <li>
-                        <a href="#personal">Personal</a>
+                        <a onClick={(e) => toggleMobileNav(e, 'personal')} href="#personal">Personal</a>
                     </li>
                     <li>
-                        <a href="#portfolio">Portfolio</a>
+                        <a onClick={(e) => toggleMobileNav(e, 'portfolio')} href="#portfolio">Portfolio</a>
                     </li>
                     <li>
-                        <a href="#freetime">Free Time</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
+                        <a onClick={(e) => toggleMobileNav(e, 'contact')} href="#contact">Contact</a>
                     </li>
                 </ul>
-                <div ref={mobileIconRef} onClick={openMobileNav} className="navigation-mobile-icon">
+                <div ref={mobileIconRef} onClick={toggleMobileNav} className="navigation-mobile-icon">
                     <span></span>
                     <span></span>
                     <span></span>

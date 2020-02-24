@@ -8,6 +8,7 @@ html {
     scroll-behavior: smooth;
     --backgroundColor: #f0efff;
     --mainColor: #6c63ff;
+    --lightGray: rgba(0, 0, 0, 0.54);
 }
 
 body {
@@ -17,6 +18,12 @@ body {
 
 .skills-wrapper {
     font-weight: bold;
+    display: block;
+    height: 2em;
+
+    @media only screen and (min-width: 769px) {
+        display: initial;
+    }
 }
 
 .logo {
@@ -32,7 +39,17 @@ nav {
     width: 100%;
     z-index: 2;
     top: 0;
-    background-color: #f0efff;
+
+    &:before {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        content: '';
+        background: rgba(255, 255, 255, 0.95);
+        left: -999em;
+        right: -999em;
+    }
 }
 
 .logo {
@@ -162,6 +179,10 @@ nav ul li a:hover {
         width: 50%;
         padding-left: 50px;
     }
+
+    h1 {
+        font-size: 2em;
+    }
 }
 
 .hero-illustration {
@@ -189,6 +210,7 @@ nav ul li a:hover {
     transform: translateX(-50%) translateY(-50%);
     text-decoration: none;
     animation: bounceArrow 3s ease infinite;
+    cursor: pointer;
 
     &:before {
         content: '';
@@ -200,7 +222,6 @@ nav ul li a:hover {
 }
 
 .navigation-wrapper {
-    position: relative;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -215,7 +236,8 @@ nav ul li a:hover {
     align-items: center;
     padding: 10px 0;
     margin: 0;
-    top: 28px;
+    left: 0;
+    top: 60px;
     background: rgb(108, 99, 255);
     transform: translateX(calc(100% + 20px));
     transition: transform .25s ease;
@@ -316,6 +338,7 @@ nav ul li a:hover {
     margin-right: auto;
     margin-left: auto;
     padding-top: 60px;
+    padding-bottom: 60px;
     min-height: 100vh;
     justify-content: center;
 
@@ -329,30 +352,31 @@ nav ul li a:hover {
     }
 }
 
-#textBalloon {
-    animation: appear 2s ease;
-}
-
-.personal-illustration {
+.personal-illustration,
+.contact-illustration {
+    order: 2;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 
     svg {
-        height: 360px;
-        width: 450px;
+        height: 250px;
+
+        @media only screen and (min-width: 769px) {
+            height: 350px;
+        }
     }
 
     @media only screen and (min-width: 769px) {
         width: 50%;
-        padding-left: 50px;
+        order: 1;
     }
 }
 
-.personal-content {
+.personal-content,
+.contact-content {
     display: flex;
-    align-items: center;
     justify-content: center;
     width: 100%;
     flex-direction: column;
@@ -361,6 +385,31 @@ nav ul li a:hover {
         width: 50%;
         padding-left: 50px;
         padding-right: 50px;
+        order: 2;
+    }
+}
+
+.contact-contentTitleWrapper {
+    position: relative;
+
+    svg {
+        height: 98px;
+        width: 101px;
+        top: 37px;
+        left: 120px;
+        position: absolute;
+    }
+
+    path {
+        fill: none;
+    }
+
+    g {
+        transform: translateX(-38px) translateY(170px) scale(0.5)
+    }
+
+    polygon {
+        opacity: 0;
     }
 }
 
@@ -371,7 +420,11 @@ nav ul li a:hover {
 }
 
 .swiper-container {
-    width: 65vw;
+    width: 70vw;
+
+    @media only screen and (min-width: 769px) {
+        width: 50vw;
+    }
 
     .swiper-wrapper {
         align-items: center;
@@ -386,8 +439,14 @@ nav ul li a:hover {
         border-radius: 10px;
 
         img {
-            max-width: 40%;
+            max-width: 80%;
             height: auto;
+            border-bottom: 1px solid var(--backgroundColor);
+            padding-bottom: 20px;
+
+            @media only screen and (min-width: 769px) {
+                max-width: 40%;
+            }
         }
     }
 }
@@ -405,20 +464,139 @@ nav ul li a:hover {
 }
 
 .swiper-button-next {
-    right: 5vw;
+    right: 3vw;
+
+    @media only screen and (min-width: 769px) {
+        right: 5vw;
+    }
 }
 
 .swiper-button-prev {
-    left: 5vw;
+    left: 3vw;
+
+    @media only screen and (min-width: 769px) {
+        left: 5vw;
+    }
 }
 
 .swiper-button-prev,
 .swiper-button-next {
-    top: calc(50% + 30px);
+    top: 50%;
 
     &:after {
         color: var(--mainColor);
     }
+}
+
+.appStoreIcons {
+    align-self: flex-start;
+
+    .iconWrapper {
+        margin-right: 5px;
+    }
+}
+
+.iconWrapper {
+    align-self: flex-start;
+
+    .linkIcon {
+        height: 1.3em;
+        width: 1.3em;
+    }
+
+    &:hover path {
+        fill: var(--mainColor);
+    }
+
+    path {
+        fill: var(--lightGray);
+    }
+}
+
+.cls-1 {
+    fill: #e6e6e6;
+}
+
+.cls-2 {
+    fill: #ffb8b8;
+}
+
+.cls-3 {
+    fill: none;
+}
+
+.cls-4 {
+    fill: #2f2e41;
+}
+
+.cls-5 {
+    fill: #d0cde1;
+}
+
+.cls-6 {
+    fill: #4d3324;
+}
+
+.contact-content {
+    ul {
+        list-style: none;
+        display: flex;
+        padding-left: 0;
+    }
+
+    li {
+        margin-right: 10px;
+
+        &:last-of-type {
+            margin-right: 0;
+            ;
+        }
+
+        .socialIcon {
+            height: 30px;
+            width: 30px;
+
+            &:hover path {
+                fill: var(--mainColor);
+            }
+
+            path {
+                fill: var(--lightGray);
+            }
+        }
+    }
+
+    .arrow {
+        height: 30px;
+    }
+
+    .arrowPath {
+        stroke-dasharray: 120;
+        stroke-dashoffset: 120;
+        animation: draw 2s infinite;
+    }
+}
+
+.contact-illustration {
+    order: 1;
+    margin-bottom: 50px;
+
+    @media only screen and (min-width: 769px) {
+        order: 2;
+    }
+
+    svg {
+        height: 300px;
+
+        @media only screen and (min-width: 769px) {
+            height: 400px;
+            order: 2;
+        }
+    }
+}
+
+.contact-content {
+    order: 1;
 }
 
 @keyframes bounce {
@@ -457,16 +635,8 @@ nav ul li a:hover {
     }
 }
 
-@keyframes appear {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
-
-    100% {
-        opacity: 1;
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
     }
 }
