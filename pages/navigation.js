@@ -44,7 +44,7 @@ const Navigation = () => {
                         <a onClick={(e) => toggleMobileNav(e, 'contact')} href="#contact">Contact</a>
                     </li>
                 </ul>
-                <div ref={mobileIconRef} onClick={toggleMobileNav} className="navigation-mobile-icon">
+                <div ref={mobileIconRef} onClick={toggleMobileNav} className="navigation-mobile__icon">
                     <span></span>
                     <span></span>
                     <span></span>

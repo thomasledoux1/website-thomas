@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Swiper from 'swiper';
 import anime from 'animejs/lib/anime.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { faLink, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { faAppStore, faGooglePlay, faGithub, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import "../styles.scss";
 import Navigation from './navigation';
@@ -14,6 +14,7 @@ const Home = () => {
     const swiperRef = useRef(null);
     const contactContentTitleWrapperRef = useRef(null);
     const personalRef = useRef(null);
+    const profileImgRef = useRef(null);
     const suggestions = ['developer', 'badminton player', 'squasher', 'travel lover'];
     const speed = 100;
     let charCounter = 0;
@@ -21,7 +22,6 @@ const Home = () => {
     let currentText = suggestions[0];
     let timeOut = null;
     let forward = true;
-    smoothscroll.polyfill();
 
     const createAnimation = () => {
         if (charCounter < currentText.length && charCounter > -1) {
@@ -42,6 +42,7 @@ const Home = () => {
     };
 
     useEffect(() => {
+        smoothscroll.polyfill();
         createAnimation();
         new Swiper(swiperRef.current, {
             centeredSlides: true,
@@ -49,6 +50,8 @@ const Home = () => {
             spaceBetween: 30,
             centeredSlides: true,
             loop: true,
+            preload: false,
+            lazy: true,
             pagination: {
                 el: '.swiper-pagination',
                 type: 'bullets',
@@ -62,7 +65,7 @@ const Home = () => {
 
         if ("IntersectionObserver" in window) {
             let contactObserver = new IntersectionObserver(function(entry, observer) {
-                if (entry[0].intersectionRatio > 0) {
+                if (entry[0].isIntersecting) {
                     const timeline = anime.timeline();
                     timeline.add({targets: '.contact-contentTitleWrapper path',
                     strokeDashoffset: [anime.setDashoffset, 0],
@@ -76,11 +79,18 @@ const Home = () => {
                     observer.unobserve(entry[0].target);
                   }
             });
-
             contactObserver.observe(contactContentTitleWrapperRef.current);
-          } else {
-            // Possibly fall back to a more compatible method here
-          }
+            let profileImgObserver = new IntersectionObserver(function(entry, observer) {
+                if (entry[0].isIntersecting) {
+                    let lazyImage = entry[0].target;
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.classList.remove("lazy");
+                    observer.unobserve(lazyImage);
+                }
+            });
+
+            profileImgObserver.observe(profileImgRef.current);
+          } 
         
         return function cleanup() {
             clearTimeout(timeOut);
@@ -101,6 +111,7 @@ const Home = () => {
                 <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet"></link>
                 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css"></link>
                 <link rel="shortcut icon" type="image/x-icon" href="/myAvatar.ico" />
+                <meta name="Description" content="This is the portfolio website of Thomas Ledoux"></meta>
             </Head>
             <Navigation></Navigation>
             <section className="container">
@@ -137,11 +148,13 @@ const Home = () => {
                         </g>
                     </svg>
                 </div>
-                <span onClick={scrollTo} className="hero-scroll" />
+                <span onClick={scrollTo} className="hero-scroll">
+                    <FontAwesomeIcon icon={faAngleDown} className="hero-scroll__icon" />
+                </span>
             </section>
             <section id="personal" className="container" ref={personalRef}>
-                <div className="personal-illustration">
-                    <svg id="a17dd300-7621-4978-a344-c06233c14e82" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 491.83"><title>casual</title><path className="cls-1" d="M157.88,482.42c-2.85,25.88-152.23,23.71-152,0C8.72,456.55,158.1,458.72,157.88,482.42Z" transform="translate(-5.88 -9.2)" /><polygon className="cls-2" points="49.38 406.82 43.33 419.94 32.23 418.93 25.16 395.72 36.26 389.67 49.38 406.82" /><polygon className="cls-3" points="87.5 437.04 87.73 446.18 70.58 447.19 70.58 436.09 87.5 437.04" /><polygon className="cls-4" points="81.68 270.57 77.64 351.31 87.73 439.12 57.46 443.15 38.28 332.14 32.23 256.44 81.68 270.57" /><path className="cls-4" d="M135,250.5s12.11,79.73-13.12,106-59.55,72.67-59.55,72.67L38.1,398.86l61.57-65.6-12.11-44.4L38.1,265.64l8.08-55.51,72.66-1Z" transform="translate(-5.88 -9.2)" /><circle className="cls-2" cx="69.57" cy="34.41" r="22.2" /><path className="cls-2" d="M94.62,48.65s1,31.29,6.06,35.33-18.17,21.19-18.17,21.19L67.37,81V58.75Z" transform="translate(-5.88 -9.2)" /><polygon className="cls-5" points="78.65 81.84 90.91 63.34 97.83 72.76 107.92 101.02 99.85 211.03 52.41 212.04 46.36 85.88 61.49 67.72 78.65 81.84" /><path className="cls-4" d="M33.06,98.11,25,97.1s-2,1-3,8.07S8.83,174.81,8.83,174.81L25,251.51l18.17-24.22L32.05,184.9l11.1-42.39Z" transform="translate(-5.88 -9.2)" /><polygon className="cls-4" points="130.12 87.9 136.18 87.9 151.32 169.65 137.19 233.23 123.06 210.02 127.09 184.79 125.08 162.59 118.01 149.46 130.12 87.9" /><path className="cls-4" d="M46.18,425.1s6-2,6,2-4,16.15-4,16.15,6.06,37.34-3,35.32S29,459.42,28,454.37,22,423.08,22,423.08s-8.07-19.17-3-20.18,19.17-5,19.17-5S30,423.08,46.18,425.1Z" transform="translate(-5.88 -9.2)" /><path className="cls-4" d="M75.44,456.39s16.15-10.09,19.18-2a85,85,0,0,1,4,18.17s4,13.12-12.11,11.1-14.13-2-15.14-8.07S75.44,456.39,75.44,456.39Z" transform="translate(-5.88 -9.2)" /><path className="cls-6" d="M88.56,43.61l-4-1s-3-17.16-10.09-15.14-25.24,4-25.24-4S66.36,8.29,76.45,9.29s27.25,4,26.24,19.18-7.52,29.87-7.52,29.87l-.52-9Z" transform="translate(-5.88 -9.2)" /><polygon className="cls-5" points="61.49 93.96 78.65 81.84 61.49 67.72 55.54 74.86 61.49 93.96" /><polygon className="cls-5" points="93.79 92.95 78.65 81.84 90.76 63.68 97.83 72.76 93.79 92.95" /><path className="cls-4" d="M26,97.1,58.29,84l7.57-5.55,22.7,100.42,15.14-45.42-4.54-58,41.89,21.7-14.13,68.63-2,26.24,6,21.19s21.2,15.14,14.13,31.29-15.14,17.16-15.14,17.16-34.31-32.3-36.33-40.37-5-22.21-5-22.21-17.15,64.59-37.34,63.58S31,240.41,31,240.41l5-22.2L44.16,195l-4-38.36Z" transform="translate(-5.88 -9.2)" /></svg>
+                <div className="personal-picture">
+                    <img ref={profileImgRef} className="personal-picture__img" alt="profile picture" data-src="me.jpg" />
                 </div>
                 <div className="personal-content">
                     <h1>Personal Information</h1>
@@ -154,43 +167,43 @@ const Home = () => {
                 <div ref={swiperRef} className="swiper-container">
                     <div className="swiper-wrapper">
                         <div className="swiper-slide">
-                            <img src="/logorialto.png" />
+                            <img alt="Logo Rialto" className="swiper-lazy" data-src="/logorialto.png" />
                             <p>At my internship for Rialto I created an iOS app from scratch in Swift where real estate companies could easily manage their listings.</p>
-                            <a className="iconWrapper" href="https://www.getrialto.com/">
-                                <FontAwesomeIcon icon={faLink} className="linkIcon" />
+                            <a className="icon-wrapper" href="https://www.getrialto.com/">
+                                <FontAwesomeIcon icon={faLink} className="icon--link" />
                             </a>
                         </div>
                         <div className="swiper-slide">
-                            <img src="/logokaraton.png" />
+                            <img alt="Logo Karaton" className="swiper-lazy" data-src="/logokaraton.png" />
                             <p>For Happs Development I created and maintained the website for Karaton where speech therapists and parents of dyslexic could follow up on the progress their children/patients are making in the Karaton game.</p>
-                            <a className="iconWrapper" href="https://www.karaton.be">
-                                <FontAwesomeIcon icon={faLink} className="linkIcon" />
+                            <a className="icon-wrapper" href="https://www.karaton.be">
+                                <FontAwesomeIcon icon={faLink} className="icon--link" />
                             </a>
                         </div>
                         <div className="swiper-slide">
-                            <img src="/logocarlier.jpg" />
+                            <img alt="Logo Carlier" className="swiper-lazy" data-src="/logocarlier.jpg" />
                             <p>While working at <a href="https://www.happsdevelopment.com/">Happs Development</a> I also created a mobile application for a speech therapist to help children with discalculia to learn how to count and do simple math exercises in a fun game form.</p>
                             <div className="appStoreIcons">
-                                <a className="iconWrapper" href="https://apps.apple.com/be/app/rekenen-automatisatie/id1444642448">
-                                    <FontAwesomeIcon icon={faAppStore} className="linkIcon" />
+                                <a className="icon-wrapper" href="https://apps.apple.com/be/app/rekenen-automatisatie/id1444642448">
+                                    <FontAwesomeIcon icon={faAppStore} className="icon--link" />
                                 </a>
-                                <a className="iconWrapper" href="https://play.google.com/store/apps/details?id=com.carlierkathleen.rekenen&hl=nl">
-                                    <FontAwesomeIcon icon={faGooglePlay} className="linkIcon" />
+                                <a className="icon-wrapper" href="https://play.google.com/store/apps/details?id=com.carlierkathleen.rekenen&hl=nl">
+                                    <FontAwesomeIcon icon={faGooglePlay} className="icon--link" />
                                 </a>
                             </div>
                         </div>
                         <div className="swiper-slide">
-                            <img src="/logocarglass.jpg" />
+                            <img alt="Logo Carglass" className="swiper-lazy" data-src="/logocarglass.png" />
                             <p>At my current job at The Reference I help maintain the website for Carglass. Many new features have been added since I joined the team, and we managed to optimize the booking flows a lot.</p>
                             <a className="iconWrapper" href="https://www.carglass.be">
-                                <FontAwesomeIcon icon={faLink} className="linkIcon" />
+                                <FontAwesomeIcon icon={faLink} className="icon--link" />
                             </a>
                         </div>
                         <div className="swiper-slide">
-                            <img src="/logonalo.jpg" />
+                            <img alt="Logo National Lottery" className="swiper-lazy" data-src="/logonalo.jpg" />
                             <p>One of the other clients I work for at The Reference is Nationale Loterij. For this client we constantly create new features on a monthly basis, with a modern look.</p>
-                            <a className="iconWrapper" href="https://www.nationale-loterij.be">
-                                <FontAwesomeIcon icon={faLink} className="linkIcon" />
+                            <a className="icon-wrapper" href="https://www.nationale-loterij.be">
+                                <FontAwesomeIcon icon={faLink} className="icon--link" />
                             </a>
                         </div>
                     </div>
@@ -248,7 +261,7 @@ const Home = () => {
                 </svg>                
                 </div>
                 <div className="contact-content">
-                    <div className="contact-contentTitleWrapper" ref={contactContentTitleWrapperRef}>
+                    <div className="contact-content__titleWrapper" ref={contactContentTitleWrapperRef}>
                     
                     <h1>Find me here</h1>
                     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300">
@@ -262,18 +275,18 @@ const Home = () => {
                     </div>
                     <ul>
                         <li>
-                            <a className="iconWrapper" href="https://www.linkedin.com/in/thomasledoux91">
-                                <FontAwesomeIcon icon={faLinkedin} className="socialIcon" />
+                            <a className="icon-wrapper" href="https://www.linkedin.com/in/thomasledoux91">
+                                <FontAwesomeIcon icon={faLinkedin} className="icon--social" />
                             </a>
                         </li>
                         <li>
-                            <a className="iconWrapper" href="https://github.com/thomasledoux1">
-                                <FontAwesomeIcon icon={faGithub} className="socialIcon" />
+                            <a className="icon-wrapper" href="https://github.com/thomasledoux1">
+                                <FontAwesomeIcon icon={faGithub} className="icon--social" />
                             </a>
                         </li>
                         <li>
-                            <a className="iconWrapper" href="https://www.instagram.com/ledouxthomas/">
-                                <FontAwesomeIcon icon={faInstagram} className="socialIcon" />
+                            <a className="icon-wrapper" href="https://www.instagram.com/ledouxthomas/">
+                                <FontAwesomeIcon icon={faInstagram} className="icon--social" />
                             </a>
                         </li>
                     </ul>
