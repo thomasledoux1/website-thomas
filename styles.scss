@@ -8,7 +8,7 @@ html {
     scroll-behavior: smooth;
     --backgroundColor: #f0efff;
     --mainColor: #6c63ff;
-    --lightGray: rgba(0, 0, 0, 0.54);
+    --lightGray: rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -46,7 +46,7 @@ nav {
         top: 0;
         bottom: 0;
         content: '';
-        background: rgba(255, 255, 255, 0.95);
+        background: var(--backgroundColor);
         left: -999em;
         right: -999em;
     }
@@ -185,7 +185,7 @@ nav ul li a:hover {
     }
 }
 
-.hero-illustration {
+.personal-illustration {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -198,7 +198,7 @@ nav ul li a:hover {
     }
 }
 
-.hero-illustration svg {
+.personal-illustration svg {
     max-width: 100%;
     max-height: 300px;
 }
@@ -349,8 +349,8 @@ nav ul li a:hover {
     }
 }
 
-.personal-picture,
-.contact-illustration {
+.contact-illustration,
+.hero-image {
     order: 2;
     width: 100%;
     display: flex;
@@ -374,6 +374,14 @@ nav ul li a:hover {
 .personal-picture__img {
     max-width: 75%;
     border-radius: 50%;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+    transition: filter 600ms, -webkit-filter 600ms;
+
+    &.lazyloaded {
+        filter: blur(0);
+        -webkit-filter: blur(0);
+    }
 }
 
 .personal-content,
@@ -388,30 +396,6 @@ nav ul li a:hover {
         padding-left: 50px;
         padding-right: 50px;
         order: 2;
-    }
-}
-
-.contact-content__titleWrapper {
-    position: relative;
-
-    svg {
-        height: 98px;
-        width: 101px;
-        top: 37px;
-        left: 120px;
-        position: absolute;
-    }
-
-    path {
-        fill: none;
-    }
-
-    g {
-        transform: translateX(-38px) translateY(170px) scale(0.5)
-    }
-
-    polygon {
-        opacity: 0;
     }
 }
 
@@ -433,12 +417,18 @@ nav ul li a:hover {
     }
 
     .swiper-slide {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         padding: 20px;
         border: 5px solid var(--backgroundColor);
         border-radius: 10px;
+        cursor: pointer;
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
         img {
             max-width: 80%;
@@ -448,6 +438,25 @@ nav ul li a:hover {
 
             @media only screen and (min-width: 769px) {
                 max-width: 40%;
+            }
+        }
+
+        .tags {
+            display: flex;
+            padding-left: 0;
+            list-style-type: none;
+            width: 100%;
+            margin-bottom: 0;
+            margin-top: 0;
+            flex-wrap: wrap;
+
+            li {
+                background: var(--lightGray);
+                padding: 4px 10px;
+                border-radius: 4px;
+                font-size: .8em;
+                margin-right: 10px;
+                margin-bottom: 5px;
             }
         }
     }
@@ -483,7 +492,7 @@ nav ul li a:hover {
 
 .swiper-button-prev,
 .swiper-button-next {
-    top: 50%;
+    top: calc(50% + 2.3em);
 
     &:after {
         color: var(--mainColor);
@@ -498,28 +507,13 @@ nav ul li a:hover {
     }
 }
 
-.icon-wrapper {
-    align-self: flex-start;
-
-    .icon--link {
-        height: 1.3em;
-        width: 1.3em;
-    }
-
-    &:hover path {
-        fill: var(--mainColor);
-    }
-
-    path {
-        fill: var(--lightGray);
-    }
-}
-
 .cls-1 {
     fill: #e6e6e6;
 }
 
 .contact-content {
+    align-items: center;
+
     ul {
         list-style: none;
         display: flex;
@@ -537,13 +531,35 @@ nav ul li a:hover {
         .icon--social {
             height: 30px;
             width: 30px;
+        }
 
+        .icon--linkedin {
             &:hover path {
-                fill: var(--mainColor);
+                fill: lighten(#0076b5, 10%);
             }
 
             path {
-                fill: var(--lightGray);
+                fill: #0076b5;
+            }
+        }
+
+        .icon--mail {
+            &:hover path {
+                fill: lighten(#D32D2A, 20%);
+            }
+
+            path {
+                fill: #D32D2A;
+            }
+        }
+
+        .icon--github {
+            &:hover path {
+                fill: lighten(black, 30%);
+            }
+
+            path {
+                fill: black;
             }
         }
     }
