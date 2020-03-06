@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import Swiper from 'swiper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import "../styles.scss";
 import Navigation from './navigation';
 import smoothscroll from 'smoothscroll-polyfill';
@@ -14,6 +14,9 @@ const Home = () => {
     const swiperRef = useRef(null);
     const personalRef = useRef(null);
     const profileImgRef = useRef(null);
+    const formSubmitBtnRef = useRef(null);
+    const [formStatus, setFormStatus] = useState('');
+    const [formResult, setFormResult] = useState('');
     const suggestions = ['developer', 'badminton player', 'squasher', 'travel lover'];
     const speed = 100;
     let charCounter = 0;
@@ -49,6 +52,7 @@ const Home = () => {
             centeredSlides: true,
             loop: true,
             preload: false,
+            spaceBetween: 2,
             lazy: {
                 loadPrevNext: true,
             },
@@ -87,9 +91,43 @@ const Home = () => {
         });
     }
 
+    const submitForm = (ev) => {
+        setFormStatus('loading');
+        ev.preventDefault();
+        const form = ev.target;
+        const data = new FormData(form);
+        const xhr = new XMLHttpRequest();
+        xhr.open(form.method, form.action);
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.onreadystatechange = () => {
+            setFormStatus('');
+            if (xhr.readyState !== XMLHttpRequest.DONE) return;
+            if (xhr.status === 200) {
+                form.reset();
+                setFormResult('ok');
+            } else {
+                setFormResult('error');
+            }
+        };
+        xhr.send(data);
+    }
+
     return (
         <div>
             <Head>
+                <script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=UA-125864873-1" >
+                </script>
+                <script dangerouslySetInnerHTML={
+                    { __html: `
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){window.dataLayer.push(arguments)}
+                        gtag("js", new Date());
+                        gtag("config", "UA-125864873-1");
+                    `}
+                }>
+                </script>
                 <title>Thomas Ledoux' Portfolio</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                <script dangerouslySetInnerHTML={{ __html: `
@@ -104,6 +142,9 @@ const Home = () => {
                         s.parentNode.insertBefore(wf, s);
                     })(); 
                 `}}/>
+                <link rel='preconnect' href='https://fonts.googleapis.com' />
+                <link rel='preconnect' href='https://ajax.googleapis.com' />
+                <link rel='preconnect' href='https://www.google-analytics.com' />
                 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css"></link>
                 <link rel="shortcut icon" type="image/x-icon" href="/myAvatar.ico" />
                 <meta name="Description" content="This is the portfolio website of Thomas Ledoux"></meta>
@@ -222,67 +263,88 @@ const Home = () => {
             </section>
             <section id="contact" className="container">
                 <div className="contact-illustration">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     viewBox="0 0 561.8 654.5" xmlSpace="preserve">
-                <rect x="96.1" y="393.8" fill="#6C63FF" width="254.5" height="221"/>
-                <path fill="#FFB8B8" d="M260.5,160c0,0,2.8,10.8-3.4,18.4c-6.2,7.6,26.6,34.8,26.6,34.8l17.3-3c0,0-3.8-33.1,1.3-41.4
-                    S260.5,160,260.5,160z"/>
-                <path opacity="0.1" d="M260.5,160c0,0,2.8,10.8-3.4,18.4c-6.2,7.6,26.6,34.8,26.6,34.8l17.3-3
-                    c0,0-3.8-33.1,1.3-41.4S260.5,160,260.5,160z"/>
-                <polygon fill="#FFB8B8" points="375.4,474.6 337.3,525.2 363.3,540.3 399.1,481.7 "/>
-                <path fill="#2F2E41" d="M348.7,526c0,0-14-16.3-13.4-12.7c0.6,3.6-10,34.5-0.1,37.5s94.6,10.9,95.8,1.3s-25.3-16.3-25.3-16.3
-                    s-15.7-15.1-19.2-13.6S348.7,526,348.7,526z"/>
-                <polygon fill="#FFB8B8" points="366.9,522.9 397.3,574.8 420.3,561.5 389.6,519 "/>
-                <path fill="#2F2E41" d="M415,399.4l-9,12.8c0,0-43.1,59.9-38.5,64.7s23.6,23.1,33.3,19.6s44.1-64.7,44.1-64.7l-9-35.9L415,399.4z"/>
-                <path fill="#2F2E41" d="M229.3,387.3c0,0,9.7,18,34.1,24.1s50,18.6,50.9,18.4s3.5-1.5,4.1,2.1s7.3,10,7.3,10s27,91.8,37.3,91.9
-                    s31.5-7.3,32-10.2s-31.6-96.7-31.9-98.5l-3.8-21.8c0,0,42.4,6.8,46.3,8s39.1,20.4,39.1,20.4s35.8-25.8,2.3-51.9
-                    s-91.1-45.2-91.1-45.2l-20.7-5.8l-18-1.1l-2.7-10.2l-42.7,2.5l-44.5,18.9L229.3,387.3z"/>
-                <circle fill="#FFB8B8" cx="285.6" cy="148.1" r="33.2"/>
-                <path fill="#D0CDE1" d="M255.5,179.8l4-0.7c0,0,7.2,27.8,29.6,32.4c0,0,11-13.2,10.5-15.4s8.7-14.1,13.6-7.5s-1.2,123.8,2.9,125.9
-                    s12.9,4.3,5.8,12.1s-35.3,18.2-41.5,14.6s-19-34.2-24.5-44.5c-5.5-10.3-14.3-45.3-14.3-45.3s-11.3-38.3-4.3-47
-                    S255.5,179.8,255.5,179.8z"/>
-                <path fill="#2F2E41" d="M287.3,319.1c-0.7,8.2-2,16.3-3.8,24.3c-1.6,6.5-3.5,10.4-5.7,10.3c-5.5-0.4-8,7.7-9.3,17
-                    c-1.4,9.9-1.4,21.2-2.1,25.2c-1,5.3-7.4,9.3-20.3,8.1c-7.7-0.9-15.2-2.7-22.3-5.5c-17.3-6.3-16.8-57.5-13.9-95.4
-                    c1.8-23.3,4.4-41.6,4.4-41.6s-5.3-15.7-7-26.5c-0.3-2-0.5-4-0.5-5.9c0.3-9.4,17.4-34.8,27.8-50.7c10.4-15.8,24.6-4.2,24.6-4.2
-                    l-4.9,14.9c0,0,7.6,11.8,7.7,23s18.3,19.3,24.9,24.8C290.9,240.3,290.8,285.9,287.3,319.1z"/>
-                <path fill="#2F2E41" d="M301.8,179.5c0,0,1.2,1.4,6.7,0.7c6.6-0.8,15.6,1.4,17.7,7.7c3.9,11.5,14.7,58.4,14.7,58.4
-                    s4.5,53.5,6.6,65.4s1,22.3,3,28.5s-19.8-11.6-27.8-9.3s-13.2-27.7-12.2-38.2s1.9-21.9-0.9-32.6c-2.8-10.8,2.2-39.2,2-45.8
-                    S293.8,191.4,301.8,179.5z"/>
-                <path fill="#FFB8B8" d="M325.3,346c0,0,35.2,19.2,38.6,46.5S316.8,366,316.8,366L325.3,346z"/>
-                <path fill="#FFB8B8" d="M345.4,326.6c0,0,10.8,54.3,27.6,51.5s-9.4-54.6-9.4-54.6L345.4,326.6z"/>
-                <path fill="#2F2E41" d="M402.9,563.5c0,0-8.6,9.9-10.7,8.4s-7,19-2.6,22.9s21.5,10.4,21.6,16.9s45.9,5.2,47.5-1.6
-                    s-5.7-22.4-10.9-25.3s-24.3-29.2-24.3-29.2S408.5,557.9,402.9,563.5z"/>
-                <path opacity="0.1" d="M319.7,379.2c-8.2-5.8-30.9-7.2-51.2-8.5c-8.9-0.6-17.3-1.1-23.7-2
-                    c-6.2-0.9-11.8-6.5-16.7-15c-7.5-12.8-13.6-32-18.3-50.5c1.8-23.3,4.4-41.6,4.4-41.6s-5.3-15.7-7-26.5c1.2-1.7,2.7-3,4.5-4
-                    c21.5-9.2,41.9,81.4,44.5,95.6c0,0.2,0.1,0.5,0.1,0.6c1.3,7.3,14.9,13.6,27.1,16.1c7.5,1.5,14.5,1.6,17.7-0.4
-                    c8.5-5.2,34.5,15.6,36.5,16.2C339.8,359.8,331.4,387.5,319.7,379.2z"/>
-                <path fill="#2F2E41" d="M211.8,225.5c0,0-15.6,7.4-8.7,41.8s20.7,92.9,41.8,95.9s63.1,2.3,74.9,10.5s20.1-19.4,18.1-20
-                    s-28-21.4-36.5-16.2s-42.8-3.9-44.8-15.7C254.4,309.9,233.6,216.1,211.8,225.5z"/>
-                <path fill="#2F2E41" d="M324.2,209l17.1,39.8c0,0,1.7-0.9,3.7,5.4c2,6.2,2.9,11.7,6.5,15.8s19.1,62.3,19.6,65s-21.6,12.1-26.5,4.6
-                    S324.2,209,324.2,209z"/>
-                <path fill="#4D3324" d="M266.7,147.7c1.3-0.3,1.5-2,1.5-3.3c0.2-7.1,4.5-14.3,11.2-16.3c2.6-0.7,5.3-0.9,8-0.4
-                    c3.8,0.5,7.4,1.7,10.8,3.6c1.8,1,3.5,2.2,5.5,2.5c1.3,0.2,7,1.9,8.3,2.1c2.9,0.5,5.6,3.1,8.3,2.1c2.6-0.9,3.2-4.3,3.3-7.2
-                    c0.1-6.4-4.7-15.2-9-20c-3.2-3.6-8.1-5.3-12.9-6.1c-5.6-0.9-11.2-1.2-16.9-1c-7.6,0.1-15.5,0.7-22.4,4c-6.9,3.3-12.7,9.9-13,17.5
-                    c-0.1,1.6,0.1,3.2,0,4.8c-0.3,3.9-2.4,7.4-3.3,11.1c-1.4,5.6-0.4,11.5,2.8,16.3c2.6,3.8,6.6,7.2,6.4,11.7l5.5-5.7
-                    c1.7-1.3,2.3-3.6,1.4-5.6l-2-7.6c-0.5-1.4-0.6-2.9-0.2-4.3C262.3,140.5,264.6,148.2,266.7,147.7z"/>
-                </svg>                
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        viewBox="0 0 561.8 654.5" xmlSpace="preserve">
+                        <rect x="96.1" y="393.8" fill="#6C63FF" width="254.5" height="221"/>
+                        <path fill="#FFB8B8" d="M260.5,160c0,0,2.8,10.8-3.4,18.4c-6.2,7.6,26.6,34.8,26.6,34.8l17.3-3c0,0-3.8-33.1,1.3-41.4
+                            S260.5,160,260.5,160z"/>
+                        <path opacity="0.1" d="M260.5,160c0,0,2.8,10.8-3.4,18.4c-6.2,7.6,26.6,34.8,26.6,34.8l17.3-3
+                            c0,0-3.8-33.1,1.3-41.4S260.5,160,260.5,160z"/>
+                        <polygon fill="#FFB8B8" points="375.4,474.6 337.3,525.2 363.3,540.3 399.1,481.7 "/>
+                        <path fill="#2F2E41" d="M348.7,526c0,0-14-16.3-13.4-12.7c0.6,3.6-10,34.5-0.1,37.5s94.6,10.9,95.8,1.3s-25.3-16.3-25.3-16.3
+                            s-15.7-15.1-19.2-13.6S348.7,526,348.7,526z"/>
+                        <polygon fill="#FFB8B8" points="366.9,522.9 397.3,574.8 420.3,561.5 389.6,519 "/>
+                        <path fill="#2F2E41" d="M415,399.4l-9,12.8c0,0-43.1,59.9-38.5,64.7s23.6,23.1,33.3,19.6s44.1-64.7,44.1-64.7l-9-35.9L415,399.4z"/>
+                        <path fill="#2F2E41" d="M229.3,387.3c0,0,9.7,18,34.1,24.1s50,18.6,50.9,18.4s3.5-1.5,4.1,2.1s7.3,10,7.3,10s27,91.8,37.3,91.9
+                            s31.5-7.3,32-10.2s-31.6-96.7-31.9-98.5l-3.8-21.8c0,0,42.4,6.8,46.3,8s39.1,20.4,39.1,20.4s35.8-25.8,2.3-51.9
+                            s-91.1-45.2-91.1-45.2l-20.7-5.8l-18-1.1l-2.7-10.2l-42.7,2.5l-44.5,18.9L229.3,387.3z"/>
+                        <circle fill="#FFB8B8" cx="285.6" cy="148.1" r="33.2"/>
+                        <path fill="#D0CDE1" d="M255.5,179.8l4-0.7c0,0,7.2,27.8,29.6,32.4c0,0,11-13.2,10.5-15.4s8.7-14.1,13.6-7.5s-1.2,123.8,2.9,125.9
+                            s12.9,4.3,5.8,12.1s-35.3,18.2-41.5,14.6s-19-34.2-24.5-44.5c-5.5-10.3-14.3-45.3-14.3-45.3s-11.3-38.3-4.3-47
+                            S255.5,179.8,255.5,179.8z"/>
+                        <path fill="#2F2E41" d="M287.3,319.1c-0.7,8.2-2,16.3-3.8,24.3c-1.6,6.5-3.5,10.4-5.7,10.3c-5.5-0.4-8,7.7-9.3,17
+                            c-1.4,9.9-1.4,21.2-2.1,25.2c-1,5.3-7.4,9.3-20.3,8.1c-7.7-0.9-15.2-2.7-22.3-5.5c-17.3-6.3-16.8-57.5-13.9-95.4
+                            c1.8-23.3,4.4-41.6,4.4-41.6s-5.3-15.7-7-26.5c-0.3-2-0.5-4-0.5-5.9c0.3-9.4,17.4-34.8,27.8-50.7c10.4-15.8,24.6-4.2,24.6-4.2
+                            l-4.9,14.9c0,0,7.6,11.8,7.7,23s18.3,19.3,24.9,24.8C290.9,240.3,290.8,285.9,287.3,319.1z"/>
+                        <path fill="#2F2E41" d="M301.8,179.5c0,0,1.2,1.4,6.7,0.7c6.6-0.8,15.6,1.4,17.7,7.7c3.9,11.5,14.7,58.4,14.7,58.4
+                            s4.5,53.5,6.6,65.4s1,22.3,3,28.5s-19.8-11.6-27.8-9.3s-13.2-27.7-12.2-38.2s1.9-21.9-0.9-32.6c-2.8-10.8,2.2-39.2,2-45.8
+                            S293.8,191.4,301.8,179.5z"/>
+                        <path fill="#FFB8B8" d="M325.3,346c0,0,35.2,19.2,38.6,46.5S316.8,366,316.8,366L325.3,346z"/>
+                        <path fill="#FFB8B8" d="M345.4,326.6c0,0,10.8,54.3,27.6,51.5s-9.4-54.6-9.4-54.6L345.4,326.6z"/>
+                        <path fill="#2F2E41" d="M402.9,563.5c0,0-8.6,9.9-10.7,8.4s-7,19-2.6,22.9s21.5,10.4,21.6,16.9s45.9,5.2,47.5-1.6
+                            s-5.7-22.4-10.9-25.3s-24.3-29.2-24.3-29.2S408.5,557.9,402.9,563.5z"/>
+                        <path opacity="0.1" d="M319.7,379.2c-8.2-5.8-30.9-7.2-51.2-8.5c-8.9-0.6-17.3-1.1-23.7-2
+                            c-6.2-0.9-11.8-6.5-16.7-15c-7.5-12.8-13.6-32-18.3-50.5c1.8-23.3,4.4-41.6,4.4-41.6s-5.3-15.7-7-26.5c1.2-1.7,2.7-3,4.5-4
+                            c21.5-9.2,41.9,81.4,44.5,95.6c0,0.2,0.1,0.5,0.1,0.6c1.3,7.3,14.9,13.6,27.1,16.1c7.5,1.5,14.5,1.6,17.7-0.4
+                            c8.5-5.2,34.5,15.6,36.5,16.2C339.8,359.8,331.4,387.5,319.7,379.2z"/>
+                        <path fill="#2F2E41" d="M211.8,225.5c0,0-15.6,7.4-8.7,41.8s20.7,92.9,41.8,95.9s63.1,2.3,74.9,10.5s20.1-19.4,18.1-20
+                            s-28-21.4-36.5-16.2s-42.8-3.9-44.8-15.7C254.4,309.9,233.6,216.1,211.8,225.5z"/>
+                        <path fill="#2F2E41" d="M324.2,209l17.1,39.8c0,0,1.7-0.9,3.7,5.4c2,6.2,2.9,11.7,6.5,15.8s19.1,62.3,19.6,65s-21.6,12.1-26.5,4.6
+                            S324.2,209,324.2,209z"/>
+                        <path fill="#4D3324" d="M266.7,147.7c1.3-0.3,1.5-2,1.5-3.3c0.2-7.1,4.5-14.3,11.2-16.3c2.6-0.7,5.3-0.9,8-0.4
+                            c3.8,0.5,7.4,1.7,10.8,3.6c1.8,1,3.5,2.2,5.5,2.5c1.3,0.2,7,1.9,8.3,2.1c2.9,0.5,5.6,3.1,8.3,2.1c2.6-0.9,3.2-4.3,3.3-7.2
+                            c0.1-6.4-4.7-15.2-9-20c-3.2-3.6-8.1-5.3-12.9-6.1c-5.6-0.9-11.2-1.2-16.9-1c-7.6,0.1-15.5,0.7-22.4,4c-6.9,3.3-12.7,9.9-13,17.5
+                            c-0.1,1.6,0.1,3.2,0,4.8c-0.3,3.9-2.4,7.4-3.3,11.1c-1.4,5.6-0.4,11.5,2.8,16.3c2.6,3.8,6.6,7.2,6.4,11.7l5.5-5.7
+                            c1.7-1.3,2.3-3.6,1.4-5.6l-2-7.6c-0.5-1.4-0.6-2.9-0.2-4.3C262.3,140.5,264.6,148.2,266.7,147.7z"/>
+                    </svg>                
+                </div>
+                <div className="contact-form">
+                    <h2>Drop me a message</h2>
+                    <form onSubmit={(e) => submitForm(e)} action="https://formspree.io/xzbgjqdq" method="POST">
+                        <div className="floating">
+                            <input id="email" className="floating__input" type="email" name="email" placeholder="E-mail" required />
+                            <label className="floating__label" data-content="E-mail" htmlFor="email">
+                                <span className="hidden--visually">E-mail</span>
+                            </label>
+                        </div>    
+                        <div className="floating">
+                            <textarea rows="3" id="message" className="floating__input" type="text" name="message" placeholder="Message" required />
+                            <label className="floating__label" data-content="Message" htmlFor="message">
+                                <span className="hidden--visually">Message</span>
+                            </label>
+                        </div>
+                        
+                        <button ref={formSubmitBtnRef} className={`button ${formStatus}`} type="submit">Submit</button>
+                        {formResult === "error" && <p className="error">Ooops! There was an error. Try again later.</p>}
+                        {formResult === "ok" && <p className="success">I received your message. I'll get back to you ASAP.</p>}
+                    </form>
                 </div>
                 <div className="contact-content">
-                    <h2>Find me here</h2>
+                    <h2>You can also find me here</h2>
                     <ul>
                         <li>
-                            <a className="icon-wrapper" href="https://www.linkedin.com/in/thomasledoux91">
+                            <a aria-label="linkedin" className="icon-wrapper" href="https://www.linkedin.com/in/thomasledoux91">
                                 <FontAwesomeIcon icon={faLinkedin} className="icon--social icon--linkedin" />
                             </a>
                         </li>
                         <li>
-                            <a className="icon-wrapper" href="https://github.com/thomasledoux1">
+                            <a aria-label="github" className="icon-wrapper" href="https://github.com/thomasledoux1">
                                 <FontAwesomeIcon icon={faGithub} className="icon--social icon--github" />
                             </a>
                         </li>
                         <li>
-                            <a className="icon-wrapper" href="mailto:thomasledoux1@gmail.com">
-                                <FontAwesomeIcon icon={faEnvelope} className="icon--social icon--mail" />
+                            <a aria-label="facebook" className="icon-wrapper" href="https://www.facebook.com/thomasledoux91/">
+                                <FontAwesomeIcon icon={faFacebook} className="icon--social icon--facebook" />
                             </a>
                         </li>
                     </ul>

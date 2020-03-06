@@ -21,6 +21,28 @@ const Navigation = () => {
         navigationRef.current.classList.toggle('slideIn');
     };
 
+    const toggleDarkTheme = (e) => {
+        if (e.target.checked) {
+            useTheme('dark');
+        } else {
+            useTheme('light');
+        }
+    }
+
+    const useTheme = (theme) => {
+        if (theme === 'dark') {
+            document.documentElement.style.setProperty('--backgroundColor', 'black');
+            document.documentElement.style.setProperty('--backgroundColorOdd', '#121212');
+            document.documentElement.style.setProperty('--textColor', 'white');
+            document.documentElement.style.setProperty('--lightGray', '#325b97');
+        } else {
+            document.documentElement.style.setProperty('--backgroundColor', '#f0efff');
+            document.documentElement.style.setProperty('--backgroundColorOdd', '#ffffff');
+            document.documentElement.style.setProperty('--textColor', 'black');
+            document.documentElement.style.setProperty('--lightGray', 'rgba(0, 0, 0, 0.2)');
+        }
+    }
+
     return (
         <nav>
             <div className="navigation-wrapper">
@@ -44,6 +66,9 @@ const Navigation = () => {
                         <a onClick={(e) => toggleMobileNav(e, 'contact')} href="#contact">Contact</a>
                     </li>
                 </ul>
+                <div className="darkTheme-container">
+                    <input onChange={e => toggleDarkTheme(e)} className="darkTheme-checkbox" type="checkbox" />
+                </div>
                 <div ref={mobileIconRef} onClick={toggleMobileNav} className="navigation-mobile__icon">
                     <span></span>
                     <span></span>
