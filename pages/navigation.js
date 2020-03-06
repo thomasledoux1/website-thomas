@@ -23,9 +23,9 @@ const Navigation = () => {
 
     const toggleDarkTheme = (e) => {
         if (e.target.checked) {
-            useTheme('dark');
-        } else {
             useTheme('light');
+        } else {
+            useTheme('dark');
         }
     }
 
@@ -67,7 +67,7 @@ const Navigation = () => {
                     </li>
                 </ul>
                 <div className="darkTheme-container">
-                    <input onChange={e => toggleDarkTheme(e)} className="darkTheme-checkbox" type="checkbox" />
+                    <input defaultChecked onChange={e => toggleDarkTheme(e)} className="darkTheme-checkbox" type="checkbox" />
                 </div>
                 <div ref={mobileIconRef} onClick={toggleMobileNav} className="navigation-mobile__icon">
                     <span></span>
