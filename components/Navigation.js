@@ -35,11 +35,13 @@ const Navigation = () => {
             document.documentElement.style.setProperty('--backgroundColorOdd', '#121212');
             document.documentElement.style.setProperty('--textColor', 'white');
             document.documentElement.style.setProperty('--lightGray', '#325b97');
+            document.documentElement.style.setProperty('--backgroundColorCase', 'rgba(255, 255, 255, 0.12)');
         } else {
             document.documentElement.style.setProperty('--backgroundColor', '#f0efff');
             document.documentElement.style.setProperty('--backgroundColorOdd', '#ffffff');
             document.documentElement.style.setProperty('--textColor', 'black');
             document.documentElement.style.setProperty('--lightGray', 'rgba(0, 0, 0, 0.2)');
+            document.documentElement.style.setProperty('--backgroundColorCase', '#ffffff');
         }
     }
 
@@ -67,7 +69,7 @@ const Navigation = () => {
                     </li>
                 </ul>
                 <div className="darkTheme-container">
-                    <input defaultChecked onChange={e => toggleDarkTheme(e)} className="darkTheme-checkbox" type="checkbox" />
+                    <input aria-label="toggle dark theme" defaultChecked onChange={e => toggleDarkTheme(e)} className="darkTheme-checkbox" type="checkbox" />
                 </div>
                 <div ref={mobileIconRef} onClick={toggleMobileNav} className="navigation-mobile__icon">
                     <span></span>

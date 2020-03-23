@@ -2,18 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import Swiper from 'swiper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import "../styles.scss";
-import Navigation from './navigation';
 import smoothscroll from 'smoothscroll-polyfill';
 
 const Home = () => {
     const textWrapper = useRef(null);
     const swiperRef = useRef(null);
     const personalRef = useRef(null);
-    const profileImgRef = useRef(null);
     const formSubmitBtnRef = useRef(null);
     const [formStatus, setFormStatus] = useState('');
     const [formResult, setFormResult] = useState('');
@@ -68,16 +64,17 @@ const Home = () => {
         });
 
         if ("IntersectionObserver" in window) {
-            let profileImgObserver = new IntersectionObserver(function(entry, observer) {
-                if (entry[0].isIntersecting) {
-                    let lazyImage = entry[0].target;
-                    lazyImage.src = lazyImage.dataset.src;
-                    lazyImage.classList.add("lazyloaded");
-                    observer.unobserve(lazyImage);
-                }
+            let imgObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        let lazyImage = entry.target;
+                        lazyImage.src = lazyImage.dataset.src;
+                        lazyImage.classList.add("lazyloaded");
+                        observer.unobserve(lazyImage);
+                    }
+                });
             });
-
-            profileImgObserver.observe(profileImgRef.current);
+            document.querySelectorAll('img.lazy').forEach(el => imgObserver.observe(el));
           } 
         
         return function cleanup() {
@@ -115,47 +112,14 @@ const Home = () => {
     return (
         <div>
             <Head>
-                <script
-                    async
-                    src="https://www.googletagmanager.com/gtag/js?id=UA-125864873-1" >
-                </script>
-                <script dangerouslySetInnerHTML={
-                    { __html: `
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){window.dataLayer.push(arguments)}
-                        gtag("js", new Date());
-                        gtag("config", "UA-125864873-1");
-                    `}
-                }>
-                </script>
-                <title>Thomas Ledoux' Portfolio</title>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-               <script dangerouslySetInnerHTML={{ __html: `
-                    WebFontConfig = {
-                        google: { families: [ 'Nunito:400,700&display=swap' ] }
-                    };
-                    (function() {
-                        var wf = document.createElement('script');
-                        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-                        wf.async = 'true';
-                        var s = document.getElementsByTagName('script')[0];
-                        s.parentNode.insertBefore(wf, s);
-                    })(); 
-                `}}/>
-                <link rel='preconnect' href='https://fonts.googleapis.com' />
-                <link rel='preconnect' href='https://ajax.googleapis.com' />
-                <link rel='preconnect' href='https://www.google-analytics.com' />
-                <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css"></link>
-                <link rel="shortcut icon" type="image/x-icon" href="/myAvatar.ico" />
-                <meta name="Description" content="This is the portfolio website of Thomas Ledoux"></meta>
+                <title>Thomas Ledoux' Portfolio - Home</title>
             </Head>
-            <Navigation></Navigation>
             <section className="container">
                 <div className="hero-content">
                     <h1>Thomas is a <span className="skills-wrapper" ref={textWrapper}></span></h1>
                 </div>
                 <div className="hero-image">
-                    <img ref={profileImgRef} className="personal-picture__img" alt="profile picture" src="me-lowres.jpg" data-src="me.jpg" />
+                    <img className="personal-picture__img lazy" alt="profile picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/me_qvrwky.jpg" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky.jpg" />
                 </div>
                 <span onClick={scrollTo} className="hero-scroll">
                     <FontAwesomeIcon icon={faAngleDown} className="hero-scroll__icon" />
@@ -201,65 +165,93 @@ const Home = () => {
             </section>
             <section id="portfolio" className="container portfolio-content">
                 <h2>Some of my work</h2>
-                <div ref={swiperRef} className="swiper-container">
-                    <div className="swiper-wrapper">
-                        <div className="swiper-slide">
-                            <a href="https://www.getrialto.com/">
-                                <img alt="Logo Rialto" src="/logorialto.png" />
+                <div className="portfolio-caseWrapper">
+                    <div className="col-4">
+                        <div className="portfolio-case">
+                            <a href="https://www.getrialto.com">
+                                <img className="lazy" alt="Logo Rialto" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logorialto_hrb82m.png" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/logorialto_hrb82m.png" />
                                 <p>At my internship for Rialto I created an iOS app from scratch in Swift where real estate companies could easily manage their listings.</p>
-                                <ul className="tags">
-                                    <li>swift</li>
-                                    <li>ios</li>
-                                </ul>
+                                <div className="portfolio-tagsWrapper">
+                                    <ul className="portfolio-tags">
+                                        <li>swift</li>
+                                        <li>ios</li>
+                                    </ul>
+                                </div>
                             </a>
                         </div>
-                        <div className="swiper-slide">
+                    </div>
+                    <div className="col-4">
+                        <div className="portfolio-case">
                             <a href="https://www.karaton.be">
-                                <img alt="Logo Karaton" className="swiper-lazy" data-src="/logokaraton.png" />
+                                <img className="lazy" alt="Logo Karaton" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logokaraton_l6y9ze.png" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logokaraton_l6y9ze.png" />
                                 <p>For Happs Development I created and maintained the website for Karaton where speech therapists and parents of dyslexic could follow up on the progress their children/patients are making in the Karaton game.</p>
-                                <ul className="tags">
-                                    <li>angular</li>
-                                    <li>mongodb</li>
-                                    <li>expressjs</li>
-                                    <li>nodejs</li>
-                                </ul>
+                                <div className="portfolio-tagsWrapper">
+                                    <ul className="portfolio-tags">
+                                        <li>angular</li>
+                                        <li>mongodb</li>
+                                        <li>expressjs</li>
+                                    </ul>
+                                </div>
                             </a>
                         </div>
-                        <div className="swiper-slide">
-                            <a href="https://www.happsdevelopment.com/">
-                                <img alt="Logo Carlier" className="swiper-lazy" data-src="/logocarlier.jpg" />
+                    </div>
+                    <div className="col-4">
+                        <div className="portfolio-case">
+                            <a href="https://play.google.com/store/apps/details?id=com.carlierkathleen.rekenen&hl=nl">
+                                <img className="lazy" alt="Logo Happs" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logocarlier_azx7hg.jpg" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logocarlier_azx7hg.jpg" />
                                 <p>While working at Happs Development I also created a mobile application for a speech therapist to help children with discalculia to learn how to count and do simple math exercises in a fun game form.</p>
-                                <ul className="tags">
-                                    <li>react-native</li>
-                                    <li>reactjs</li>
-                                </ul>
+                                <div className="portfolio-tagsWrapper">
+                                    <ul className="portfolio-tags">
+                                        <li>react-native</li>
+                                        <li>reactjs</li>
+                                    </ul>
+                                </div>
                             </a>
                         </div>
-                        <div className="swiper-slide">
+                    </div>
+                    <div className="col-4">
+                        <div className="portfolio-case">
                             <a href="https://www.carglass.be">
-                                <img alt="Logo Carglass" className="swiper-lazy" data-src="/logocarglass.png" />
+                                <img className="lazy" alt="Logo Happs" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logocarglass_dmieax.png" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logocarglass_dmieax.png" />
                                 <p>At my current job at The Reference I help maintain the website for Carglass. Many new features have been added since I joined the team, and we managed to optimize the booking flows a lot.</p>
-                                <ul className="tags">
-                                    <li>reactjs</li>
-                                    <li>sitecore</li>
-                                </ul>
+                                <div className="portfolio-tagsWrapper">
+                                    <ul className="portfolio-tags">
+                                        <li>reactjs</li>
+                                        <li>sitecore</li>
+                                    </ul>
+                                </div>
                             </a>
                         </div>
-                        <div className="swiper-slide">
+                    </div>
+                    <div className="col-4">
+                        <div className="portfolio-case">
                             <a href="https://www.nationale-loterij.be">
-                                <img alt="Logo National Lottery" className="swiper-lazy" data-src="/logonalo.jpg" />
+                                <img className="lazy" alt="Logo Nationale Loterij" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logonalo_xgy3wb.jpg" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/logonalo_xgy3wb.jpg" />
                                 <p>One of the other clients I work for at The Reference is Nationale Loterij. For this client we constantly create new features on a monthly basis, with a modern look.</p>
-                                <ul className="tags">
-                                    <li>reactjs</li>
-                                    <li>sitecore</li>
-                                </ul>
+                                <div className="portfolio-tagsWrapper">
+                                    <ul className="portfolio-tags">
+                                        <li>reactjs</li>
+                                        <li>sitecore</li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="col-4">
+                        <div className="portfolio-case">
+                            <a href="https://www.achterderegenboog.be">
+                                <img className="lazy" alt="Logo Achter De Regenboog" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/achterderegenboog_fdwjmw.png" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583870456/achterderegenboog_fdwjmw.png" />
+                                <p>In my free time I like to experiment with other frameworks and technologies too. I made a website using Wordpress for a friend of mine who started a psychologists practice.</p>
+                                <div className="portfolio-tagsWrapper">
+                                    <ul className="portfolio-tags">
+                                        <li>wordpress</li>
+                                        <li>javascript</li>
+                                    </ul>
+                                </div>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div className="swiper-pagination"></div>
-                <div className="swiper-button-prev"></div>
-                <div className="swiper-button-next"></div>
             </section>
             <section id="contact" className="container">
                 <div className="contact-illustration">

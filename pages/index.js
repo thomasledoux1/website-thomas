@@ -1,8 +1,11 @@
 import Home from './home';
+import Layout from '../components/Layout';
 
 const Index = () => {
     return (
-        <Home />
+        <Layout>
+            <Home />
+        </Layout>
     )
 };
 
