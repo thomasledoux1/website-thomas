@@ -64,7 +64,7 @@ const Home = () => {
         });
 
         if ("IntersectionObserver" in window) {
-            let imgObserver = new IntersectionObserver(function(entries, observer) {
+            let imgObserver = new IntersectionObserver(function (entries, observer) {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         let lazyImage = entry.target;
@@ -75,8 +75,8 @@ const Home = () => {
                 });
             });
             document.querySelectorAll('img.lazy').forEach(el => imgObserver.observe(el));
-          } 
-        
+        }
+
         return function cleanup() {
             clearTimeout(timeOut);
         }
@@ -127,7 +127,7 @@ const Home = () => {
             </section>
             <section id="personal" className="container" ref={personalRef}>
                 <div className="personal-illustration">
-                <svg width="893px" height="690px" viewBox="0 0 893 690" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="893px" height="690px" viewBox="0 0 893 690" version="1.1" xmlns="http://www.w3.org/2000/svg">
                         <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                             <g transform="translate(0.000000, 1.000000)">
                                 <circle fill="#FFB8B8" fillRule="nonzero" cx="435.92153" cy="137.40512" r="73.53607"></circle>
@@ -154,13 +154,14 @@ const Home = () => {
                                 <path d="M755.74373,658.2551 L770.62605,636.1236 L755.77417,660.63603 L755.80517,663.12638 C754.71871,663.13466 753.642797,663.116567 752.57743,663.0721 L753.31559,631.06029 L753.29537,630.81329 L753.3226,630.76558 L753.39325,627.74065 L737.09535,604.078 L753.37402,625.47667 L753.43179,626.11605 L753.98931,601.92987 L739.91231,577.39712 L754.02939,597.68106 L753.88204,547.57354 L753.88236,547.40676 L753.88715,547.57076 L754.82161,587.06223 L767.65111,571.02077 L754.86361,590.46433 L755.14361,612.09833 L766.94939,590.98439 L755.187,615.2789 L755.34287,627.30847 L772.51166,597.89701 L755.39507,631.50508 L755.74373,658.2551 Z" fill="#3F3D56" fillRule="nonzero"></path>
                             </g>
                         </g>
-                </svg>
-                    </div>
+                    </svg>
+                </div>
                 <div className="personal-content">
                     <h2>Personal Information</h2>
                     <p>Hi, I'm Thomas. I'm 28 years old, living in Ghent. I'm a professional Frontend Developer, currently working at The Reference.</p>
                     <p>I studied Applied Computer Sciences at Hogeschool Gent. I chose for the Mobile Development track, and went on Erasmus to Barcelona to learn more about Swift and Java. At my internship I created an iOS app in Swift for Rialto.</p>
                     <p>After graduating I worked for the startup Happs as a full-stack developer, where I created and maintained the website. I also created an app for a client in React Native during this period.</p>
+                    <p>You can read more about my work in the section below.</p>
                 </div>
             </section>
             <section id="portfolio" className="container portfolio-content">
@@ -257,20 +258,20 @@ const Home = () => {
                 <div className="contact-illustration">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 561.8 654.5" xmlSpace="preserve">
-                        <rect x="96.1" y="393.8" fill="#6C63FF" width="254.5" height="221"/>
+                        <rect x="96.1" y="393.8" fill="#6C63FF" width="254.5" height="221" />
                         <path fill="#FFB8B8" d="M260.5,160c0,0,2.8,10.8-3.4,18.4c-6.2,7.6,26.6,34.8,26.6,34.8l17.3-3c0,0-3.8-33.1,1.3-41.4
                             S260.5,160,260.5,160z"/>
                         <path opacity="0.1" d="M260.5,160c0,0,2.8,10.8-3.4,18.4c-6.2,7.6,26.6,34.8,26.6,34.8l17.3-3
                             c0,0-3.8-33.1,1.3-41.4S260.5,160,260.5,160z"/>
-                        <polygon fill="#FFB8B8" points="375.4,474.6 337.3,525.2 363.3,540.3 399.1,481.7 "/>
+                        <polygon fill="#FFB8B8" points="375.4,474.6 337.3,525.2 363.3,540.3 399.1,481.7 " />
                         <path fill="#2F2E41" d="M348.7,526c0,0-14-16.3-13.4-12.7c0.6,3.6-10,34.5-0.1,37.5s94.6,10.9,95.8,1.3s-25.3-16.3-25.3-16.3
                             s-15.7-15.1-19.2-13.6S348.7,526,348.7,526z"/>
-                        <polygon fill="#FFB8B8" points="366.9,522.9 397.3,574.8 420.3,561.5 389.6,519 "/>
-                        <path fill="#2F2E41" d="M415,399.4l-9,12.8c0,0-43.1,59.9-38.5,64.7s23.6,23.1,33.3,19.6s44.1-64.7,44.1-64.7l-9-35.9L415,399.4z"/>
+                        <polygon fill="#FFB8B8" points="366.9,522.9 397.3,574.8 420.3,561.5 389.6,519 " />
+                        <path fill="#2F2E41" d="M415,399.4l-9,12.8c0,0-43.1,59.9-38.5,64.7s23.6,23.1,33.3,19.6s44.1-64.7,44.1-64.7l-9-35.9L415,399.4z" />
                         <path fill="#2F2E41" d="M229.3,387.3c0,0,9.7,18,34.1,24.1s50,18.6,50.9,18.4s3.5-1.5,4.1,2.1s7.3,10,7.3,10s27,91.8,37.3,91.9
                             s31.5-7.3,32-10.2s-31.6-96.7-31.9-98.5l-3.8-21.8c0,0,42.4,6.8,46.3,8s39.1,20.4,39.1,20.4s35.8-25.8,2.3-51.9
                             s-91.1-45.2-91.1-45.2l-20.7-5.8l-18-1.1l-2.7-10.2l-42.7,2.5l-44.5,18.9L229.3,387.3z"/>
-                        <circle fill="#FFB8B8" cx="285.6" cy="148.1" r="33.2"/>
+                        <circle fill="#FFB8B8" cx="285.6" cy="148.1" r="33.2" />
                         <path fill="#D0CDE1" d="M255.5,179.8l4-0.7c0,0,7.2,27.8,29.6,32.4c0,0,11-13.2,10.5-15.4s8.7-14.1,13.6-7.5s-1.2,123.8,2.9,125.9
                             s12.9,4.3,5.8,12.1s-35.3,18.2-41.5,14.6s-19-34.2-24.5-44.5c-5.5-10.3-14.3-45.3-14.3-45.3s-11.3-38.3-4.3-47
                             S255.5,179.8,255.5,179.8z"/>
@@ -281,8 +282,8 @@ const Home = () => {
                         <path fill="#2F2E41" d="M301.8,179.5c0,0,1.2,1.4,6.7,0.7c6.6-0.8,15.6,1.4,17.7,7.7c3.9,11.5,14.7,58.4,14.7,58.4
                             s4.5,53.5,6.6,65.4s1,22.3,3,28.5s-19.8-11.6-27.8-9.3s-13.2-27.7-12.2-38.2s1.9-21.9-0.9-32.6c-2.8-10.8,2.2-39.2,2-45.8
                             S293.8,191.4,301.8,179.5z"/>
-                        <path fill="#FFB8B8" d="M325.3,346c0,0,35.2,19.2,38.6,46.5S316.8,366,316.8,366L325.3,346z"/>
-                        <path fill="#FFB8B8" d="M345.4,326.6c0,0,10.8,54.3,27.6,51.5s-9.4-54.6-9.4-54.6L345.4,326.6z"/>
+                        <path fill="#FFB8B8" d="M325.3,346c0,0,35.2,19.2,38.6,46.5S316.8,366,316.8,366L325.3,346z" />
+                        <path fill="#FFB8B8" d="M345.4,326.6c0,0,10.8,54.3,27.6,51.5s-9.4-54.6-9.4-54.6L345.4,326.6z" />
                         <path fill="#2F2E41" d="M402.9,563.5c0,0-8.6,9.9-10.7,8.4s-7,19-2.6,22.9s21.5,10.4,21.6,16.9s45.9,5.2,47.5-1.6
                             s-5.7-22.4-10.9-25.3s-24.3-29.2-24.3-29.2S408.5,557.9,402.9,563.5z"/>
                         <path opacity="0.1" d="M319.7,379.2c-8.2-5.8-30.9-7.2-51.2-8.5c-8.9-0.6-17.3-1.1-23.7-2
@@ -298,7 +299,7 @@ const Home = () => {
                             c0.1-6.4-4.7-15.2-9-20c-3.2-3.6-8.1-5.3-12.9-6.1c-5.6-0.9-11.2-1.2-16.9-1c-7.6,0.1-15.5,0.7-22.4,4c-6.9,3.3-12.7,9.9-13,17.5
                             c-0.1,1.6,0.1,3.2,0,4.8c-0.3,3.9-2.4,7.4-3.3,11.1c-1.4,5.6-0.4,11.5,2.8,16.3c2.6,3.8,6.6,7.2,6.4,11.7l5.5-5.7
                             c1.7-1.3,2.3-3.6,1.4-5.6l-2-7.6c-0.5-1.4-0.6-2.9-0.2-4.3C262.3,140.5,264.6,148.2,266.7,147.7z"/>
-                    </svg>                
+                    </svg>
                 </div>
                 <div className="contact-form">
                     <h2>Drop me a message</h2>
@@ -308,14 +309,14 @@ const Home = () => {
                             <label className="floating__label" data-content="E-mail" htmlFor="email">
                                 <span className="hidden--visually">E-mail</span>
                             </label>
-                        </div>    
+                        </div>
                         <div className="floating">
                             <textarea rows="3" id="message" className="floating__input" type="text" name="message" placeholder="Message" required />
                             <label className="floating__label" data-content="Message" htmlFor="message">
                                 <span className="hidden--visually">Message</span>
                             </label>
                         </div>
-                        
+
                         <button ref={formSubmitBtnRef} className={`button ${formStatus}`} type="submit">Submit</button>
                         {formResult === "error" && <p className="error">Ooops! There was an error. Try again later.</p>}
                         {formResult === "ok" && <p className="success">I received your message. I'll get back to you ASAP.</p>}
