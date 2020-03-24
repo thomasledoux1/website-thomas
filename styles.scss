@@ -317,6 +317,22 @@ nav ul li a:hover {
 }
 
 .navigation {
+    display: none;
+
+    @media only screen and (min-width: 769px) {
+        transform: none;
+        flex-direction: row;
+        background: 0 0;
+        position: unset;
+        justify-content: flex-end;
+        width: auto;
+        display: flex;
+        align-items: center;
+        margin-left: 0;
+    }
+}
+
+.navigation-mobile {
     display: flex;
     position: absolute;
     flex-direction: column;
@@ -332,15 +348,7 @@ nav ul li a:hover {
 
     &.slideIn {
         transform: translateX(0);
-    }
-
-    @media only screen and (min-width: 769px) {
-        transform: none;
-        flex-direction: row;
-        background: 0 0;
-        position: unset;
-        justify-content: flex-end;
-        width: auto;
+        display: flex;
     }
 }
 

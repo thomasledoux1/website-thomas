@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 const Navigation = () => {
-    const navigationRef = useRef(null);
+    const navigationMobileRef = useRef(null);
     const mobileIconRef = useRef(null);
-    const toggleMobileNav = (e, id) => {
+    const scrollToView = (e, id) => {
         if (id) {
             if (id !== 'home') {
                 e.preventDefault();
@@ -17,9 +17,12 @@ const Navigation = () => {
                 });
             }
         }
-        mobileIconRef.current.classList.toggle('open');
-        navigationRef.current.classList.toggle('slideIn');
     };
+
+    const toggleMobileNavigation = () => {
+        mobileIconRef.current.classList.toggle('open');
+        navigationMobileRef.current.classList.toggle('slideIn');
+    }
 
     const toggleDarkTheme = (e) => {
         if (e.target.checked) {
@@ -45,10 +48,26 @@ const Navigation = () => {
         }
     }
 
+    const renderNavigationItems = () => {
+        return (
+            <React.Fragment>
+                <li>
+                    <a onClick={(e) => scrollToView(e, 'personal')} href="#personal">Personal</a>
+                </li>
+                <li>
+                    <a onClick={(e) => scrollToView(e, 'portfolio')} href="#portfolio">Portfolio</a>
+                </li>
+                <li>
+                    <a onClick={(e) => scrollToView(e, 'contact')} href="#contact">Contact</a>
+                </li>
+            </React.Fragment>
+        );
+    }
+
     return (
         <nav>
             <div className="navigation-wrapper">
-                <a onClick={(e) => toggleMobileNav(e, 'home')} href="#" className="logo">
+                <a onClick={(e) => renderNavigationItems(e, 'home')} href="#" className="logo">
                     <div className="letter">t</div>
                     <div className="letter">h</div>
                     <div className="letter">m</div>
@@ -57,21 +76,16 @@ const Navigation = () => {
                     <div className="letter">d</div>
                     <div className="letter">x</div>
                 </a>
-                <ul ref={navigationRef} className="navigation">
-                    <li>
-                        <a onClick={(e) => toggleMobileNav(e, 'personal')} href="#personal">Personal</a>
-                    </li>
-                    <li>
-                        <a onClick={(e) => toggleMobileNav(e, 'portfolio')} href="#portfolio">Portfolio</a>
-                    </li>
-                    <li>
-                        <a onClick={(e) => toggleMobileNav(e, 'contact')} href="#contact">Contact</a>
-                    </li>
+                <ul className="navigation">
+                    {renderNavigationItems()}
+                </ul>
+                <ul ref={navigationMobileRef} className="navigation-mobile">
+                    {renderNavigationItems()}
                 </ul>
                 <div className="darkTheme-container">
                     <input aria-label="toggle dark theme" defaultChecked onChange={e => toggleDarkTheme(e)} className="darkTheme-checkbox" type="checkbox" />
                 </div>
-                <div ref={mobileIconRef} onClick={toggleMobileNav} className="navigation-mobile__icon">
+                <div ref={mobileIconRef} onClick={toggleMobileNavigation} className="navigation-mobile__icon">
                     <span></span>
                     <span></span>
                     <span></span>
