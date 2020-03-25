@@ -20,6 +20,7 @@ const Navigation = () => {
     };
 
     const toggleMobileNavigation = () => {
+        navigationMobileRef.current.classList.add('touched');
         mobileIconRef.current.classList.toggle('open');
         navigationMobileRef.current.classList.toggle('slideIn');
     }

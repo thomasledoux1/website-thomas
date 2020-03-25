@@ -114,7 +114,7 @@ const Home = () => {
             <Head>
                 <title>Thomas Ledoux' Portfolio - Home</title>
             </Head>
-            <section className="container">
+            <section className="container hero">
                 <div className="hero-content">
                     <h1>Thomas is a <span className="skills-wrapper" ref={textWrapper}></span></h1>
                 </div>

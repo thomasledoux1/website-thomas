@@ -344,7 +344,10 @@ nav ul li a:hover {
     top: 60px;
     background: rgb(108, 99, 255);
     transform: translateX(calc(100% + 20px));
-    transition: transform .25s ease;
+
+    &.touched {
+        transition: transform .25s ease;
+    }
 
     &.slideIn {
         transform: translateX(0);
@@ -463,6 +466,14 @@ nav ul li a:hover {
     }
 }
 
+.container.hero {
+    min-height: auto;
+
+    @media only screen and (min-width: 769px) {
+        min-height: 100vh;
+    }
+}
+
 .col-4 {
     width: 100%;
     padding-left: 15px;
@@ -517,7 +528,7 @@ nav ul li a:hover {
 }
 
 .personal-picture__img {
-    max-width: 75%;
+    max-width: 80%;
     border-radius: 50%;
     -webkit-filter: blur(5px);
     filter: blur(5px);
