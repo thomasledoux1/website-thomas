@@ -441,7 +441,7 @@ nav ul li a:hover {
     margin-right: auto;
     margin-left: auto;
     padding-bottom: 60px;
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
     justify-content: center;
     flex-wrap: wrap;
 
@@ -466,22 +466,14 @@ nav ul li a:hover {
     }
 }
 
-.container.hero {
-    min-height: auto;
-
-    @media only screen and (min-width: 769px) {
-        min-height: 100vh;
-    }
-}
-
 .col-4 {
     width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
     display: flex;
 
     @media only screen and (min-width: 769px) {
         width: 50%;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     @media only screen and (min-width: 1025px) {

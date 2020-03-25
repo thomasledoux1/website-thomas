@@ -83,9 +83,7 @@ const Home = () => {
     }, []);
 
     const scrollTo = () => {
-        personalRef.current.scrollIntoView({
-            behavior: 'smooth'
-        });
+        window.scrollTo({top: personalRef.current.offsetTop - 59, left: 0, behavior: 'smooth'});
     }
 
     const submitForm = (ev) => {
