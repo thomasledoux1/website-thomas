@@ -6,7 +6,9 @@ const Navigation = () => {
         if (id) {
             if (id !== 'home') {
                 e.preventDefault();
-                document.getElementById(id).scrollIntoView({
+                window.scroll({
+                    top: document.getElementById(id).offsetTop - 59,
+                    left: 0,
                     behavior: 'smooth'
                 });
             } else {
@@ -17,9 +19,11 @@ const Navigation = () => {
                 });
             }
         }
+        toggleMobileNavigation();
     };
 
     const toggleMobileNavigation = () => {
+        navigationMobileRef.current.classList.add('touched');
         mobileIconRef.current.classList.toggle('open');
         navigationMobileRef.current.classList.toggle('slideIn');
     }

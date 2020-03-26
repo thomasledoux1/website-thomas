@@ -344,7 +344,10 @@ nav ul li a:hover {
     top: 60px;
     background: rgb(108, 99, 255);
     transform: translateX(calc(100% + 20px));
-    transition: transform .25s ease;
+
+    &.touched {
+        transition: transform .25s ease;
+    }
 
     &.slideIn {
         transform: translateX(0);
@@ -438,7 +441,7 @@ nav ul li a:hover {
     margin-right: auto;
     margin-left: auto;
     padding-bottom: 60px;
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
     justify-content: center;
     flex-wrap: wrap;
 
@@ -465,12 +468,12 @@ nav ul li a:hover {
 
 .col-4 {
     width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
     display: flex;
 
     @media only screen and (min-width: 769px) {
         width: 50%;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     @media only screen and (min-width: 1025px) {
@@ -517,7 +520,7 @@ nav ul li a:hover {
 }
 
 .personal-picture__img {
-    max-width: 75%;
+    max-width: 80%;
     border-radius: 50%;
     -webkit-filter: blur(5px);
     filter: blur(5px);

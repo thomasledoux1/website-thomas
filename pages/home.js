@@ -83,9 +83,7 @@ const Home = () => {
     }, []);
 
     const scrollTo = () => {
-        personalRef.current.scrollIntoView({
-            behavior: 'smooth'
-        });
+        window.scrollTo({top: personalRef.current.offsetTop - 59, left: 0, behavior: 'smooth'});
     }
 
     const submitForm = (ev) => {
@@ -114,7 +112,7 @@ const Home = () => {
             <Head>
                 <title>Thomas Ledoux' Portfolio - Home</title>
             </Head>
-            <section className="container">
+            <section className="container hero">
                 <div className="hero-content">
                     <h1>Thomas is a <span className="skills-wrapper" ref={textWrapper}></span></h1>
                 </div>
