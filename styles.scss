@@ -773,7 +773,7 @@ nav ul li a:hover {
     }
 
     textarea.floating__input:placeholder-shown+.floating__label::before {
-        transform: translate3d(0, -4.3rem, 0) scale3d(1, 1, 1);
+        transform: translate3d(0, -68px, 0) scale3d(1, 1, 1);
     }
 
     .floating__label::before,
@@ -783,7 +783,7 @@ nav ul li a:hover {
 
     textarea.floating__label::before,
     textarea.floating__input:focus+.floating__label::before {
-        transform: translate3d(0, -5rem, 0) scale3d(0.82, 0.82, 1);
+        transform: translate3d(0, -80px, 0) scale3d(0.82, 0.82, 1);
     }
 
     .floating__input:focus+.floating__label::before {
