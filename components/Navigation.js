@@ -19,7 +19,9 @@ const Navigation = () => {
                 });
             }
         }
-        toggleMobileNavigation();
+        if (window.innerWidth <= 768) {
+            toggleMobileNavigation();
+        }
     };
 
     const toggleMobileNavigation = () => {

@@ -28,7 +28,7 @@ class MyDocument extends Document {
                     <script dangerouslySetInnerHTML={{
                         __html: `
                         WebFontConfig = {
-                            google: { families: [ 'Nunito:400,700&display=swap' ] }
+                            google: { families: [ 'Nunito:400, 600, 700&display=swap' ] }
                         };
                         (function() {
                             var wf = document.createElement('script');

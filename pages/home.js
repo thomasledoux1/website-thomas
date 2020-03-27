@@ -83,7 +83,7 @@ const Home = () => {
     }, []);
 
     const scrollTo = () => {
-        window.scrollTo({top: personalRef.current.offsetTop - 59, left: 0, behavior: 'smooth'});
+        window.scrollTo({ top: personalRef.current.offsetTop - 59, left: 0, behavior: 'smooth' });
     }
 
     const submitForm = (ev) => {
@@ -302,17 +302,11 @@ const Home = () => {
                 <div className="contact-form">
                     <h2>Drop me a message</h2>
                     <form onSubmit={(e) => submitForm(e)} action="https://formspree.io/xzbgjqdq" method="POST">
-                        <div className="floating">
+                        <div className="form-block">
                             <input id="email" className="floating__input" type="email" name="email" placeholder="E-mail" required />
-                            <label className="floating__label" data-content="E-mail" htmlFor="email">
-                                <span className="hidden--visually">E-mail</span>
-                            </label>
                         </div>
-                        <div className="floating">
+                        <div className="form-block">
                             <textarea rows="3" id="message" className="floating__input" type="text" name="message" placeholder="Message" required />
-                            <label className="floating__label" data-content="Message" htmlFor="message">
-                                <span className="hidden--visually">Message</span>
-                            </label>
                         </div>
 
                         <button ref={formSubmitBtnRef} className={`button ${formStatus}`} type="submit">Submit</button>
