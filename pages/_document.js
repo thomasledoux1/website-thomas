@@ -46,7 +46,7 @@ class MyDocument extends Document {
                     <meta name="description" content="You can find projects I worked on and contact details on this site."></meta>
                     <meta property="og:description" content="You can find projects I worked on and contact details on this site." />
                     <meta property="og:title" content="This is the portfolio website of Thomas Ledoux" />
-                    <meta property="og:image" content="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky.jpg" />
+                    <meta property="og:image" content="https://res.cloudinary.com/dzrea5zhv/image/upload/w_300/v1583171588/me_qvrwky.jpg" />
                 </Head>
                 <body>
                     <Main />
