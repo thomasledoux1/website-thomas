@@ -142,12 +142,6 @@ nav {
     &:hover {
         .letter {
             animation: bounce .3s ease alternate;
-
-            @for $i from 1 through 3 {
-                &:nth-child($i) {
-                    animation-delay: $i * 0.1;
-                }
-            }
         }
 
         .letter:nth-child(1) {

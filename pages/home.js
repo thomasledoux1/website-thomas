@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
-import Swiper from 'swiper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons';
@@ -8,7 +7,6 @@ import smoothscroll from 'smoothscroll-polyfill';
 
 const Home = () => {
     const textWrapper = useRef(null);
-    const swiperRef = useRef(null);
     const personalRef = useRef(null);
     const formSubmitBtnRef = useRef(null);
     const [formStatus, setFormStatus] = useState('');
@@ -42,26 +40,6 @@ const Home = () => {
     useEffect(() => {
         smoothscroll.polyfill();
         createAnimation();
-        new Swiper(swiperRef.current, {
-            centeredSlides: true,
-            slidesPerView: 1,
-            centeredSlides: true,
-            loop: true,
-            preload: false,
-            spaceBetween: 2,
-            lazy: {
-                loadPrevNext: true,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                type: 'bullets',
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            themeColor: '#6c63ff',
-        });
 
         if ("IntersectionObserver" in window) {
             let imgObserver = new IntersectionObserver(function (entries, observer) {
