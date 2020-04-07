@@ -133,11 +133,13 @@ const Home = () => {
                     </svg>
                 </div>
                 <div className="personal-content">
-                    <h2>Personal Information</h2>
-                    <p>Hi, I'm Thomas. I'm 28 years old, living in Ghent. I'm a professional Frontend Developer, currently working at The Reference.</p>
-                    <p>I studied Applied Computer Sciences at Hogeschool Gent. I chose for the Mobile Development track, and went on Erasmus to Barcelona to learn more about Swift and Java. At my internship I created an iOS app in Swift for Rialto.</p>
-                    <p>After graduating I worked for the startup Happs as a full-stack developer, where I created and maintained the website. I also created an app for a client in React Native during this period.</p>
-                    <p>You can read more about my work in the section below.</p>
+                    <div className="personal-contentInnerWrapper">
+                        <h2>Personal Information</h2>
+                        <p>Hi, I'm Thomas. I'm 28 years old, living in Ghent. I'm a professional Frontend Developer, currently working at The Reference.</p>
+                        <p>I studied Applied Computer Sciences at Hogeschool Gent. I chose the Mobile Development track, and went on Erasmus to Barcelona to learn more about Swift and Java. During my internship for Rialto I created an iOS app in Swift.</p>
+                        <p>After graduating I worked for the startup Happs as a full-stack developer, where I created and maintained the website. I also created an app for a client in React Native during this period.</p>
+                        <p>You can read more about my work in the section below.</p>
+                    </div>
                 </div>
             </section>
             <section id="portfolio" className="container portfolio-content">
@@ -148,6 +150,8 @@ const Home = () => {
                             <a href="https://www.getrialto.com">
                                 <img className="lazy" alt="Logo Rialto" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logorialto_hrb82m.png" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/logorialto_hrb82m.png" />
                                 <p>At my internship for Rialto I created an iOS app from scratch in Swift where real estate companies could easily manage their listings.</p>
+                                <p>I created the screens in storyboards based on the designs provided by our designer.</p>
+                                <p>When the screens were finished I used Swift code to implement functionality such as logins through an API, fetching the listings through an API, saving the listings in the SQLite database..</p>
                                 <div className="portfolio-tagsWrapper">
                                     <ul className="portfolio-tags">
                                         <li>swift</li>
@@ -162,11 +166,14 @@ const Home = () => {
                             <a href="https://www.karaton.be">
                                 <img className="lazy" alt="Logo Karaton" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logokaraton_l6y9ze.png" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logokaraton_l6y9ze.png" />
                                 <p>For Happs Development I created and maintained the website for Karaton where speech therapists and parents of dyslexic could follow up on the progress their children/patients are making in the Karaton game.</p>
+                                <p>There were a lot of graphs to be shown with Highcharts, a payment integration through Mollie, different roles for admins/therapists/parents.</p>
+                                <p>In this team I worked as a Full Stack Developer, giving me a lot of insight in how the backend of a web application works.</p>
                                 <div className="portfolio-tagsWrapper">
                                     <ul className="portfolio-tags">
-                                        <li>angular</li>
                                         <li>mongodb</li>
                                         <li>expressjs</li>
+                                        <li>angular</li>
+                                        <li>nodejs</li>
                                     </ul>
                                 </div>
                             </a>
@@ -177,6 +184,8 @@ const Home = () => {
                             <a href="https://play.google.com/store/apps/details?id=com.carlierkathleen.rekenen&hl=nl">
                                 <img className="lazy" alt="Logo Happs" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logocarlier_azx7hg.jpg" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logocarlier_azx7hg.jpg" />
                                 <p>While working at Happs Development I also created a mobile application for a speech therapist to help children with discalculia to learn how to count and do simple math exercises in a fun game form.</p>
+                                <p>The app was created from scratch using React Native for fast development, and Expo to get fast previews of the app on real devices.</p>
+                                <p>This project taught me a lot about animations, how to handle dynamically generated sound output for the spoken numbers, learn which platform specific APIs to use..</p>
                                 <div className="portfolio-tagsWrapper">
                                     <ul className="portfolio-tags">
                                         <li>react-native</li>
@@ -190,7 +199,9 @@ const Home = () => {
                         <div className="portfolio-case">
                             <a href="https://www.carglass.be">
                                 <img className="lazy" alt="Logo Happs" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logocarglass_dmieax.png" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logocarglass_dmieax.png" />
-                                <p>At my current job at The Reference I help maintain the website for Carglass. Many new features have been added since I joined the team, and we managed to optimize the booking flows a lot.</p>
+                                <p>At my current job at The Reference I help maintain the website for Carglass, we keep adding new features and maintain the older code in sprints.</p>
+                                <p>We have a separate Backend Development team, so my focus is purely on the Frontend Development in ReactJS.</p>
+                                <p>In the booking flows we make heave use of MobX for state management, Local- and Sessionstorage to save intermediary input by the users and integrate with APIs from different parties.</p>
                                 <div className="portfolio-tagsWrapper">
                                     <ul className="portfolio-tags">
                                         <li>reactjs</li>
@@ -204,7 +215,9 @@ const Home = () => {
                         <div className="portfolio-case">
                             <a href="https://www.nationale-loterij.be">
                                 <img className="lazy" alt="Logo Nationale Loterij" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logonalo_xgy3wb.jpg" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/logonalo_xgy3wb.jpg" />
-                                <p>One of the other clients I work for at The Reference is Nationale Loterij. For this client we constantly create new features on a monthly basis, with a modern look.</p>
+                                <p>One of the other clients I work for at The Reference is Nationale Loterij, for this client we constantly create new features with a modern look on a monthly basis.</p>
+                                <p>In this project I get to test out even more new technologies, and new features in the existing technologies (think React Hooks, CSS3 animations..).</p>
+                                <p>The feature I'm most proud of is the interactive Sponsoring Map of Belgium we created with some nice animations and beautiful design.</p>
                                 <div className="portfolio-tagsWrapper">
                                     <ul className="portfolio-tags">
                                         <li>reactjs</li>
@@ -218,11 +231,12 @@ const Home = () => {
                         <div className="portfolio-case">
                             <a href="https://www.achterderegenboog.be">
                                 <img className="lazy" alt="Logo Achter De Regenboog" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/achterderegenboog_fdwjmw.png" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583870456/achterderegenboog_fdwjmw.png" />
-                                <p>In my free time I like to experiment with other frameworks and technologies too. I made a website using Wordpress for a friend of mine who started a psychologists practice.</p>
+                                <p>In my free time I like to experiment with other frameworks and technologies too, this is why I made a website using Wordpress for a friend of mine who started a psychologists practice.</p>
+                                <p>My friend gave me some high level designs, and I got to work! I selected a fitting theme. </p>
+                                <p>I built on the theme with a lot of plugins to optimize the speed of the website (Autoptimize), the SEO (Yoast) and anti-spam by Akismet.</p>
                                 <div className="portfolio-tagsWrapper">
                                     <ul className="portfolio-tags">
                                         <li>wordpress</li>
-                                        <li>javascript</li>
                                     </ul>
                                 </div>
                             </a>

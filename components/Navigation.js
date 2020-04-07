@@ -1,7 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 const Navigation = () => {
     const navigationMobileRef = useRef(null);
     const mobileIconRef = useRef(null);
+    const [darkThemeChecked, setDarkThemeChecked] = useState(true);
+
+    useEffect(() => {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            toggleDarkTheme(null, false);
+        }
+    }, []);
     const scrollToView = (e, id) => {
         if (id) {
             if (id !== 'home') {
@@ -30,8 +37,10 @@ const Navigation = () => {
         navigationMobileRef.current.classList.toggle('slideIn');
     }
 
-    const toggleDarkTheme = (e) => {
-        if (e.target.checked) {
+    const toggleDarkTheme = (e, checked = null) => {
+        const checkedValue = e ? e.target.checked : checked;
+        setDarkThemeChecked(checkedValue);
+        if (checkedValue) {
             useTheme('light');
         } else {
             useTheme('dark');
@@ -89,7 +98,7 @@ const Navigation = () => {
                     {renderNavigationItems()}
                 </ul>
                 <div className="darkTheme-container">
-                    <input aria-label="toggle dark theme" defaultChecked onChange={e => toggleDarkTheme(e)} className="darkTheme-checkbox" type="checkbox" />
+                    <input aria-label="toggle dark theme" checked={darkThemeChecked} onChange={e => toggleDarkTheme(e)} className="darkTheme-checkbox" type="checkbox" />
                 </div>
                 <div ref={mobileIconRef} onClick={toggleMobileNavigation} className="navigation-mobile__icon">
                     <span></span>

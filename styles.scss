@@ -442,6 +442,7 @@ nav ul li a:hover {
     min-height: calc(100vh - 60px);
     justify-content: center;
     flex-wrap: wrap;
+    align-items: center;
 
     @media only screen and (min-width: 769px) {
         flex-direction: row;
@@ -472,10 +473,6 @@ nav ul li a:hover {
         width: 50%;
         padding-left: 15px;
         padding-right: 15px;
-    }
-
-    @media only screen and (min-width: 1025px) {
-        width: 33.33%;
     }
 }
 
@@ -539,15 +536,27 @@ nav ul li a:hover {
 
     @media only screen and (min-width: 769px) {
         width: 33.33%;
-        padding-left: 50px;
-        padding-right: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
         order: 2;
     }
 }
 
 .personal-content {
+    margin-top: 40px;
+    height: 100%;
+
+    &InnerWrapper {
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: var(--backgroundColorCase);
+    }
+
     @media only screen and (min-width: 769px) {
         width: 50%;
+        margin-top: 0;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 
@@ -571,6 +580,7 @@ nav ul li a:hover {
         margin-bottom: 0;
         margin-top: 0;
         flex-wrap: wrap;
+        margin-top: 20px;
 
         li {
             background: var(--lightGray);
@@ -610,6 +620,7 @@ nav ul li a:hover {
 
         p {
             flex: 1 0 auto;
+            margin-bottom: 0;
         }
 
         img {
@@ -694,13 +705,14 @@ nav ul li a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
+    width: 100%;
     margin-bottom: 30px;
 
     @media only screen and (min-width: 769px) {
         width: 33.33%;
         margin-bottom: 0;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     form {
@@ -766,6 +778,10 @@ nav ul li a:hover {
 .contact-illustration {
     order: 1;
     margin-bottom: 50px;
+
+    @media only screen and (min-width: 769px) {
+        margin-bottom: 0;
+    }
 
     svg {
         height: 300px;
