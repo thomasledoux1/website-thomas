@@ -201,7 +201,7 @@ const Home = () => {
                                 <img className="lazy" alt="Logo Happs" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logocarglass_dmieax.png" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logocarglass_dmieax.png" />
                                 <p>At my current job at The Reference I help maintain the website for Carglass, we keep adding new features and maintain the older code in sprints.</p>
                                 <p>We have a separate Backend Development team, so my focus is purely on the Frontend Development in ReactJS.</p>
-                                <p>In the booking flows we make heave use of MobX for state management, Local- and Sessionstorage to save intermediary input by the users and integrate with APIs from different parties.</p>
+                                <p>In the booking flows we make heavy use of MobX for state management, Local- and Sessionstorage to save intermediary input by the users and integrate with APIs from different parties.</p>
                                 <div className="portfolio-tagsWrapper">
                                     <ul className="portfolio-tags">
                                         <li>reactjs</li>
