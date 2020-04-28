@@ -236,7 +236,6 @@ nav ul li a:after {
     height: 5px;
     margin: 5px 0 0;
     transition: all 0.3s ease-in-out;
-    // transition-duration: 0.75s;
     opacity: 0;
     background-color: white;
 
@@ -247,7 +246,6 @@ nav ul li a:after {
 
 nav ul li a:hover {
     cursor: pointer;
-
 }
 
 .hero-content {
@@ -271,6 +269,7 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     margin-top: 15%;
+    transition: all 500ms linear;
 
     @media only screen and (min-width: 769px) {
         margin-top: 0;
@@ -357,22 +356,13 @@ nav ul li a:hover {
     width: 20px;
     height: 25px;
     position: relative;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
     transform: rotate(0deg);
-    -webkit-transition: .5s ease-in-out;
-    -moz-transition: .5s ease-in-out;
-    -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
     cursor: pointer;
 
     &.open {
         span:nth-child(1) {
             top: 9px;
-            -webkit-transform: rotate(135deg);
-            -moz-transform: rotate(135deg);
-            -o-transform: rotate(135deg);
             transform: rotate(135deg);
         }
 
@@ -383,9 +373,6 @@ nav ul li a:hover {
 
         span:nth-child(3) {
             top: 9px;
-            -webkit-transform: rotate(-135deg);
-            -moz-transform: rotate(-135deg);
-            -o-transform: rotate(-135deg);
             transform: rotate(-135deg);
         }
     }
@@ -399,13 +386,7 @@ nav ul li a:hover {
         border-radius: 4px;
         opacity: 1;
         left: 0;
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
         transform: rotate(0deg);
-        -webkit-transition: .25s ease-in-out;
-        -moz-transition: .25s ease-in-out;
-        -o-transition: .25s ease-in-out;
         transition: .25s ease-in-out;
 
         &:nth-child(1) {
@@ -465,10 +446,15 @@ nav ul li a:hover {
     }
 }
 
+.col-6,
 .col-4 {
     width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.col-6 {
     @media only screen and (min-width: 769px) {
         width: 50%;
         padding-left: 15px;
@@ -476,13 +462,11 @@ nav ul li a:hover {
     }
 }
 
-.col-6 {
-    width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-
+.col-4 {
     @media only screen and (min-width: 769px) {
-        width: 50%;
+        width: 33%;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 
@@ -503,7 +487,6 @@ nav ul li a:hover {
     }
 
     @media only screen and (min-width: 769px) {
-        width: 33.33%;
         order: 1;
     }
 }
@@ -535,9 +518,6 @@ nav ul li a:hover {
     flex-direction: column;
 
     @media only screen and (min-width: 769px) {
-        width: 33.33%;
-        padding-left: 20px;
-        padding-right: 20px;
         order: 2;
     }
 }
@@ -601,7 +581,7 @@ nav ul li a:hover {
         display: flex;
         padding: 20px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-        transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+        transition: box-shadow .3s cubic-bezier(.25, .8, .25, 1), transform .5s linear;
         border-radius: 10px;
         margin-top: 20px;
         background: var(--backgroundColorCase);
@@ -701,18 +681,11 @@ nav ul li a:hover {
 
 .contact-form {
     order: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     margin-bottom: 30px;
 
     @media only screen and (min-width: 769px) {
-        width: 33.33%;
         margin-bottom: 0;
-        padding-left: 20px;
-        padding-right: 20px;
     }
 
     form {
@@ -791,6 +764,17 @@ nav ul li a:hover {
             order: 3;
         }
     }
+}
+
+.slideIntoView {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: transform .5s linear;
+}
+
+.in-view {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @keyframes bounce {
