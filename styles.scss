@@ -922,7 +922,7 @@ nav ul li a:hover {
 .timeline-item-content {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
-    background-color: #fff;
+    background-color: var(--backgroundColor);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -938,7 +938,7 @@ nav ul li a:hover {
 
 .timeline-item-content::after {
     content: ' ';
-    background-color: #fff;
+    background-color: var(--backgroundColor);
     box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
     position: absolute;
     right: -7.5px;
@@ -973,7 +973,7 @@ nav ul li a:hover {
 }
 
 .timeline-item-content .circle {
-    background-color: #fff;
+    background-color: var(--backgroundColor);
     border: 3px solid var(--mainColor);
     border-radius: 50%;
     position: absolute;

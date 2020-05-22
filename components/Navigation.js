@@ -7,8 +7,11 @@ const Navigation = () => {
     const [darkThemeChecked, setDarkThemeChecked] = useState(true);
 
     useEffect(() => {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        console.log(localStorage.getItem('theme'));
+        if ((localStorage.getItem('theme') !== 'light') || window.matchMedia('(prefers-color-scheme: dark)').matches) {
             toggleDarkTheme(null, false);
+        } else {
+            toggleDarkTheme(null, true);
         }
     }, []);
 
@@ -28,14 +31,23 @@ const Navigation = () => {
         }
     }
 
+    const linkClicked = () => {
+        if (window.innerWidth <= 768) {
+            toggleMobileNavigation();
+        }
+    }
+
     const useTheme = (theme) => {
         if (theme === 'dark') {
+            localStorage.setItem('theme', 'dark');
             document.documentElement.style.setProperty('--backgroundColor', 'black');
             document.documentElement.style.setProperty('--backgroundColorOdd', '#121212');
             document.documentElement.style.setProperty('--textColor', 'white');
             document.documentElement.style.setProperty('--lightGray', '#325b97');
             document.documentElement.style.setProperty('--backgroundColorCase', 'rgba(255, 255, 255, 0.12)');
         } else {
+            localStorage.setItem('theme', 'light');
+            console.log(localStorage.getItem('theme'));
             document.documentElement.style.setProperty('--backgroundColor', '#f0efff');
             document.documentElement.style.setProperty('--backgroundColorOdd', '#ffffff');
             document.documentElement.style.setProperty('--textColor', 'black');
@@ -50,17 +62,17 @@ const Navigation = () => {
                 <React.Fragment>
                     <li>
                         <Link href={{ pathname: '/', hash: 'personal' }}>
-                            <a>Personal</a>
+                            <a onClick={linkClicked}>Personal</a>
                         </Link>
                     </li>
                     <li>
                         <Link href={{ pathname: '/', hash: 'portfolio' }}>
-                            <a>Portfolio</a>
+                            <a onClick={linkClicked}>Portfolio</a>
                         </Link>
                     </li>
                     <li>
                         <Link href={{ pathname: '/', hash: 'contact' }}>
-                            <a>Contact</a>
+                            <a onClick={linkClicked}>Contact</a>
                         </Link>
                     </li>
                     <li>
