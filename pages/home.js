@@ -223,10 +223,12 @@ const Home = () => {
                         <h2>Drop me a message</h2>
                         <form onSubmit={(e) => submitForm(e)} action="https://formspree.io/xzbgjqdq" method="POST">
                             <div className="form-block">
-                                <input id="email" className="floating__input" type="email" name="email" placeholder="E-mail" required />
+                                <label htmlFor="email">E-mail</label>
+                                <input id="email" type="email" name="email" placeholder="info@example.com" required />
                             </div>
                             <div className="form-block">
-                                <textarea rows="3" id="message" className="floating__input" type="text" name="message" placeholder="Message" required />
+                                <label htmlFor="message">Message</label>
+                                <textarea rows="3" id="message" type="text" name="message" placeholder="Hey, I would like to get in touch with you" required />
                             </div>
 
                             <button ref={formSubmitBtnRef} className={`button ${formStatus}`} type="submit">Submit</button>
