@@ -36,7 +36,7 @@ const CV = () => {
         <div className="cv-pictureDescriptionWrapper">
           <div className="col-4 fc">
             <div className="cv-picture">
-              <img className="cv-picture__img lazy" alt="cv picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/me_qvrwky.jpg" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky.jpg" />
+              <img className="cv-picture__img lazy" alt="cv picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_250/e_blur:1000,q_1,f_auto/me_qvrwky.jpg" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_250/me_qvrwky.jpg" />
               <p className="cv-picture__description">Hello, is it me you're looking for?</p>
             </div>
           </div>
