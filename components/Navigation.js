@@ -7,11 +7,12 @@ const Navigation = () => {
     const [darkThemeChecked, setDarkThemeChecked] = useState(true);
 
     useEffect(() => {
-        console.log(localStorage.getItem('theme'));
-        if ((localStorage.getItem('theme') !== 'light') || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        if (localStorage.getItem('theme') !== 'light') {
             toggleDarkTheme(null, false);
-        } else {
+        } else if (localStorage.getItem('theme') === 'light') {
             toggleDarkTheme(null, true);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            toggleDarkTheme(null, false);
         }
     }, []);
 
