@@ -398,6 +398,11 @@ nav ul li a:hover {
     &.touched {
         transition: transform .25s ease;
     }
+
+    &.slideIn {
+        transform: translateX(0);
+        display: flex;
+    }
 }
 
 .navigation-mobile__icon {
