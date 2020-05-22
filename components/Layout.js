@@ -1,5 +1,5 @@
 import Navigation from './Navigation';
-export default function Layout(props) {
+const Layout = (props) => {
     return (
         <>
             <Navigation />
@@ -9,3 +9,5 @@ export default function Layout(props) {
         </>
     )
 }
+
+export default Layout;

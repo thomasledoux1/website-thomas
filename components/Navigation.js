@@ -1,4 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
+import Link from 'next/link';
+
 const Navigation = () => {
     const navigationMobileRef = useRef(null);
     const mobileIconRef = useRef(null);
@@ -9,27 +11,6 @@ const Navigation = () => {
             toggleDarkTheme(null, false);
         }
     }, []);
-    const scrollToView = (e, id) => {
-        if (id) {
-            if (id !== 'home') {
-                e.preventDefault();
-                window.scroll({
-                    top: document.getElementById(id).offsetTop - 59,
-                    left: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                window.scroll({
-                    top: 0,
-                    left: 0,
-                    behavior: 'smooth'
-                });
-            }
-        }
-        if (window.innerWidth <= 768) {
-            toggleMobileNavigation();
-        }
-    };
 
     const toggleMobileNavigation = () => {
         navigationMobileRef.current.classList.add('touched');
@@ -66,15 +47,29 @@ const Navigation = () => {
     const renderNavigationItems = () => {
         return (
             <React.Fragment>
-                <li>
-                    <a onClick={(e) => scrollToView(e, 'personal')} href="#personal">Personal</a>
-                </li>
-                <li>
-                    <a onClick={(e) => scrollToView(e, 'portfolio')} href="#portfolio">Portfolio</a>
-                </li>
-                <li>
-                    <a onClick={(e) => scrollToView(e, 'contact')} href="#contact">Contact</a>
-                </li>
+                <React.Fragment>
+                    <li>
+                        <Link href={{ pathname: '/', hash: 'personal' }}>
+                            <a>Personal</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={{ pathname: '/', hash: 'portfolio' }}>
+                            <a>Portfolio</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={{ pathname: '/', hash: 'contact' }}>
+                            <a>Contact</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/cv">
+                            <a>CV</a>
+                        </Link>
+                    </li>
+                </React.Fragment>
+
             </React.Fragment>
         );
     }
@@ -82,15 +77,17 @@ const Navigation = () => {
     return (
         <nav>
             <div className="navigation-wrapper">
-                <a onClick={(e) => renderNavigationItems(e, 'home')} href="#" className="logo">
-                    <div className="letter">t</div>
-                    <div className="letter">h</div>
-                    <div className="letter">m</div>
-                    <div className="letter">s</div>
-                    <div className="letter">l</div>
-                    <div className="letter">d</div>
-                    <div className="letter">x</div>
-                </a>
+                <Link href={{ pathname: '/' }}>
+                    <a className="logo">
+                        <div className="letter">t</div>
+                        <div className="letter">h</div>
+                        <div className="letter">m</div>
+                        <div className="letter">s</div>
+                        <div className="letter">l</div>
+                        <div className="letter">d</div>
+                        <div className="letter">x</div>
+                    </a>
+                </Link>
                 <ul className="navigation">
                     {renderNavigationItems()}
                 </ul>
