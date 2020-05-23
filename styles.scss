@@ -21,6 +21,10 @@ body {
     color: var(--textColor);
 }
 
+a {
+    color: var(--mainColor);
+}
+
 section {
     position: relative;
 
@@ -846,7 +850,6 @@ nav ul li a:hover {
 
 .cv-picture {
     width: 100%;
-    text-align: center;
 }
 
 .cv-picture__img {
@@ -884,6 +887,11 @@ nav ul li a:hover {
         padding-right: 0;
         justify-content: flex-start;
     }
+}
+
+.cv-ctaWrapper {
+    margin-top: 50px;
+    font-weight: bold;
 }
 
 .timeline-container {

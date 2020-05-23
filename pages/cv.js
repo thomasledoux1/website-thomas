@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import Head from 'next/head';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import Rating from '../components/Rating';
 import Layout from '../components/Layout';
 import Timeline from '../components/Timeline';
@@ -60,6 +62,8 @@ const CV = () => {
             <Timeline experiences={experiences} />
           </div>
         </div>
+        <div data-aos="fade-up" className="cv-ctaWrapper">
+          <span>Like what you see? Send me an <a href="mailto:thomasledoux1@gmail.com">e-mail</a>, so we can grab a <FontAwesomeIcon icon={faCoffee} /> and talk.</span></div>
       </section>
     </Layout>
   )
