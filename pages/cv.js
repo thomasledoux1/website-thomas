@@ -42,7 +42,8 @@ const CV = () => {
               <p className="cv-picture__description">Hello, is it me you're looking for?</p>
             </div>
           </div>
-          <div className="col-8">
+          <div className="col-8 fc">
+            <h1>A bit about me</h1>
             <div className="cv-description">
               <p>Hi, I'm Thomas. I'm 28 years old, living in Ghent. I'm a professional Frontend Developer, currently working at The Reference.</p>
               <p>What I like most about Frontend development is the ever-changing technology. New frameworks being released daily (one better than the other...), constant improvements to existing frameworks, yearly new features in ECMAScript..</p>

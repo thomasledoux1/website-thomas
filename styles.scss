@@ -850,6 +850,11 @@ nav ul li a:hover {
 
 .cv-picture {
     width: 100%;
+    text-align: center;
+
+    @media only screen and (min-width: 769px) {
+        text-align: inherit;
+    }
 }
 
 .cv-picture__img {
