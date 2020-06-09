@@ -61,54 +61,53 @@ const Navigation = () => {
     return (
       <React.Fragment>
         <React.Fragment>
-          <li>
+          <li className="mt-2 sm:mt-0">
             <Link href={{ pathname: '/', hash: 'personal' }}>
-              <a onClick={linkClicked}>Personal</a>
+              <a className="mx-2 no-underline relative text-white sm:text-primary" onClick={linkClicked}>Personal</a>
             </Link>
           </li>
-          <li>
+          <li className="mt-2 sm:mt-0">
             <Link href={{ pathname: '/', hash: 'portfolio' }}>
-              <a onClick={linkClicked}>Portfolio</a>
+              <a className="mx-2 no-underline relative text-white sm:text-primary" onClick={linkClicked}>Portfolio</a>
             </Link>
           </li>
-          <li>
+          <li className="mt-2 sm:mt-0">
             <Link href={{ pathname: '/', hash: 'contact' }}>
-              <a onClick={linkClicked}>Contact</a>
+              <a className="mx-2 no-underline relative text-white sm:text-primary" onClick={linkClicked}>Contact</a>
             </Link>
           </li>
-          <li>
+          <li className="my-2 sm:my-0">
             <Link href="/cv">
-              <a>CV</a>
+              <a className="mx-2 no-underline relative text-white sm:text-primary">CV</a>
             </Link>
           </li>
         </React.Fragment>
-
       </React.Fragment>
     );
   }
 
   return (
-    <nav>
-      <div className="navigation-wrapper">
+    <nav className="px-8 fixed h-16 flex items-center w-full z-20 top-0">
+      <div className="navigation-wrapper flex w-full justify-between items-center">
         <Link href={{ pathname: '/' }}>
-          <a className="logo">
-            <div className="letter">t</div>
-            <div className="letter">h</div>
-            <div className="letter">m</div>
-            <div className="letter">s</div>
-            <div className="letter">l</div>
-            <div className="letter">d</div>
-            <div className="letter">x</div>
+          <a className="logo font-bold no-underline text-primary">
+            <div className="letter inline-block top-0 relative">t</div>
+            <div className="letter inline-block top-0 relative">h</div>
+            <div className="letter inline-block top-0 relative">m</div>
+            <div className="letter inline-block top-0 relative">s</div>
+            <div className="letter inline-block top-0 relative">l</div>
+            <div className="letter inline-block top-0 relative">d</div>
+            <div className="letter inline-block top-0 relative">x</div>
           </a>
         </Link>
-        <ul className="navigation">
+        <ul className="navigation list-none hidden sm:flex font-bold items-center">
           {renderNavigationItems()}
         </ul>
-        <ul ref={navigationMobileRef} className="navigation-mobile">
+        <ul ref={navigationMobileRef} className="navigation-mobile flex sm:hidden absolute flex-col items-center px-4 left-0 bg-main w-full">
           {renderNavigationItems()}
         </ul>
-        <div className="darkTheme-container">
-          <input aria-label="toggle dark theme" checked={darkThemeChecked} onChange={e => toggleDarkTheme(e)} className="darkTheme-checkbox" type="checkbox" />
+        <div className="flex items-center">
+          <input aria-label="toggle dark theme" checked={darkThemeChecked} onChange={e => toggleDarkTheme(e)} className="darkTheme-checkbox cursor-pointer color-yellow-300 appearance-none h-8 w-16 p-1 m-auto items-center inline-flex sm:mr-4" type="checkbox" />
         </div>
         <div ref={mobileIconRef} onClick={toggleMobileNavigation} className="navigation-mobile__icon">
           <span></span>

@@ -1,8 +1,12 @@
-*,
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* *,
 *::before,
 *::after {
     box-sizing: border-box;
-}
+} */
 
 html {
     scroll-behavior: smooth;
@@ -39,11 +43,6 @@ section {
     }
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
 p,
 h3 {
     margin-top: 0;
@@ -59,20 +58,11 @@ h3 {
     }
 }
 
-.logo {
+/* .logo {
     font-weight: bold;
-}
+} */
 
 nav {
-    position: fixed;
-    height: 60px;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    z-index: 11;
-    top: 0;
-
     &:before {
         position: absolute;
         z-index: -1;
@@ -84,31 +74,26 @@ nav {
         right: -999em;
     }
 
-    .darkTheme-container {
-        display: flex;
-        align-items: center;
-    }
-
     .darkTheme-checkbox {
         cursor: pointer;
         background-color: gray;
         border-radius: 0.95em;
         box-shadow: 0.125em 0.125em 0 0.125em rgba(0, 0, 0, 0.3) inset;
         color: #fdea7b;
-        display: inline-flex;
-        align-items: center;
-        margin: auto;
-        padding: 0.25em;
-        width: 4em;
-        height: 2em;
+        // display: inline-flex;
+        // align-items: center;
+        // margin: auto;
+        // padding: 0.25em;
+        // width: 4em;
+        // height: 2em;
         transition: background-color 0.1s 0.3s ease-out, box-shadow 0.1s 0.3s ease-out;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
+        // -webkit-appearance: none;
+        // -moz-appearance: none;
+        // appearance: none;
 
-        @media only screen and (min-width: 769px) {
-            margin-right: 10px;
-        }
+        //@media only screen and (min-width: 769px) {
+        //    margin-right: 10px;
+        // }
 
         &:before,
         &:after {
@@ -197,25 +182,24 @@ nav {
         }
     }
 
-    .letter {
+    /* .letter {
         display: inline-block;
         position: relative;
         z-index: 1;
         top: 0px;
-        top: 0px;
-    }
+    } */
 }
 
-nav a {
+/* nav a {
     text-decoration: none;
     color: var(--textColor);
-}
+} 
 
 nav ul {
     list-style: none;
     display: flex;
     margin-left: auto;
-}
+} 
 
 nav ul li {
     margin-top: 10px;
@@ -227,7 +211,7 @@ nav ul li {
     @media only screen and (min-width: 769px) {
         margin-top: 0;
     }
-}
+} */
 
 nav ul li:hover {
 
@@ -239,15 +223,15 @@ nav ul li:hover {
 }
 
 nav ul li a {
-    text-decoration: none;
-    margin: 0 10px;
+    // text-decoration: none;
+    // margin: 0 10px;
     transition: all 0.2s ease-in-out;
-    position: relative;
-    color: white;
+    // position: relative;
+    // color: white;
 
-    @media only screen and (min-width: 769px) {
+    /* @media only screen and (min-width: 769px) {
         color: var(--textColor);
-    }
+    } */
 }
 
 nav ul li a:before,
@@ -359,12 +343,12 @@ nav ul li a:hover {
     }
 }
 
-.navigation-wrapper {
+/* .navigation-wrapper {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} 
 
 .navigation {
     display: none;
@@ -384,19 +368,19 @@ nav ul li a:hover {
     li a {
         font-weight: 600;
     }
-}
+} */
 
 .navigation-mobile {
-    display: flex;
+    /* display: flex;
     position: absolute;
     flex-direction: column;
     width: 100%;
     align-items: center;
     padding: 10px 0;
     margin: 0;
-    left: 0;
+    left: 0; */
     top: 60px;
-    background: rgb(108, 99, 255);
+    // background: rgb(108, 99, 255);
     transform: translateX(calc(100% + 20px));
 
     &.touched {
@@ -470,6 +454,10 @@ nav ul li a:hover {
 }
 
 .container {
+    min-height: calc(100vh - 60px);
+}
+
+/* .container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -502,9 +490,9 @@ nav ul li a:hover {
     h1 {
         width: 100%;
     }
-}
+} */
 
-.col-8,
+/* .col-8,
 .col-6,
 .col-4 {
     width: 100%;
@@ -534,7 +522,7 @@ nav ul li a:hover {
     @media only screen and (min-width: 769px) {
         width: 33%;
     }
-}
+} */
 
 .contact-illustration,
 .hero-image {
