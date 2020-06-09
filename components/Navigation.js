@@ -41,19 +41,10 @@ const Navigation = () => {
   const useTheme = (theme) => {
     if (theme === 'dark') {
       localStorage.setItem('theme', 'dark');
-      document.documentElement.style.setProperty('--backgroundColor', 'black');
-      document.documentElement.style.setProperty('--backgroundColorOdd', '#121212');
-      document.documentElement.style.setProperty('--textColor', 'white');
-      document.documentElement.style.setProperty('--lightGray', '#325b97');
-      document.documentElement.style.setProperty('--backgroundColorCase', 'rgba(255, 255, 255, 0.12)');
+      document.documentElement.setAttribute('data-theme', 'dark')
     } else {
       localStorage.setItem('theme', 'light');
-      console.log(localStorage.getItem('theme'));
-      document.documentElement.style.setProperty('--backgroundColor', '#f0efff');
-      document.documentElement.style.setProperty('--backgroundColorOdd', '#ffffff');
-      document.documentElement.style.setProperty('--textColor', 'black');
-      document.documentElement.style.setProperty('--lightGray', 'rgba(0, 0, 0, 0.2)');
-      document.documentElement.style.setProperty('--backgroundColorCase', '#ffffff');
+      document.documentElement.setAttribute('data-theme', 'light')
     }
   }
 

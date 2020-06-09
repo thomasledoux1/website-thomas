@@ -4,14 +4,27 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+:root {
     --backgroundColor: #f0efff;
     --backgroundColorOdd: #ffffff;
     --mainColor: #6c63ff;
     --lightGray: rgba(0, 0, 0, 0.2);
     --textColor: black;
     --backgroundColorCase: #ffffff;
+}
+
+[data-theme="dark"] {
+    --backgroundColor: #201E4D;
+    --backgroundColorOdd: #121212;
+    --mainColor: #6c63ff;
+    --lightGray: #413B99;
+    --textColor: white;
+    --backgroundColorCase: rgba(255, 255, 255, 0.12);
+}
+
+html {
+    scroll-behavior: smooth;
+
     background-color: var(--backgroundColorOdd);
 }
 
