@@ -17,29 +17,20 @@ class MyDocument extends Document {
           <script dangerouslySetInnerHTML={
             {
               __html: `
-                            window.dataLayer = window.dataLayer || [];
-                            function gtag(){window.dataLayer.push(arguments)}
-                            gtag("js", new Date());
-                            gtag("config", "UA-125864873-1");
-                        `}
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){window.dataLayer.push(arguments)}
+                gtag("js", new Date());
+                gtag("config", "UA-125864873-1");
+              `
+            }
           }>
           </script>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <script dangerouslySetInnerHTML={{
-            __html: `
-                        WebFontConfig = {
-                            google: { families: [ 'Nunito:400, 600, 700&display=swap' ] }
-                        };
-                        (function() {
-                            var wf = document.createElement('script');
-                            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-                            wf.async = 'true';
-                            var s = document.getElementsByTagName('script')[0];
-                            s.parentNode.insertBefore(wf, s);
-                        })(); 
-                    `}} />
-          <link rel='preconnect' href='https://fonts.googleapis.com' />
-          <link rel='preconnect' href='https://ajax.googleapis.com' />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+          <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" media="print" onLoad="this.media='all'" />
+          <noscript>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" />
+          </noscript>
           <link rel='preconnect' href='https://www.google-analytics.com' />
           <link rel="shortcut icon" type="image/x-icon" href="/myAvatar.ico" />
           <meta name="description" content="You can find projects Thomas Ledoux worked on and contact details on this site."></meta>
