@@ -78,7 +78,7 @@ const Navigation = () => {
   }
 
   return (
-    <nav className="fixed bg-purple h-16 w-full">
+    <nav className="fixed bg-purple h-16 w-full z-10">
       <div className="flex h-full container mx-auto justify-between items-center px-4 md:px-0">
         <Link href={{ pathname: '/' }}>
           <a className="logo flex flex-row">
