@@ -105,10 +105,10 @@ function Home() {
         <title>Thomas Ledoux' Portfolio - Home</title>
       </Head>
       <section id="hero" className="container hero">
-        <div data-aos="fade-right" className="hero-content">
+        <div className="hero-content">
           <h1>Thomas is a <span className="skills-wrapper" ref={textWrapper}></span></h1>
         </div>
-        <div data-aos="fade-left" className="hero-image">
+        <div className="hero-image">
           <Image loading="eager" priority alt="Profile picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky.jpg" width={500} height={500} />
         </div>
         <span onClick={scrollTo} className="hero-scroll">
