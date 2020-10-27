@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import Head from 'next/head';
+import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import Rating from '../components/Rating';
@@ -14,19 +15,6 @@ const CV = () => {
     AOS.init({
       duration: 1200
     });
-    if ("IntersectionObserver" in window) {
-      let imgObserver = new IntersectionObserver(function (entries, observer) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            let lazyImage = entry.target;
-            lazyImage.src = lazyImage.dataset.src;
-            lazyImage.classList.add("lazyloaded");
-            observer.unobserve(lazyImage);
-          }
-        });
-      });
-      document.querySelectorAll('img.lazy').forEach(el => imgObserver.observe(el));
-    }
   }, []);
 
   return (
@@ -38,7 +26,7 @@ const CV = () => {
         <div className="cv-pictureDescriptionWrapper">
           <div className="col-4 fc">
             <div className="cv-picture">
-              <img className="cv-picture__img lazy" alt="cv picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_250/e_blur:1000,q_1,f_auto/me_qvrwky.jpg" data-src="https://res.cloudinary.com/dzrea5zhv/image/upload/w_250/me_qvrwky.jpg" />
+              <Image loading="eager" priority alt="Profile picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky.jpg" width={250} height={250} />
               <p className="cv-picture__description">Hello, is it me you're looking for?</p>
             </div>
           </div>

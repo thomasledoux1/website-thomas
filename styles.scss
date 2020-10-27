@@ -574,19 +574,15 @@ nav ul li a:hover {
     @media only screen and (min-width: 769px) {
         width: 50%;
     }
+
+    img {
+        border-radius: 50%;
+    }
 }
 
 .personal-picture__img {
     max-width: 80%;
     border-radius: 50%;
-    -webkit-filter: blur(5px);
-    filter: blur(5px);
-    transition: filter 600ms, -webkit-filter 600ms;
-
-    &.lazyloaded {
-        filter: blur(0);
-        -webkit-filter: blur(0);
-    }
 }
 
 .personal-content,
@@ -629,6 +625,7 @@ nav ul li a:hover {
         flex-direction: column;
         flex-grow: 1;
         justify-content: flex-end;
+        align-self: flex-start;
     }
 
     .portfolio-tags {
@@ -683,6 +680,7 @@ nav ul li a:hover {
             text-decoration: none;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
         p {
@@ -863,17 +861,17 @@ nav ul li a:hover {
 
 .cv-picture {
     width: 100%;
-    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 
     @media only screen and (min-width: 769px) {
-        text-align: inherit;
+        align-items: flex-start;
     }
-}
 
-.cv-picture__img {
-    width: 250px;
-    max-width: 100%;
-    border-radius: 50%;
+    img {
+        border-radius: 50%;
+    }
 }
 
 .cv-picture__description {
