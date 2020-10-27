@@ -26,7 +26,7 @@ const CV = () => {
         <div className="cv-pictureDescriptionWrapper">
           <div className="col-4 fc">
             <div className="cv-picture">
-              <Image loading="eager" priority alt="Profile picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky.jpg" width={250} height={250} />
+              <Image loading="eager" priority alt="Profile picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky.jpg" width={400} height={400} />
               <p className="cv-picture__description">Hello, is it me you're looking for?</p>
             </div>
           </div>

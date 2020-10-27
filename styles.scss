@@ -864,10 +864,7 @@ nav ul li a:hover {
     align-items: center;
     display: flex;
     flex-direction: column;
-
-    @media only screen and (min-width: 769px) {
-        align-items: flex-start;
-    }
+    max-width: 90%;
 
     img {
         border-radius: 50%;
