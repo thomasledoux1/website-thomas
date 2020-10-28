@@ -571,12 +571,26 @@ nav ul li a:hover {
 }
 
 .hero-image {
-    @media only screen and (min-width: 769px) {
-        width: 50%;
-    }
-
     img {
         border-radius: 50%;
+    }
+
+    .hero-image__innerWrapper {
+        width: 320px;
+    }
+
+    @media only screen and (min-width: 769px) {
+        width: 50%;
+
+        .hero-image__innerWrapper {
+            width: 380px;
+        }
+    }
+
+    @media only screen and (min-width: 1025px) {
+        .hero-image__innerWrapper {
+            width: 500px;
+        }
     }
 }
 
@@ -860,11 +874,18 @@ nav ul li a:hover {
 }
 
 .cv-picture {
-    width: 100%;
     align-items: center;
     display: flex;
     flex-direction: column;
-    max-width: 90%;
+    width: 320px;
+
+    @media only screen and (min-width: 769px) {
+        width: 220px;
+    }
+
+    @media only screen and (min-width: 1025px) {
+        width: 320px;
+    }
 
     img {
         border-radius: 50%;

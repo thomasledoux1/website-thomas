@@ -109,7 +109,9 @@ function Home() {
           <h1>Thomas is a <span className="skills-wrapper" ref={textWrapper}></span></h1>
         </div>
         <div className="hero-image">
-          <Image loading="eager" priority alt="Profile picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky.jpg" width={500} height={500} />
+          <div className="hero-image__innerWrapper">
+            <Image loading="eager" priority alt="Profile picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky.jpg" width={500} height={500} />
+          </div>
         </div>
         <span onClick={scrollTo} className="hero-scroll">
           <FontAwesomeIcon icon={faAngleDown} className="hero-scroll__icon" />
