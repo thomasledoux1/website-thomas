@@ -84,8 +84,8 @@ function Home() {
       <div data-aos={`fade-${index % 2 === 0 ? 'right' : 'left'}`} className="col-6">
         <div className="portfolio-case">
           <a href={url}>
-            <Image className="lazy" alt={`Logo ${altLogo}`} src={logo} width={width} height={100} />
-            {content}
+            <Image alt={`Logo ${altLogo}`} src={logo} width={width} height={100} />
+            <div className="portfolio-case__contentWrapper">{content}</div>
             <div className="portfolio-tagsWrapper">
               <ul className="portfolio-tags">
                 {tags.map((tag, i) =>
@@ -110,7 +110,7 @@ function Home() {
         </div>
         <div className="hero-image">
           <div className="hero-image__innerWrapper">
-            <Image loading="eager" priority alt="Profile picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky.jpg" width={500} height={500} />
+            <Image loading="eager" priority alt="Profile picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky" width={500} height={500} />
           </div>
         </div>
         <span onClick={scrollTo} className="hero-scroll">
@@ -162,48 +162,48 @@ function Home() {
         <h2>Some of my work</h2>
         <div className="portfolio-caseWrapper">
           {renderCase({
-            index: 0, url: 'https://www.karaton.be', altLogo: 'Karaton', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logokaraton_l6y9ze.png', width: 174, content: <><p>For Happs Development I created and maintained the website for Karaton where speech therapists and parents of dyslexic could follow up on the progress their children/patients are making in the Karaton game.</p>
+            index: 0, url: 'https://www.karaton.be', altLogo: 'Karaton', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logokaraton_l6y9ze', width: 218, content: <><p>For Happs Development I created and maintained the website for Karaton where speech therapists and parents of dyslexic could follow up on the progress their children/patients are making in the Karaton game.</p>
               <p>There were a lot of graphs to be shown with Highcharts, a payment integration through Mollie, different roles for admins/therapists/parents.</p>
               <p>In this team I worked as a Full Stack Developer, giving me a lot of insight in how the backend of a web application works.</p></>
             , tags: ['mongodb', 'expressjs', 'angular', 'nodejs']
           })}
 
           {renderCase({
-            index: 1, url: 'https://www.getrialto.com', altLogo: 'Rialto', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logorialto_hrb82m.png', width: 256, content: <><p>At my internship for Rialto I created an iOS app from scratch in Swift where real estate companies could easily manage their listings.</p>
+            index: 1, url: 'https://www.getrialto.com', altLogo: 'Rialto', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logorialto_hrb82m', width: 321, content: <><p>At my internship for Rialto I created an iOS app from scratch in Swift where real estate companies could easily manage their listings.</p>
               <p>I created the screens in storyboards based on the designs provided by our designer.</p>
               <p>When the screens were finished I used Swift code to implement functionality such as logins through an API, fetching the listings through an API, saving the listings in the SQLite database..</p></>
             , tags: ['swift', 'ios']
           })}
 
           {renderCase({
-            index: 2, url: 'https://play.google.com/store/apps/details?id=com.carlierkathleen.rekenen&hl=nl', altLogo: 'Happs', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logocarlier_azx7hg.jpg', width: 100, content: <><p>While working at Happs Development I also created a mobile application for a speech therapist to help children with discalculia to learn how to count and do simple math exercises in a fun game form.</p>
+            index: 2, url: 'https://play.google.com/store/apps/details?id=com.carlierkathleen.rekenen&hl=nl', altLogo: 'Happs', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logocarlier_azx7hg', width: 100, content: <><p>While working at Happs Development I also created a mobile application for a speech therapist to help children with discalculia to learn how to count and do simple math exercises in a fun game form.</p>
               <p>The app was created from scratch using React Native for fast development, and Expo to get fast previews of the app on real devices.</p>
               <p>This project taught me a lot about animations, how to handle dynamically generated sound output for the spoken numbers, learn which platform specific APIs to use..</p></>
             , tags: ['react-native', 'reactjs']
           })}
 
           {renderCase({
-            index: 3, url: 'https://www.carglass.be', altLogo: 'Carglass', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logocarglass_dmieax.png', width: 297, content: <><p>At my current job at The Reference I help maintain the website for Carglass, we keep adding new features and maintain the older code in sprints.</p>
+            index: 3, url: 'https://www.carglass.be', altLogo: 'Carglass', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logocarglass_dmieax', width: 374, content: <><p>At my current job at The Reference I help maintain the website for Carglass, we keep adding new features and maintain the older code in sprints.</p>
               <p>We have a separate Backend Development team, so my focus is purely on the Frontend Development in ReactJS.</p>
               <p>In the booking flows we make heavy use of MobX for state management, Local- and Sessionstorage to save intermediary input by the users and integrate with APIs from different parties.</p></>
             , tags: ['sitecore', 'reactjs']
           })}
 
           {renderCase({
-            index: 4, url: 'https://www.nationale-loterij.be', altLogo: 'Nationale Loterij', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171503/logonalo_xgy3wb.jpg', width: 192, content: <><p>One of the other clients I work for at The Reference is Nationale Loterij, for this client we constantly create new features with a modern look on a monthly basis.</p>
+            index: 4, url: 'https://www.nationale-loterij.be', altLogo: 'Nationale Loterij', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171503/logonalo_xgy3wb', width: 240, content: <><p>One of the other clients I work for at The Reference is Nationale Loterij, for this client we constantly create new features with a modern look on a monthly basis.</p>
               <p>In this project I get to test out even more new technologies, and new features in the existing technologies (think React Hooks, CSS3 animations..).</p>
               <p>The feature I'm most proud of is the interactive Sponsoring Map of Belgium we created with some nice animations and beautiful design.</p></>
             , tags: ['sitecore', 'reactjs']
           })}
 
           {renderCase({
-            index: 5, url: 'https://www.achterderegenboog.be', altLogo: 'Achter De Regenboog', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583870456/achterderegenboog_fdwjmw.png', width: 120, content: <><p>In my free time I like to experiment with other frameworks and technologies too, this is why I made a website using Wordpress for a friend of mine who started a psychologists practice.</p>
+            index: 5, url: 'https://www.achterderegenboog.be', altLogo: 'Achter De Regenboog', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583870456/achterderegenboog_fdwjmw', width: 149, content: <><p>In my free time I like to experiment with other frameworks and technologies too, this is why I made a website using Wordpress for a friend of mine who started a psychologists practice.</p>
               <p>My friend gave me some high level designs, and I got to work! I selected a fitting theme. </p>
               <p>I built on the theme with a lot of plugins to optimize the speed of the website (Autoptimize), the SEO (Yoast) and anti-spam by Akismet.</p></>
             , tags: ['wordpress', 'html', 'css']
           })}
           {renderCase({
-            index: 6, url: 'https://www.deckdeckgo.com', altLogo: 'DeckDeckGo', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1603387322/46620663_i1wcaj.png', width: 100, content: <><p>In 2020 I participated in Hacktoberfest for the first time ever. I did some research on which open source project I would like to contribute to, and landed on DeckDeckGo.</p>
+            index: 6, url: 'https://www.deckdeckgo.com', altLogo: 'DeckDeckGo', logo: '/deckdeckgo.png', width: 100, content: <><p>In 2020 I participated in Hacktoberfest for the first time ever. I did some research on which open source project I would like to contribute to, and landed on DeckDeckGo.</p>
               <p>It was a lot of fun to coloborate with other open source contributors, and to work in a new technological stack. I'm definitely going to continue contributing to open source in the future!</p></>
             , tags: ['open source', 'hacktoberfest', 'stencil', 'typescript']
           })}

@@ -24,7 +24,6 @@ class MyDocument extends Document {
                         `}
           }>
           </script>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <script dangerouslySetInnerHTML={{
             __html: `
                         WebFontConfig = {
