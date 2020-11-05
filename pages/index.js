@@ -203,7 +203,7 @@ function Home() {
             , tags: ['wordpress', 'html', 'css']
           })}
           {renderCase({
-            index: 6, url: 'https://www.deckdeckgo.com', altLogo: 'DeckDeckGo', logo: '/deckdeckgo.png', width: 100, content: <><p>In 2020 I participated in Hacktoberfest for the first time ever. I did some research on which open source project I would like to contribute to, and landed on DeckDeckGo.</p>
+            index: 6, url: 'https://www.deckdeckgo.com', altLogo: 'DeckDeckGo', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1603387322/46620663_i1wcaj', width: 100, content: <><p>In 2020 I participated in Hacktoberfest for the first time ever. I did some research on which open source project I would like to contribute to, and landed on DeckDeckGo.</p>
               <p>It was a lot of fun to coloborate with other open source contributors, and to work in a new technological stack. I'm definitely going to continue contributing to open source in the future!</p></>
             , tags: ['open source', 'hacktoberfest', 'stencil', 'typescript']
           })}
