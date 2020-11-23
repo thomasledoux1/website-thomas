@@ -2,15 +2,27 @@
 
 h1 {
     @apply text-2xl;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 h2 {
     @apply text-xl;
+    font-weight: 600;
 }
 
 @tailwind components;
 @tailwind utilities;
+
+body.dark nav ul li a:before,
+body.dark nav ul li a:after {
+    background-color: #b55400;
+}
+
+body.dark .timeline-container:after,
+body.dark .timeline-item:after {
+    background-color: #222831;
+}
 
 .darkTheme-checkbox:before,
 .darkTheme-checkbox:after {
@@ -83,6 +95,54 @@ h2 {
 
 .logo:hover .letter:nth-child(7) {
     animation-delay: .7s;
+}
+
+.timeline-container::after {
+    background-color: #f0efff;
+    content: '';
+    position: absolute;
+    left: calc(50% - 2px);
+    width: 4px;
+    height: 100%;
+}
+
+.timeline-item:after {
+    content: " ";
+    background-color: #ffffff;
+    box-shadow: 1px -1px 1px rgba(0, 0, 0, .1);
+    position: absolute;
+    right: 1rem;
+    top: calc(50% - 0.5rem);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 15px;
+    height: 15px;
+}
+
+.timeline-item:nth-child(even)::after {
+    right: auto;
+    left: 1em;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+nav ul li a:before,
+nav ul li a:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0px;
+    height: 5px;
+    margin: 5px 0 0;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    background-color: #6c63ff;
+}
+
+nav ul li:hover a:before,
+nav ul li:hover a:after {
+    width: 100%;
+    opacity: 1;
 }
 
 @keyframes bounce {

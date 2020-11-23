@@ -4,18 +4,8 @@ import Link from 'next/link';
 const Navigation = () => {
   const navigationMobileRef = useRef(null);
   const mobileIconRef = useRef(null);
-  const [darkThemeChecked, setDarkThemeChecked] = useState(true);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-
-  useEffect(() => {
-    if (localStorage.getItem('theme') !== 'light') {
-      toggleDarkTheme(null, false);
-    } else if (localStorage.getItem('theme') === 'light') {
-      toggleDarkTheme(null, true);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      toggleDarkTheme(null, false);
-    }
-  }, []);
+  const [darkMode, setDarkMode] = useState(false);
 
   const toggleMobileNavigation = () => {
     navigationMobileRef.current.classList.add('touched');
@@ -24,14 +14,10 @@ const Navigation = () => {
     setMobileNavOpen(!mobileNavOpen);
   }
 
-  const toggleDarkTheme = (e, checked = null) => {
-    const checkedValue = e ? e.target.checked : checked;
-    setDarkThemeChecked(checkedValue);
-    if (checkedValue) {
-      useTheme('light');
-    } else {
-      useTheme('dark');
-    }
+  const toggleDarkTheme = () => {
+    setDarkMode(!darkMode);
+    document.body.classList.toggle('dark');
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
   }
 
   const linkClicked = () => {
@@ -40,45 +26,39 @@ const Navigation = () => {
     }
   }
 
-  const useTheme = (theme) => {
-    if (theme === 'dark') {
-      localStorage.setItem('theme', 'dark');
-      document.documentElement.setAttribute('data-theme', 'dark')
-    } else {
-      localStorage.setItem('theme', 'light');
-      document.documentElement.setAttribute('data-theme', 'light')
-    }
-  }
-
   const renderNavigationItems = () => {
     return (
       <React.Fragment>
-        <li className="mr-6">
+        <li className="sm:mr-6">
           <Link href={{ pathname: '/', hash: 'personal' }}>
-            <a onClick={linkClicked}>Personal</a>
+            <a className="relative" onClick={linkClicked}>Personal</a>
           </Link>
         </li>
-        <li className="mr-6">
+        <li className="mt-2 sm:mt-0 sm:mr-6">
           <Link href={{ pathname: '/', hash: 'portfolio' }}>
-            <a onClick={linkClicked}>Portfolio</a>
+            <a className="relative" onClick={linkClicked}>Portfolio</a>
           </Link>
         </li>
-        <li className="mr-6">
+        <li className="mt-2 sm:mt-0 sm:mr-6">
           <Link href={{ pathname: '/', hash: 'contact' }}>
-            <a onClick={linkClicked}>Contact</a>
+            <a className="relative" onClick={linkClicked}>Contact</a>
           </Link>
         </li>
-        <li>
+        <li className="mt-2 sm:mt-0">
           <Link href="/cv">
-            <a>CV</a>
+            <a className="relative">CV</a>
           </Link>
         </li>
       </React.Fragment>
     );
   }
 
+  useEffect(() => {
+    setDarkMode(!document.body.classList.contains('dark'));
+  }, []);
+
   return (
-    <nav className="fixed bg-purple h-16 w-full z-10">
+    <nav className="fixed bg-purple dark:bg-darkgrey dark:text-whitedarktheme h-16 w-full z-50">
       <div className="flex h-full container mx-auto justify-between items-center px-4 md:px-0">
         <Link href={{ pathname: '/' }}>
           <a className="logo flex flex-row">
@@ -94,11 +74,11 @@ const Navigation = () => {
         <ul className="hidden md:flex">
           {renderNavigationItems()}
         </ul>
-        <ul ref={navigationMobileRef} className="md:hidden absolute flex flex-col w-full top-16 left-0 py-6 items-center bg-darkPurple transform translate-x-full">
+        <ul ref={navigationMobileRef} className="md:hidden absolute flex flex-col w-full top-16 left-0 py-3 items-center bg-darkPurple dark:bg-orange transform translate-x-full">
           {renderNavigationItems()}
         </ul>
         <div className="flex items-center">
-          <input aria-label="toggle dark theme" checked={darkThemeChecked} onChange={e => toggleDarkTheme(e)} className="darkTheme-checkbox appearance-none h-8 w-16 p-1 m-auto items-center inline-flex text-yellow bg-grey cursor-pointer rounded-95 outline-none shadow-checkbox checked:bg-lightgrey checked:shadow-checkbox-checked" type="checkbox" />
+          <input aria-label="toggle dark theme" checked={darkMode} onChange={() => toggleDarkTheme()} className="darkTheme-checkbox appearance-none h-8 w-16 p-1 m-auto items-center inline-flex text-yellow bg-grey cursor-pointer rounded-95 outline-none shadow-checkbox checked:bg-lightgrey dark:bg-lightgrey dark:checked:bg-darkgrey checked:shadow-checkbox-checked transition" type="checkbox" />
         </div>
         <div ref={mobileIconRef} onClick={toggleMobileNavigation} className="md:hidden h-6 w-5 cursor-pointer relative">
           <span className={`transform transition duration-300 ease-in-out absolute h-1 w-full bg-black rounded-lg left-0 ${mobileNavOpen ? 'rotate-135 top-2' : 'rotate-0'}`}></span>

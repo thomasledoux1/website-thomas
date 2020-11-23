@@ -3,7 +3,7 @@ const Layout = (props) => {
   return (
     <>
       <Navigation />
-      <main className="pt-16 px-4 md:px-0">
+      <main className="pt-16">
         {props.children}
       </main>
     </>

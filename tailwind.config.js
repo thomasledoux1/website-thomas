@@ -3,10 +3,7 @@ module.exports = {
     './pages/*.js',
     './components/*.js',
   ],
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
+  darkMode: 'class',
   theme: {
     fontFamily: {
       display: ['Nunito', 'sans-serif'],
@@ -19,12 +16,17 @@ module.exports = {
     },
     extend: {
       colors: {
-        purple: '#f0efff',
+        purple: '#F5EBFF',
         darkPurple: '#6c63ff',
         black: '#000',
         yellow: '#fdea7b',
-        grey: 'grey',
-        lightgrey: '#d3d3d3'
+        lightgrey: '#393e46',
+        linkedIn: '#0076b5',
+        facebook: '#1095f5',
+        green: '#69BAA5',
+        darkgrey: '#222831',
+        whitedarktheme: '#EEEEEE',
+        orange: '#b55400'
       },
       inset: {
         16: '4rem',
@@ -32,7 +34,10 @@ module.exports = {
         4: '1rem',
         2: '0.5rem',
         '-40': '-10rem',
-        '1/2': '50%'
+        '-20': '-5rem',
+        '-8': '-2rem',
+        '1/2': '50%',
+        'timelineCircle': 'calc(50% - 0.5em)'
       },
       borderRadius: {
         '95': '0.95rem'
@@ -48,13 +53,20 @@ module.exports = {
       },
       maxHeight: {
         24: '6rem',
+      },
+      maxWidth: {
+        screen: '100vh',
+        '80': '80%'
       }
     },
   },
   variants: {
-    backgroundColor: ['checked'],
+    backgroundColor: ['checked', 'dark'],
     boxShadow: ['checked', 'hover'],
     animation: ['hover', 'focus'],
+    justifyContent: ['odd'],
+    alignSelf: ['even'],
+    padding: ['odd', 'even']
   },
   plugins: [],
 }
