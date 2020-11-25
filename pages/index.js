@@ -1,11 +1,8 @@
-import Layout from '../components/Layout';
-
 import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import AOS from 'aos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import smoothscroll from 'smoothscroll-polyfill';
 
@@ -52,10 +49,6 @@ const Home = () => {
       clearTimeout(timeOut);
     }
   }, []);
-
-  const scrollTo = () => {
-    window.scrollTo({ top: personalRef.current.offsetTop - 59, left: 0, behavior: 'smooth' });
-  }
 
   const submitForm = (ev) => {
     setFormStatus('loading');
@@ -115,9 +108,6 @@ const Home = () => {
           <div>
             <Image className="rounded-full" loading="eager" priority alt="Profile picture" src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky" width={500} height={500} />
           </div>
-          <span onClick={scrollTo} className="absolute bottom-0 right-1/2 transform -translate-x-1/2 cursor-pointer">
-            <FontAwesomeIcon icon={faAngleDown} />
-          </span>
         </div>
         <svg className="absolute bottom-0 left-0 sm:-bottom-20 text-purple dark:text-darkgrey fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path d="M0,32L20,58.7C40,85,80,139,120,170.7C160,203,200,213,240,213.3C280,213,320,203,360,197.3C400,192,440,192,480,186.7C520,181,560,171,600,144C640,117,680,75,720,74.7C760,75,800,117,840,149.3C880,181,920,203,960,181.3C1000,160,1040,96,1080,96C1120,96,1160,160,1200,165.3C1240,171,1280,117,1320,122.7C1360,128,1400,192,1420,224L1440,256L1440,320L1420,320C1400,320,1360,320,1320,320C1280,320,1240,320,1200,320C1160,320,1120,320,1080,320C1040,320,1000,320,960,320C920,320,880,320,840,320C800,320,760,320,720,320C680,320,640,320,600,320C560,320,520,320,480,320C440,320,400,320,360,320C320,320,280,320,240,320C200,320,160,320,120,320C80,320,40,320,20,320L0,320Z"></path>

@@ -1,11 +1,10 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 
 const Navigation = () => {
   const navigationMobileRef = useRef(null);
   const mobileIconRef = useRef(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
 
   const toggleMobileNavigation = () => {
     navigationMobileRef.current.classList.add('touched');
