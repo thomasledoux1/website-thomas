@@ -1,0 +1,148 @@
+@tailwind base;
+
+h1 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+h2 {
+  @apply text-xl;
+  font-weight: 600;
+}
+
+@tailwind components;
+@tailwind utilities;
+
+.logo:hover .letter {
+  animation: bounce .3s ease alternate;
+}
+
+.logo:hover .letter:nth-child(1) {
+  animation-delay: .1s;
+}
+
+.logo:hover .letter:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.logo:hover .letter:nth-child(3) {
+  animation-delay: .3s;
+}
+
+.logo:hover .letter:nth-child(4) {
+  animation-delay: .4s;
+}
+
+.logo:hover .letter:nth-child(5) {
+  animation-delay: .5s;
+}
+
+.logo:hover .letter:nth-child(6) {
+  animation-delay: .6s;
+}
+
+.logo:hover .letter:nth-child(7) {
+  animation-delay: .7s;
+}
+
+.timeline-container::after {
+  background-color: #f0efff;
+  content: '';
+  position: absolute;
+  left: calc(50% - 2px);
+  width: 4px;
+  height: 100%;
+}
+
+.timeline-item:after {
+  content: " ";
+  background-color: #ffffff;
+  box-shadow: 1px -1px 1px rgba(0, 0, 0, .1);
+  position: absolute;
+  right: 1rem;
+  top: calc(50% - 0.5rem);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  width: 15px;
+  height: 15px;
+}
+
+.timeline-item:nth-child(even)::after {
+  right: auto;
+  left: 1em;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+nav ul li a:before,
+nav ul li a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0px;
+  height: 5px;
+  margin: 5px 0 0;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  background-color: #6c63ff;
+}
+
+nav ul li:hover a:before,
+nav ul li:hover a:after {
+  width: 100%;
+  opacity: 1;
+}
+
+@keyframes bounce {
+  50% {
+    top: -5px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  nav ul li a:before,
+  nav ul li a:after {
+    background-color: #b55400;
+  }
+
+  .timeline-container:after,
+  .timeline-item:after {
+    background-color: #222831;
+  }
+}
+
+.star svg.full {
+  animation: pop 0.3s linear 1;
+}
+
+.star:nth-child(1) svg.full {
+  animation-delay: 0.6s;
+}
+
+.star:nth-child(2) svg.full {
+  animation-delay: 0.7s;
+}
+
+.star:nth-child(3) svg.full {
+  animation-delay: 0.8s;
+}
+
+.star:nth-child(4) svg.full {
+  animation-delay: 0.9s;
+}
+
+.star:nth-child(5) svg.full {
+  animation-delay: 1s;
+}
+
+@keyframes pop {
+  50% {
+    transform: scale(1.2);
+  }
+}

@@ -3,9 +3,9 @@ const Layout = (props) => {
   return (
     <>
       <Navigation />
-      <div className="pageWrapper">
+      <main className="pt-16">
         {props.children}
-      </div>
+      </main>
     </>
   )
 }
