@@ -6,6 +6,12 @@ import Layout from '../components/Layout';
 
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }) {
+    useEffect(() => {
+        window.addEventListener('resize', () => {
+            document.querySelector(':root').style
+                .setProperty('--vh', window.innerHeight / 100 + 'px');
+        })
+    }, []);
     return (
         <Layout>
             <Head>
