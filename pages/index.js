@@ -49,20 +49,6 @@ const Home = () => {
     smoothscroll.polyfill();
     createAnimation();
 
-    if ("IntersectionObserver" in window) {
-      let imgObserver = new IntersectionObserver(function (entries, observer) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            let lazyImage = entry.target;
-            lazyImage.src = lazyImage.dataset.src;
-            lazyImage.classList.add("lazyloaded");
-            observer.unobserve(lazyImage);
-          }
-        });
-      });
-      document.querySelectorAll('img.lazy').forEach(el => imgObserver.observe(el));
-    }
-
     return function cleanup() {
       clearTimeout(timeOut);
     }
@@ -93,12 +79,16 @@ const Home = () => {
     xhr.send(data);
   }
 
-  const renderCase = ({ index, url, altLogo, logo, content, tags }) => {
+  const renderCase = ({ index, url, altLogo, logo, content, tags, width }) => {
     return (
       <div data-aos={`fade-${index % 2 === 0 ? 'right' : 'left'}`} className="p-6 shadow-case rounded-lg hover:shadow-case-hover transition transition-shadow transition-duration-300 ease-in-out dark:bg-darkgrey dark:text-whitedarktheme">
         <div className="portfolio-case h-full">
           <a className="flex flex-col h-full" href={url}>
-            <img className="lazy max-h-24 mx-auto mb-8" alt={`Logo ${altLogo}`} src={logo} data-src={logo.replace('/e_blur:1000,q_1,f_auto', '')} />
+            <div className="h-24 flex justify-center items-center max-w-full mb-4">
+              <div className="max-h-24">
+                <Image width={width} height={100} alt={`Logo ${altLogo}`} src={logo} />
+              </div>
+            </div>
             {content}
             <div className="flex flex-col mt-4 flex-grow justify-end">
               <ul className="flex flex-wrap">
@@ -182,45 +172,55 @@ const Home = () => {
           <h2 className="text-center mb-6">Some of my work</h2>
           <div className="grid mx-6 sm:mx-0 grid-cols-1 md:grid-cols-2 gap-6">
             {renderCase({
-              index: 0, url: 'https://www.karaton.be', altLogo: 'Karaton', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logokaraton_l6y9ze.png', content: <><p>For Happs Development I created and maintained the website for Karaton where speech therapists and parents of dyslexic could follow up on the progress their children/patients are making in the Karaton game.</p>
+              index: 0, url: 'https://www.karaton.be', altLogo: 'Karaton', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logokaraton.png', width: 218, content: <><p>For Happs Development I created and maintained the website for Karaton where speech therapists and parents of dyslexic could follow up on the progress their children/patients are making in the Karaton game.</p>
                 <p>There were a lot of graphs to be shown with Highcharts, a payment integration through Mollie, different roles for admins/therapists/parents.</p>
                 <p>In this team I worked as a Full Stack Developer, giving me a lot of insight in how the backend of a web application works.</p></>
               , tags: ['mongodb', 'expressjs', 'angular', 'nodejs']
             })}
 
             {renderCase({
-              index: 1, url: 'https://www.getrialto.com', altLogo: 'Rialto', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logorialto_hrb82m.png', content: <><p>At my internship for Rialto I created an iOS app from scratch in Swift where real estate companies could easily manage their listings.</p>
+              index: 1, url: 'https://www.getrialto.com', altLogo: 'Rialto', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logorialto.png', width: 321, content: <><p>At my internship for Rialto I created an iOS app from scratch in Swift where real estate companies could easily manage their listings.</p>
                 <p>I created the screens in storyboards based on the designs provided by our designer.</p>
                 <p>When the screens were finished I used Swift code to implement functionality such as logins through an API, fetching the listings through an API, saving the listings in the SQLite database..</p></>
               , tags: ['swift', 'ios']
             })}
 
             {renderCase({
-              index: 2, url: 'https://play.google.com/store/apps/details?id=com.carlierkathleen.rekenen&hl=nl', altLogo: 'Happs', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logocarlier_azx7hg.jpg', content: <><p>While working at Happs Development I also created a mobile application for a speech therapist to help children with discalculia to learn how to count and do simple math exercises in a fun game form.</p>
+              index: 2, url: 'https://play.google.com/store/apps/details?id=com.carlierkathleen.rekenen&hl=nl', altLogo: 'Carlier Rekenen', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1606296227/logocarlier.png', width: 100, content: <><p>While working at Happs Development I also created a mobile application for a speech therapist to help children with discalculia to learn how to count and do simple math exercises in a fun game form.</p>
                 <p>The app was created from scratch using React Native for fast development, and Expo to get fast previews of the app on real devices.</p>
                 <p>This project taught me a lot about animations, how to handle dynamically generated sound output for the spoken numbers, learn which platform specific APIs to use..</p></>
               , tags: ['react-native', 'reactjs']
             })}
 
             {renderCase({
-              index: 3, url: 'https://www.carglass.be', altLogo: 'Carglass', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logocarglass_dmieax.png', content: <><p>At my current job at The Reference I help maintain the website for Carglass, we keep adding new features and maintain the older code in sprints.</p>
+              index: 3, url: 'https://www.carglass.be', altLogo: 'Carglass', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171504/logocarglass.png', width: 374, content: <><p>At my current job at The Reference I help maintain the website for Carglass, we keep adding new features and maintain the older code in sprints.</p>
                 <p>We have a separate Backend Development team, so my focus is purely on the Frontend Development in ReactJS.</p>
                 <p>In the booking flows we make heavy use of MobX for state management, Local- and Sessionstorage to save intermediary input by the users and integrate with APIs from different parties.</p></>
               , tags: ['sitecore', 'reactjs']
             })}
 
             {renderCase({
-              index: 4, url: 'https://www.nationale-loterij.be', altLogo: 'Nationale Loterij', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/logonalo_xgy3wb.jpg', content: <><p>One of the other clients I work for at The Reference is Nationale Loterij, for this client we constantly create new features with a modern look on a monthly basis.</p>
+              index: 4, url: 'https://www.nationale-loterij.be', altLogo: 'Nationale Loterij', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1606296227/logonalo.png', width: 240, content: <><p>One of the other clients I work for at The Reference is Nationale Loterij, for this client we constantly create new features with a modern look on a monthly basis.</p>
                 <p>In this project I get to test out even more new technologies, and new features in the existing technologies (think React Hooks, CSS3 animations..).</p>
                 <p>The feature I'm most proud of is the interactive Sponsoring Map of Belgium we created with some nice animations and beautiful design.</p></>
               , tags: ['sitecore', 'reactjs']
             })}
 
             {renderCase({
-              index: 5, url: 'https://www.achterderegenboog.be', altLogo: 'Achter De Regenboog', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/w_320/e_blur:1000,q_1,f_auto/achterderegenboog_fdwjmw.png', content: <><p>In my free time I like to experiment with other frameworks and technologies too, this is why I made a website using Wordpress for a friend of mine who started a psychologists practice.</p>
+              index: 5, url: 'https://www.achterderegenboog.be', altLogo: 'Achter De Regenboog', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1583870456/logoachterderegenboog.png', width: 150, content: <><p>In my free time I like to experiment with other frameworks and technologies too, this is why I made a website using Wordpress for a friend of mine who started a psychologists practice.</p>
                 <p>My friend gave me some high level designs, and I got to work! I selected a fitting theme. </p>
                 <p>I built on the theme with a lot of plugins to optimize the speed of the website (Autoptimize), the SEO (Yoast) and anti-spam by Akismet.</p></>
               , tags: ['wordpress', 'html', 'css']
+            })}
+            {renderCase({
+              index: 6, url: 'https://www.deckdeckgo.com', altLogo: 'DeckDeckGo', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1603387322/logoduckduckgo.png', width: 100, content: <><p>In 2020 I participated in Hacktoberfest for the first time ever. I did some research on which open source project I would like to contribute to, and landed on DeckDeckGo.</p>
+                <p>It was a lot of fun to coloborate with other open source contributors, and to work in a new technological stack. I'm definitely going to continue contributing to open source in the future!</p></>
+              , tags: ['open source', 'hacktoberfest', 'stencil', 'typescript']
+            })}
+            {renderCase({
+              index: 7, url: 'https://www.accentjobs.be', altLogo: 'Accent Jobs', logo: 'https://res.cloudinary.com/dzrea5zhv/image/upload/v1606296580/logoaccent.png', width: 532, content: <><p>At the end of 2020, I got the opportunity to work on a project within The Reference using our new MACH stack.</p>
+                <p>This was the first time I was using Gatsby for a production website, and I must say it makes developing a breeze. Connecting everything through API's, no hard dependecies on a CMS.. I love it.</p></>
+              , tags: ['gatsby', 'drupal', 'typscript', 'emotion']
             })}
           </div>
         </div>
@@ -228,9 +228,7 @@ const Home = () => {
       <section id="contact" className="bg-purple dark:bg-darkgrey dark:text-whitedarktheme">
         <div className="container grid md:grid-cols-3 gap-6 min-h-screen-without-nav content-center align-items">
           <div data-aos="fade-up-right" className="p-6">
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 561.8 654.5"><path className="fill-current text-darkPurple dark:text-orange" d="M96.1 393.8h254.5v221H96.1z" /><path fill="#FFB8B8" d="M260.5 160s2.8 10.8-3.4 18.4c-6.2 7.6 26.6 34.8 26.6 34.8l17.3-3s-3.8-33.1 1.3-41.4-41.8-8.8-41.8-8.8z" /><path opacity=".1" d="M260.5 160s2.8 10.8-3.4 18.4c-6.2 7.6 26.6 34.8 26.6 34.8l17.3-3s-3.8-33.1 1.3-41.4-41.8-8.8-41.8-8.8z" /><path fill="#FFB8B8" d="M375.4 474.6l-38.1 50.6 26 15.1 35.8-58.6z" /><path fill="#2F2E41" d="M348.7 526s-14-16.3-13.4-12.7c.6 3.6-10 34.5-.1 37.5s94.6 10.9 95.8 1.3-25.3-16.3-25.3-16.3-15.7-15.1-19.2-13.6-37.8 3.8-37.8 3.8z" /><path fill="#FFB8B8" d="M366.9 522.9l30.4 51.9 23-13.3-30.7-42.5z" /><path fill="#2F2E41" d="M415 399.4l-9 12.8s-43.1 59.9-38.5 64.7 23.6 23.1 33.3 19.6 44.1-64.7 44.1-64.7l-9-35.9-20.9 3.5z" /><path fill="#2F2E41" d="M229.3 387.3s9.7 18 34.1 24.1 50 18.6 50.9 18.4 3.5-1.5 4.1 2.1 7.3 10 7.3 10 27 91.8 37.3 91.9 31.5-7.3 32-10.2-31.6-96.7-31.9-98.5l-3.8-21.8s42.4 6.8 46.3 8 39.1 20.4 39.1 20.4 35.8-25.8 2.3-51.9-91.1-45.2-91.1-45.2l-20.7-5.8-18-1.1-2.7-10.2-42.7 2.5-44.5 18.9 2 48.4z" /><circle fill="#FFB8B8" cx="285.6" cy="148.1" r="33.2" /><path fill="#D0CDE1" d="M255.5 179.8l4-.7s7.2 27.8 29.6 32.4c0 0 11-13.2 10.5-15.4s8.7-14.1 13.6-7.5-1.2 123.8 2.9 125.9 12.9 4.3 5.8 12.1-35.3 18.2-41.5 14.6-19-34.2-24.5-44.5c-5.5-10.3-14.3-45.3-14.3-45.3s-11.3-38.3-4.3-47 18.2-24.6 18.2-24.6z" /><path fill="#2F2E41" d="M287.3 319.1c-.7 8.2-2 16.3-3.8 24.3-1.6 6.5-3.5 10.4-5.7 10.3-5.5-.4-8 7.7-9.3 17-1.4 9.9-1.4 21.2-2.1 25.2-1 5.3-7.4 9.3-20.3 8.1-7.7-.9-15.2-2.7-22.3-5.5-17.3-6.3-16.8-57.5-13.9-95.4 1.8-23.3 4.4-41.6 4.4-41.6s-5.3-15.7-7-26.5c-.3-2-.5-4-.5-5.9.3-9.4 17.4-34.8 27.8-50.7 10.4-15.8 24.6-4.2 24.6-4.2l-4.9 14.9s7.6 11.8 7.7 23 18.3 19.3 24.9 24.8c4 3.4 3.9 49 .4 82.2zM301.8 179.5s1.2 1.4 6.7.7c6.6-.8 15.6 1.4 17.7 7.7 3.9 11.5 14.7 58.4 14.7 58.4s4.5 53.5 6.6 65.4 1 22.3 3 28.5-19.8-11.6-27.8-9.3-13.2-27.7-12.2-38.2 1.9-21.9-.9-32.6c-2.8-10.8 2.2-39.2 2-45.8s-17.8-22.9-9.8-34.8z" /><path fill="#FFB8B8" d="M325.3 346s35.2 19.2 38.6 46.5-47.1-26.5-47.1-26.5l8.5-20zM345.4 326.6s10.8 54.3 27.6 51.5-9.4-54.6-9.4-54.6l-18.2 3.1z" /><path fill="#2F2E41" d="M402.9 563.5s-8.6 9.9-10.7 8.4-7 19-2.6 22.9 21.5 10.4 21.6 16.9 45.9 5.2 47.5-1.6-5.7-22.4-10.9-25.3-24.3-29.2-24.3-29.2-15 2.3-20.6 7.9z" /><path opacity=".1" d="M319.7 379.2c-8.2-5.8-30.9-7.2-51.2-8.5-8.9-.6-17.3-1.1-23.7-2-6.2-.9-11.8-6.5-16.7-15-7.5-12.8-13.6-32-18.3-50.5 1.8-23.3 4.4-41.6 4.4-41.6s-5.3-15.7-7-26.5c1.2-1.7 2.7-3 4.5-4 21.5-9.2 41.9 81.4 44.5 95.6 0 .2.1.5.1.6 1.3 7.3 14.9 13.6 27.1 16.1 7.5 1.5 14.5 1.6 17.7-.4 8.5-5.2 34.5 15.6 36.5 16.2 2.2.6-6.2 28.3-17.9 20z" /><path fill="#2F2E41" d="M211.8 225.5s-15.6 7.4-8.7 41.8 20.7 92.9 41.8 95.9 63.1 2.3 74.9 10.5 20.1-19.4 18.1-20-28-21.4-36.5-16.2-42.8-3.9-44.8-15.7c-2.2-11.9-23-105.7-44.8-96.3zM324.2 209l17.1 39.8s1.7-.9 3.7 5.4c2 6.2 2.9 11.7 6.5 15.8s19.1 62.3 19.6 65-21.6 12.1-26.5 4.6S324.2 209 324.2 209z" /><path fill="#4D3324" d="M266.7 147.7c1.3-.3 1.5-2 1.5-3.3.2-7.1 4.5-14.3 11.2-16.3 2.6-.7 5.3-.9 8-.4 3.8.5 7.4 1.7 10.8 3.6 1.8 1 3.5 2.2 5.5 2.5 1.3.2 7 1.9 8.3 2.1 2.9.5 5.6 3.1 8.3 2.1 2.6-.9 3.2-4.3 3.3-7.2.1-6.4-4.7-15.2-9-20-3.2-3.6-8.1-5.3-12.9-6.1-5.6-.9-11.2-1.2-16.9-1-7.6.1-15.5.7-22.4 4-6.9 3.3-12.7 9.9-13 17.5-.1 1.6.1 3.2 0 4.8-.3 3.9-2.4 7.4-3.3 11.1-1.4 5.6-.4 11.5 2.8 16.3 2.6 3.8 6.6 7.2 6.4 11.7l5.5-5.7c1.7-1.3 2.3-3.6 1.4-5.6l-2-7.6c-.5-1.4-.6-2.9-.2-4.3 2.3-5.4 4.6 2.3 6.7 1.8z" /></svg>
-            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 561.8 654.5"><path className="fill-current text-darkPurple dark:text-orange" d="M96.1 393.8h254.5v221H96.1z" /><path fill="#FFB8B8" d="M260.5 160s2.8 10.8-3.4 18.4c-6.2 7.6 26.6 34.8 26.6 34.8l17.3-3s-3.8-33.1 1.3-41.4-41.8-8.8-41.8-8.8z" /><path opacity=".1" d="M260.5 160s2.8 10.8-3.4 18.4c-6.2 7.6 26.6 34.8 26.6 34.8l17.3-3s-3.8-33.1 1.3-41.4-41.8-8.8-41.8-8.8z" /><path fill="#FFB8B8" d="M375.4 474.6l-38.1 50.6 26 15.1 35.8-58.6z" /><path fill="#2F2E41" d="M348.7 526s-14-16.3-13.4-12.7c.6 3.6-10 34.5-.1 37.5s94.6 10.9 95.8 1.3-25.3-16.3-25.3-16.3-15.7-15.1-19.2-13.6-37.8 3.8-37.8 3.8z" /><path fill="#FFB8B8" d="M366.9 522.9l30.4 51.9 23-13.3-30.7-42.5z" /><path fill="#2F2E41" d="M415 399.4l-9 12.8s-43.1 59.9-38.5 64.7 23.6 23.1 33.3 19.6 44.1-64.7 44.1-64.7l-9-35.9-20.9 3.5z" /><path fill="#2F2E41" d="M229.3 387.3s9.7 18 34.1 24.1 50 18.6 50.9 18.4 3.5-1.5 4.1 2.1 7.3 10 7.3 10 27 91.8 37.3 91.9 31.5-7.3 32-10.2-31.6-96.7-31.9-98.5l-3.8-21.8s42.4 6.8 46.3 8 39.1 20.4 39.1 20.4 35.8-25.8 2.3-51.9-91.1-45.2-91.1-45.2l-20.7-5.8-18-1.1-2.7-10.2-42.7 2.5-44.5 18.9 2 48.4z" /><circle fill="#FFB8B8" cx="285.6" cy="148.1" r="33.2" /><path fill="#D0CDE1" d="M255.5 179.8l4-.7s7.2 27.8 29.6 32.4c0 0 11-13.2 10.5-15.4s8.7-14.1 13.6-7.5-1.2 123.8 2.9 125.9 12.9 4.3 5.8 12.1-35.3 18.2-41.5 14.6-19-34.2-24.5-44.5c-5.5-10.3-14.3-45.3-14.3-45.3s-11.3-38.3-4.3-47 18.2-24.6 18.2-24.6z" /><path fill="#2F2E41" d="M287.3 319.1c-.7 8.2-2 16.3-3.8 24.3-1.6 6.5-3.5 10.4-5.7 10.3-5.5-.4-8 7.7-9.3 17-1.4 9.9-1.4 21.2-2.1 25.2-1 5.3-7.4 9.3-20.3 8.1-7.7-.9-15.2-2.7-22.3-5.5-17.3-6.3-16.8-57.5-13.9-95.4 1.8-23.3 4.4-41.6 4.4-41.6s-5.3-15.7-7-26.5c-.3-2-.5-4-.5-5.9.3-9.4 17.4-34.8 27.8-50.7 10.4-15.8 24.6-4.2 24.6-4.2l-4.9 14.9s7.6 11.8 7.7 23 18.3 19.3 24.9 24.8c4 3.4 3.9 49 .4 82.2zM301.8 179.5s1.2 1.4 6.7.7c6.6-.8 15.6 1.4 17.7 7.7 3.9 11.5 14.7 58.4 14.7 58.4s4.5 53.5 6.6 65.4 1 22.3 3 28.5-19.8-11.6-27.8-9.3-13.2-27.7-12.2-38.2 1.9-21.9-.9-32.6c-2.8-10.8 2.2-39.2 2-45.8s-17.8-22.9-9.8-34.8z" /><path fill="#FFB8B8" d="M325.3 346s35.2 19.2 38.6 46.5-47.1-26.5-47.1-26.5l8.5-20zM345.4 326.6s10.8 54.3 27.6 51.5-9.4-54.6-9.4-54.6l-18.2 3.1z" /><path fill="#2F2E41" d="M402.9 563.5s-8.6 9.9-10.7 8.4-7 19-2.6 22.9 21.5 10.4 21.6 16.9 45.9 5.2 47.5-1.6-5.7-22.4-10.9-25.3-24.3-29.2-24.3-29.2-15 2.3-20.6 7.9z" /><path opacity=".1" d="M319.7 379.2c-8.2-5.8-30.9-7.2-51.2-8.5-8.9-.6-17.3-1.1-23.7-2-6.2-.9-11.8-6.5-16.7-15-7.5-12.8-13.6-32-18.3-50.5 1.8-23.3 4.4-41.6 4.4-41.6s-5.3-15.7-7-26.5c1.2-1.7 2.7-3 4.5-4 21.5-9.2 41.9 81.4 44.5 95.6 0 .2.1.5.1.6 1.3 7.3 14.9 13.6 27.1 16.1 7.5 1.5 14.5 1.6 17.7-.4 8.5-5.2 34.5 15.6 36.5 16.2 2.2.6-6.2 28.3-17.9 20z" /><path fill="#2F2E41" d="M211.8 225.5s-15.6 7.4-8.7 41.8 20.7 92.9 41.8 95.9 63.1 2.3 74.9 10.5 20.1-19.4 18.1-20-28-21.4-36.5-16.2-42.8-3.9-44.8-15.7c-2.2-11.9-23-105.7-44.8-96.3zM324.2 209l17.1 39.8s1.7-.9 3.7 5.4c2 6.2 2.9 11.7 6.5 15.8s19.1 62.3 19.6 65-21.6 12.1-26.5 4.6S324.2 209 324.2 209z" /><path fill="#4D3324" d="M266.7 147.7c1.3-.3 1.5-2 1.5-3.3.2-7.1 4.5-14.3 11.2-16.3 2.6-.7 5.3-.9 8-.4 3.8.5 7.4 1.7 10.8 3.6 1.8 1 3.5 2.2 5.5 2.5 1.3.2 7 1.9 8.3 2.1 2.9.5 5.6 3.1 8.3 2.1 2.6-.9 3.2-4.3 3.3-7.2.1-6.4-4.7-15.2-9-20-3.2-3.6-8.1-5.3-12.9-6.1-5.6-.9-11.2-1.2-16.9-1-7.6.1-15.5.7-22.4 4-6.9 3.3-12.7 9.9-13 17.5-.1 1.6.1 3.2 0 4.8-.3 3.9-2.4 7.4-3.3 11.1-1.4 5.6-.4 11.5 2.8 16.3 2.6 3.8 6.6 7.2 6.4 11.7l5.5-5.7c1.7-1.3 2.3-3.6 1.4-5.6l-2-7.6c-.5-1.4-.6-2.9-.2-4.3 2.3-5.4 4.6 2.3 6.7 1.8z" /></svg>
           </div>
           <div data-aos="fade-up" className="p-6 flex justify-center flex-col">
             <h2 className="mb-4">Drop me a message</h2>

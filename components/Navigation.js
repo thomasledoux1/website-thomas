@@ -9,15 +9,8 @@ const Navigation = () => {
 
   const toggleMobileNavigation = () => {
     navigationMobileRef.current.classList.add('touched');
-    // mobileIconRef.current.classList.toggle('open');
     navigationMobileRef.current.classList.toggle('translate-x-full');
     setMobileNavOpen(!mobileNavOpen);
-  }
-
-  const toggleDarkTheme = () => {
-    setDarkMode(!darkMode);
-    document.body.classList.toggle('dark');
-    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
   }
 
   const linkClicked = () => {
@@ -53,10 +46,6 @@ const Navigation = () => {
     );
   }
 
-  useEffect(() => {
-    setDarkMode(!document.body.classList.contains('dark'));
-  }, []);
-
   return (
     <nav className="fixed bg-purple dark:bg-darkgrey dark:text-whitedarktheme h-16 w-full z-50">
       <div className="flex h-full container mx-auto justify-between items-center px-4 md:px-0">
@@ -77,9 +66,6 @@ const Navigation = () => {
         <ul ref={navigationMobileRef} className="md:hidden absolute flex flex-col w-full top-16 left-0 py-3 items-center bg-darkPurple dark:bg-orange transform translate-x-full">
           {renderNavigationItems()}
         </ul>
-        <div className="flex items-center">
-          <input aria-label="toggle dark theme" checked={darkMode} onChange={() => toggleDarkTheme()} className="darkTheme-checkbox appearance-none h-8 w-16 p-1 m-auto items-center inline-flex text-yellow bg-grey cursor-pointer rounded-95 outline-none shadow-checkbox checked:bg-lightgrey dark:bg-lightgrey dark:checked:bg-darkgrey checked:shadow-checkbox-checked transition" type="checkbox" />
-        </div>
         <div ref={mobileIconRef} onClick={toggleMobileNavigation} className="md:hidden h-6 w-5 cursor-pointer relative">
           <span className={`transform transition duration-300 ease-in-out absolute h-1 w-full bg-black rounded-lg left-0 ${mobileNavOpen ? 'rotate-135 top-2' : 'rotate-0'}`}></span>
           <span className={`absolute transition duration-300 ease-in-out h-1 w-full bg-black rounded-lg left-0 top-2 ${mobileNavOpen ? 'opacity-0 -left-40' : 'opacity-100'}`}></span>
