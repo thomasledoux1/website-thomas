@@ -27,6 +27,15 @@
   "devDependencies": {
     "autoprefixer": "^10.0.2",
     "postcss-preset-env": "^6.7.0",
+    "react-scripts": "^4.0.1",
     "tailwindcss": "^2.0.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "babel": {
+    "presets": [
+      "babel-preset-react-app"
+    ]
   }
 }

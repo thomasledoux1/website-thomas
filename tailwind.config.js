@@ -1,8 +1,5 @@
 module.exports = {
-  purge: [
-    './pages/*.js',
-    './components/*.js',
-  ],
+  purge: ['./pages/*.js', './components/*.js'],
   darkMode: 'media',
   theme: {
     fontFamily: {
@@ -26,7 +23,7 @@ module.exports = {
         green: '#69BAA5',
         darkgrey: '#222831',
         whitedarktheme: '#EEEEEE',
-        orange: '#b55400'
+        orange: '#b55400',
       },
       inset: {
         16: '4rem',
@@ -37,23 +34,23 @@ module.exports = {
         '-20': '-5rem',
         '-8': '-2rem',
         '1/2': '50%',
-        'timelineCircle': 'calc(50% - 0.5em)'
+        timelineCircle: 'calc(50% - 0.5em)',
       },
       borderRadius: {
-        '95': '0.95rem'
+        '95': '0.95rem',
       },
       boxShadow: {
-        'checkbox': 'inset 0.125em 0.125em 0 0.125em rgba(0,0,0,.3)',
+        checkbox: 'inset 0.125em 0.125em 0 0.125em rgba(0,0,0,.3)',
         'checkbox-checked': 'inset 0.125em 0.125em 0 0.125em rgba(0,0,0,.1)',
-        'case': '0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24)',
+        case: '0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24)',
         'case-hover': '0 10px 28px rgba(0,0,0,.25), 0 8px 10px rgba(0,0,0,.22)',
-        'link': 'inset 0 -4px 0 #6c63ff',
+        link: 'inset 0 -4px 0 #6c63ff',
         'link-hover': 'inset 0 -18px 0 #6c63ff',
         'link-dark': 'inset 0 -4px 0 #b55400',
-        'link-dark-hover': 'inset 0 -18px 0 #b55400'
+        'link-dark-hover': 'inset 0 -18px 0 #b55400',
       },
       minHeight: {
-        'screen-without-nav': 'calc((100 * var(--vh)) - 4rem)'
+        'screen-without-nav': 'calc((100 * var(--vh)) - 4rem)',
       },
       maxHeight: {
         24: '6rem',
@@ -61,8 +58,8 @@ module.exports = {
       },
       maxWidth: {
         screen: '100vh',
-        '80': '80%'
-      }
+        '80': '80%',
+      },
     },
   },
   variants: {
@@ -71,7 +68,7 @@ module.exports = {
     animation: ['hover', 'focus'],
     justifyContent: ['odd'],
     alignSelf: ['even'],
-    padding: ['odd', 'even']
+    padding: ['odd', 'even'],
   },
   plugins: [],
 }
