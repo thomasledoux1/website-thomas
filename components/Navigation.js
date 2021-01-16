@@ -7,7 +7,6 @@ const Navigation = () => {
   const mobileIconRef = useRef(null)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const router = useRouter()
-  console.log(router.pathname)
 
   const toggleMobileNavigation = () => {
     navigationMobileRef.current.classList.add('touched')
@@ -22,7 +21,6 @@ const Navigation = () => {
   }
 
   const renderNavigationItems = () => {
-    console.log(router.pathname)
     return (
       <React.Fragment>
         <li className="sm:mr-6">
@@ -49,6 +47,7 @@ const Navigation = () => {
         <li className="mt-2 sm:mt-0">
           <Link href="/cv">
             <a
+              onClick={linkClicked}
               className={`relative ${
                 router.pathname === '/cv' ? 'active' : ''
               }`}
@@ -88,17 +87,17 @@ const Navigation = () => {
           className="md:hidden h-6 w-5 cursor-pointer relative"
         >
           <span
-            className={`transform transition duration-300 ease-in-out absolute h-1 w-full bg-black rounded-lg left-0 ${
+            className={`transform transition duration-300 ease-in-out absolute h-1 w-full bg-darkPurple dark:bg-orange rounded-lg left-0 ${
               mobileNavOpen ? 'rotate-135 top-2' : 'rotate-0'
             }`}
           ></span>
           <span
-            className={`absolute transition duration-300 ease-in-out h-1 w-full bg-black rounded-lg left-0 top-2 ${
+            className={`absolute transition duration-300 ease-in-out h-1 w-full bg-darkPurple dark:bg-orange rounded-lg left-0 top-2 ${
               mobileNavOpen ? 'opacity-0 -left-40' : 'opacity-100'
             }`}
           ></span>
           <span
-            className={`transform transition duration-300 ease-in-out absolute h-1 w-full bg-black rounded-lg left-0 ${
+            className={`transform transition duration-300 ease-in-out absolute h-1 w-full bg-darkPurple dark:bg-orange rounded-lg left-0 ${
               mobileNavOpen ? '-rotate-135 top-2' : 'rotate-0 top-4'
             }`}
           ></span>

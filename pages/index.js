@@ -329,7 +329,7 @@ const Home = () => {
           </div>
           <div
             data-aos="fade-up"
-            className="bg-white dark:bg-lightgrey dark:text-whitedarktheme p-6 mt-6 sm:mt-0 mx-6 sm:mx-0"
+            className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mt-6 sm:mt-0 mx-6 sm:mx-0"
           >
             <div>
               <h2 className="mb-4">Personal Information</h2>

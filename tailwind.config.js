@@ -50,7 +50,7 @@ module.exports = {
         'link-dark-hover': 'inset 0 -18px 0 #b55400',
       },
       minHeight: {
-        'screen-without-nav': 'calc((100 * var(--vh)) - 4rem)',
+        'screen-without-nav': 'calc(100vh - 4rem)',
       },
       maxHeight: {
         24: '6rem',
