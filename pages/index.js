@@ -9,6 +9,7 @@ import {
   faFacebook,
 } from '@fortawesome/free-brands-svg-icons'
 import smoothscroll from 'smoothscroll-polyfill'
+import useWindowSize from '../components/useWindowSize'
 
 const Home = () => {
   const textWrapper = useRef(null)
@@ -17,6 +18,7 @@ const Home = () => {
   const contactRef = useRef(null)
   const formSubmitBtnRef = useRef(null)
   const [formResult, setFormResult] = useState('')
+  const size = useWindowSize()
   const suggestions = [
     'developer',
     'badminton player',
@@ -714,7 +716,7 @@ const Home = () => {
             </form>
           </div>
           <div
-            data-aos="fade-up"
+            data-aos={size > 768 ? 'fade-up' : ''}
             className="p-6 flex justify-center items-center flex-col"
           >
             <h2>You can also find me here</h2>

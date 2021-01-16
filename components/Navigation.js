@@ -1,12 +1,14 @@
 import React, {useRef, useState} from 'react'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
+import useWindowSize from '../components/useWindowSize'
 
 const Navigation = () => {
   const navigationMobileRef = useRef(null)
   const mobileIconRef = useRef(null)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const router = useRouter()
+  const size = useWindowSize()
 
   const toggleMobileNavigation = () => {
     navigationMobileRef.current.classList.add('touched')
@@ -15,7 +17,7 @@ const Navigation = () => {
   }
 
   const linkClicked = () => {
-    if (window.innerWidth <= 768) {
+    if (size <= 768) {
       toggleMobileNavigation()
     }
   }
