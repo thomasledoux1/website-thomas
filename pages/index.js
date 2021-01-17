@@ -7,6 +7,7 @@ import {
   faGithub,
   faLinkedin,
   faFacebook,
+  faDev,
 } from '@fortawesome/free-brands-svg-icons'
 import smoothscroll from 'smoothscroll-polyfill'
 import useWindowSize from '../components/useWindowSize'
@@ -748,12 +749,22 @@ const Home = () => {
               <li>
                 <a
                   aria-label="facebook"
+                  className="mr-2"
                   href="https://www.facebook.com/thomasledoux91/"
                 >
                   <FontAwesomeIcon
                     size="2x"
                     icon={faFacebook}
                     className="fill-current text-linkedIn"
+                  />
+                </a>
+              </li>
+              <li>
+                <a aria-label="dev.to" href="https://dev.to/thomasledoux1">
+                  <FontAwesomeIcon
+                    size="2x"
+                    icon={faDev}
+                    className="fill-current"
                   />
                 </a>
               </li>
