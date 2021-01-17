@@ -16,7 +16,12 @@ const Navigation = () => {
     setMobileNavOpen(!mobileNavOpen)
   }
 
-  const linkClicked = () => {
+  const linkClicked = event => {
+    if (event.currentTarget.href.indexOf('cv') > -1) {
+      document.querySelectorAll('nav li a').forEach(navEl => {
+        navEl.classList.remove('active')
+      })
+    }
     if (size <= 768) {
       toggleMobileNavigation()
     }

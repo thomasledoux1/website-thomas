@@ -69,11 +69,12 @@ const Home = () => {
   }, [createAnimation, timeOut])
 
   useEffect(() => {
+    let observer
     if (personalRef.current && portfolioRef.current && contactRef.current) {
       const options = {
         threshold: 0.3,
       }
-      const observer = new IntersectionObserver((entries, observer) => {
+      observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           const navElement = document.querySelector(
             `a[href="/#${entry.target.id}"]`,
@@ -91,6 +92,7 @@ const Home = () => {
       observer.observe(portfolioRef.current)
       observer.observe(contactRef.current)
     }
+    return () => observer.disconnect()
   }, [personalRef, portfolioRef, contactRef])
 
   const submitForm = ev => {
