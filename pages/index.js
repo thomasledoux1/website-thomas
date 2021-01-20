@@ -619,8 +619,9 @@ const Home = ({blogs}) => {
                 rel="noopener noreferrer"
                 key={blog.id}
                 href={blog.url}
+                aria-label={blog.title}
               >
-                <article className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 my-6 mx-6 sm:mx-0 ">
+                <article className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mb-6 mx-6 sm:mx-0 ">
                   <div className="flex justify-between">
                     <h3 className="text-xl font-medium">{blog.title}</h3>
                     <time className="text-right text-sm">
