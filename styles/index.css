@@ -152,6 +152,41 @@ section {
   scroll-margin-top: 4rem;
 }
 
+li.css {
+  background-color: #2965f1;
+  color: white;
+}
+
+li.nextjs {
+  background-color: black;
+  color: white;
+}
+
+li.react {
+  background-color: #222222;
+  color: #61daf6;
+}
+
+li.javascript {
+  background-color: #f7df1e;
+  color: black;
+}
+
+li.html {
+  background-color: #f53900;
+  color: white;
+}
+
+li.performance {
+  background-color: #ffa364;
+  color: black;
+}
+
+li.showdev {
+  background-color: #091b47;
+  color: #b2ffe1;
+}
+
 @keyframes pop {
   50% {
     transform: scale(1.2);

@@ -349,7 +349,7 @@ const Home = ({blogs}) => {
             className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mt-6 sm:mt-0 mx-6 sm:mx-0"
           >
             <div>
-              <h2 className="mb6">Personal Information</h2>
+              <h2 className="mb-6">Personal Information</h2>
               <p>
                 Hi, I'm Thomas. I'm {age} years old, living in Ghent. I'm a
                 professional Frontend Developer, currently working at The
@@ -376,9 +376,9 @@ const Home = ({blogs}) => {
         ref={portfolioRef}
         className="dark:bg-lightgrey dark:text-whitedarktheme"
       >
-        <div className="container mx-auto min-h-screen-without-nav items-center content-center py-6">
-          <h2 className="text-center mb-6">Some of my work</h2>
-          <div className="grid mx-6 sm:mx-0 grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="container mx-auto min-h-screen-without-nav items-center content-center py-6 md:py-12">
+          <h2 className="text-center mb-6 md:mb-12">Some of my work</h2>
+          <div className="grid mx-6 sm:mx-0 grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
             {renderCase({
               index: 0,
               url: 'https://www.karaton.be',
@@ -611,7 +611,7 @@ const Home = ({blogs}) => {
         className="bg-purple dark:bg-darkgrey dark:text-whitedarktheme"
       >
         <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-6">
-          <h2 className="text-center mb-6">Personal blog</h2>
+          <h2 className="text-center mb-6 md:mb-12">Personal blog</h2>
           {blogs &&
             blogs.map(blog => (
               <a
@@ -620,7 +620,7 @@ const Home = ({blogs}) => {
                 key={blog.id}
                 href={blog.url}
               >
-                <article className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 my-6 sm:mt-0 mx-6 sm:mx-0 ">
+                <article className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 my-6 mx-6 sm:mx-0 ">
                   <div className="flex justify-between">
                     <h3 className="text-xl font-medium">{blog.title}</h3>
                     <time className="text-right text-sm">
@@ -628,6 +628,16 @@ const Home = ({blogs}) => {
                     </time>
                   </div>
                   <p>{blog.description}</p>
+                  <ul className="flex flex-wrap">
+                    {blog.tag_list.map((tag, i) => (
+                      <li
+                        className={`text-sm my-1 py-1 px-4 mr-2 rounded-md ${tag}`}
+                        key={i}
+                      >
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
                 </article>
               </a>
             ))}
@@ -716,7 +726,7 @@ const Home = ({blogs}) => {
                   E-mail
                 </label>
                 <input
-                  className="py-2 px-4 bg-white"
+                  className="py-2 px-4 bg-white border-darkPurple dark:border-orange border-2"
                   id="email"
                   type="email"
                   name="email"
@@ -729,7 +739,7 @@ const Home = ({blogs}) => {
                   Message
                 </label>
                 <textarea
-                  className="py-2 px-4 bg-white"
+                  className="py-2 px-4 bg-white border-darkPurple dark:border-orange border-2"
                   rows="3"
                   id="message"
                   type="text"
