@@ -49,6 +49,9 @@ module.exports = {
         'link-dark': 'inset 0 -4px 0 #b55400',
         'link-dark-hover': 'inset 0 -18px 0 #b55400',
       },
+      width: {
+        '80': '80%',
+      },
       minHeight: {
         'screen-without-nav': 'calc(100vh - 4rem)',
       },

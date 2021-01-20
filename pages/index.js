@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import AOS from 'aos'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
   faGithub,
@@ -10,7 +9,6 @@ import {
   faDev,
 } from '@fortawesome/free-brands-svg-icons'
 import smoothscroll from 'smoothscroll-polyfill'
-import useWindowSize from '../hooks/useWindowSize'
 
 const Home = ({blogs}) => {
   const textWrapper = useRef(null)
@@ -20,7 +18,6 @@ const Home = ({blogs}) => {
   const blogRef = useRef(null)
   const formSubmitBtnRef = useRef(null)
   const [formResult, setFormResult] = useState('')
-  const size = useWindowSize()
   const suggestions = [
     'developer',
     'badminton player',
@@ -59,9 +56,6 @@ const Home = ({blogs}) => {
   }
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-    })
     smoothscroll.polyfill()
     createAnimation()
 
@@ -126,10 +120,7 @@ const Home = ({blogs}) => {
 
   const renderCase = ({index, url, altLogo, logo, content, tags, width}) => {
     return (
-      <div
-        data-aos="fade-up"
-        className="p-6 shadow-case rounded-lg hover:shadow-case-hover transition transition-shadow transition-duration-300 ease-in-out dark:bg-darkgrey dark:text-whitedarktheme"
-      >
+      <div className="p-6 shadow-case rounded-lg hover:shadow-case-hover transition transition-shadow transition-duration-300 ease-in-out dark:bg-darkgrey dark:text-whitedarktheme">
         <div className="portfolio-case h-full">
           <a
             target="_blank"
@@ -207,7 +198,7 @@ const Home = ({blogs}) => {
         ref={personalRef}
       >
         <div className="container mx-auto grid md:grid-cols-2 min-h-screen-without-nav items-center content-center">
-          <div data-aos="fade-up">
+          <>
             <svg
               viewBox="0 0 893 690"
               version="1.1"
@@ -343,11 +334,8 @@ const Home = ({blogs}) => {
                 </g>
               </g>
             </svg>
-          </div>
-          <div
-            data-aos="fade-up"
-            className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mt-6 sm:mt-0 mx-6 sm:mx-0"
-          >
+          </>
+          <div className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mt-6 sm:mt-0 mx-6 sm:mx-0">
             <div>
               <h2 className="mb-6">Personal Information</h2>
               <p>
@@ -623,12 +611,14 @@ const Home = ({blogs}) => {
               >
                 <article className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mb-6 mx-6 sm:mx-0 ">
                   <div className="flex justify-between">
-                    <h3 className="text-xl font-medium">{blog.title}</h3>
+                    <h3 className="text-xl font-medium mb-3 dark:text-white">
+                      {blog.title}
+                    </h3>
                     <time className="text-right text-sm">
                       {blog.readable_publish_date}
                     </time>
                   </div>
-                  <p>{blog.description}</p>
+                  <p className="mb-2">{blog.description}</p>
                   <ul className="flex flex-wrap">
                     {blog.tag_list.map((tag, i) => (
                       <li
@@ -650,8 +640,12 @@ const Home = ({blogs}) => {
         className="dark:bg-lightgrey dark:text-whitedarktheme"
       >
         <div className="container grid md:grid-cols-3 gap-6 min-h-screen-without-nav content-center align-items">
-          <div data-aos="fade-up" className="p-6">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 561.8 654.5">
+          <div className="p-6 flex justify-center flex-col items-center">
+            <svg
+              className="w-80 md:w-full"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 561.8 654.5"
+            >
               <path
                 className="fill-current text-darkPurple dark:text-orange"
                 d="M96.1 393.8h254.5v221H96.1z"
@@ -715,7 +709,7 @@ const Home = ({blogs}) => {
               />
             </svg>
           </div>
-          <div data-aos="fade-up" className="p-6 flex justify-center flex-col">
+          <div className="p-6 flex justify-center flex-col">
             <h2 className="mb-6">Drop me a message</h2>
             <form
               onSubmit={e => submitForm(e)}
@@ -769,10 +763,7 @@ const Home = ({blogs}) => {
               )}
             </form>
           </div>
-          <div
-            data-aos={size > 768 ? 'fade-up' : ''}
-            className="p-6 flex justify-center items-center flex-col"
-          >
+          <div className="p-6 flex justify-center items-center flex-col">
             <h2 className="mb-6">You can also find me here</h2>
             <ul className="flex">
               <li>
