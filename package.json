@@ -19,6 +19,7 @@
     "@fortawesome/react-fontawesome": "^0.1.12",
     "aos": "^2.3.4",
     "next": "latest",
+    "next-themes": "^0.0.10",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "sharp": "^0.26.3",

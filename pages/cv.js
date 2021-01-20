@@ -24,27 +24,27 @@ const CV = () => {
   const experiences = [
     {
       text:
-        'Frontend Developer at <a class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://reference.be">The Reference</a>, Ghent',
+        'Frontend Developer at <a target="_blank" rel="noopener noreferrer" class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://reference.be">The Reference</a>, Ghent',
       date: 'October 2018 - now',
     },
     {
       text:
-        'Full Stack Developer at <a class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://happsdevelopment.com">Happs Development</a>, Ghent',
+        'Full Stack Developer at <a target="_blank" rel="noopener noreferrer" class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://happsdevelopment.com">Happs Development</a>, Ghent',
       date: 'September 2017 - October 2018',
     },
     {
       text:
-        'Internship as Swift Developer at <a class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://getrialto.com">Rialto</a>, Ghent',
+        'Internship as Swift Developer at <a target="_blank" rel="noopener noreferrer" class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://getrialto.com">Rialto</a>, Ghent',
       date: 'February 2017 - June 2017',
     },
     {
       text:
-        'Bachelor Applied Computer Sciences at <a class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://hogent.be">Hogeschool Gent</a>',
+        'Bachelor Applied Computer Sciences at <a target="_blank" rel="noopener noreferrer" class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://hogent.be">Hogeschool Gent</a>',
       date: 'September 2014 - June 2017',
     },
     {
       text:
-        'Support Engineer at <a class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://telenet.be">Telenet</a>, Lochristi',
+        'Support Engineer at <a target="_blank" rel="noopener noreferrer" class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://telenet.be">Telenet</a>, Lochristi',
       date: 'May 2012 - August 2014',
     },
   ]
@@ -82,6 +82,8 @@ const CV = () => {
                 Hi, I'm Thomas. I'm {age} years old, living in Ghent. I'm a
                 professional Frontend Developer, currently working at{' '}
                 <a
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow"
                   href="https://www.the-reference.be"
                 >

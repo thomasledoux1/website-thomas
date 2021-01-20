@@ -19,6 +19,16 @@ html {
   scroll-behavior: smooth;
 }
 
+html.dark nav ul li a:before,
+html.dark nav ul li a:after {
+  background-color: #b55400;
+}
+
+html.dark .timeline-container:after,
+html.dark .timeline-item:after {
+  background-color: #222831;
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -114,18 +124,6 @@ nav ul li:hover a:after {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  nav ul li a:before,
-  nav ul li a:after {
-    background-color: #b55400;
-  }
-
-  .timeline-container:after,
-  .timeline-item:after {
-    background-color: #222831;
-  }
-}
-
 .star svg.full {
   animation: pop 0.3s linear 1;
 }
@@ -148,6 +146,10 @@ nav ul li:hover a:after {
 
 .star:nth-child(5) svg.full {
   animation-delay: 1s;
+}
+
+section {
+  scroll-margin-top: 4rem;
 }
 
 @keyframes pop {

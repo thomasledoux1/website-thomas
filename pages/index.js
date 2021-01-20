@@ -10,13 +10,14 @@ import {
   faDev,
 } from '@fortawesome/free-brands-svg-icons'
 import smoothscroll from 'smoothscroll-polyfill'
-import useWindowSize from '../components/useWindowSize'
+import useWindowSize from '../hooks/useWindowSize'
 
-const Home = () => {
+const Home = ({blogs}) => {
   const textWrapper = useRef(null)
   const personalRef = useRef(null)
   const portfolioRef = useRef(null)
   const contactRef = useRef(null)
+  const blogRef = useRef(null)
   const formSubmitBtnRef = useRef(null)
   const [formResult, setFormResult] = useState('')
   const size = useWindowSize()
@@ -71,7 +72,12 @@ const Home = () => {
 
   useEffect(() => {
     let observer
-    if (personalRef.current && portfolioRef.current && contactRef.current) {
+    if (
+      personalRef.current &&
+      portfolioRef.current &&
+      contactRef.current &&
+      blogRef.current
+    ) {
       const options = {
         threshold: 0.3,
       }
@@ -92,9 +98,10 @@ const Home = () => {
       observer.observe(personalRef.current)
       observer.observe(portfolioRef.current)
       observer.observe(contactRef.current)
+      observer.observe(blogRef.current)
     }
     return () => observer.disconnect()
-  }, [personalRef, portfolioRef, contactRef])
+  }, [personalRef, portfolioRef, contactRef, blogRef])
 
   const submitForm = ev => {
     setFormStatus('loading')
@@ -124,7 +131,12 @@ const Home = () => {
         className="p-6 shadow-case rounded-lg hover:shadow-case-hover transition transition-shadow transition-duration-300 ease-in-out dark:bg-darkgrey dark:text-whitedarktheme"
       >
         <div className="portfolio-case h-full">
-          <a className="flex flex-col h-full" href={url}>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col h-full"
+            href={url}
+          >
             <div className="h-24 flex justify-center items-center max-w-full mb-4">
               <div className="max-h-24">
                 <Image
@@ -337,7 +349,7 @@ const Home = () => {
             className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mt-6 sm:mt-0 mx-6 sm:mx-0"
           >
             <div>
-              <h2 className="mb-4">Personal Information</h2>
+              <h2 className="mb6">Personal Information</h2>
               <p>
                 Hi, I'm Thomas. I'm {age} years old, living in Ghent. I'm a
                 professional Frontend Developer, currently working at The
@@ -594,9 +606,37 @@ const Home = () => {
         </div>
       </section>
       <section
+        id="blog"
+        ref={blogRef}
+        className="bg-purple dark:bg-darkgrey dark:text-whitedarktheme"
+      >
+        <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-6">
+          <h2 className="text-center mb-6">Personal blog</h2>
+          {blogs &&
+            blogs.map(blog => (
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                key={blog.id}
+                href={blog.url}
+              >
+                <article className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 my-6 sm:mt-0 mx-6 sm:mx-0 ">
+                  <div className="flex justify-between">
+                    <h3 className="text-xl font-medium">{blog.title}</h3>
+                    <time className="text-right text-sm">
+                      {blog.readable_publish_date}
+                    </time>
+                  </div>
+                  <p>{blog.description}</p>
+                </article>
+              </a>
+            ))}
+        </div>
+      </section>
+      <section
         id="contact"
         ref={contactRef}
-        className="bg-purple dark:bg-darkgrey dark:text-whitedarktheme"
+        className="dark:bg-lightgrey dark:text-whitedarktheme"
       >
         <div className="container grid md:grid-cols-3 gap-6 min-h-screen-without-nav content-center align-items">
           <div data-aos="fade-up" className="p-6">
@@ -665,7 +705,7 @@ const Home = () => {
             </svg>
           </div>
           <div data-aos="fade-up" className="p-6 flex justify-center flex-col">
-            <h2 className="mb-4">Drop me a message</h2>
+            <h2 className="mb-6">Drop me a message</h2>
             <form
               onSubmit={e => submitForm(e)}
               action="https://formspree.io/xzbgjqdq"
@@ -722,10 +762,12 @@ const Home = () => {
             data-aos={size > 768 ? 'fade-up' : ''}
             className="p-6 flex justify-center items-center flex-col"
           >
-            <h2>You can also find me here</h2>
-            <ul className="flex mt-4">
+            <h2 className="mb-6">You can also find me here</h2>
+            <ul className="flex">
               <li>
                 <a
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="linkedin"
                   className="mr-2"
                   href="https://www.linkedin.com/in/thomasledoux91"
@@ -739,6 +781,8 @@ const Home = () => {
               </li>
               <li>
                 <a
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="github"
                   className="mr-2"
                   href="https://github.com/thomasledoux1"
@@ -748,6 +792,8 @@ const Home = () => {
               </li>
               <li>
                 <a
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="facebook"
                   className="mr-2"
                   href="https://www.facebook.com/thomasledoux91/"
@@ -760,7 +806,12 @@ const Home = () => {
                 </a>
               </li>
               <li>
-                <a aria-label="dev.to" href="https://dev.to/thomasledoux1">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="dev.to"
+                  href="https://dev.to/thomasledoux1"
+                >
                   <FontAwesomeIcon
                     size="2x"
                     icon={faDev}
@@ -774,6 +825,24 @@ const Home = () => {
       </section>
     </>
   )
+}
+
+export async function getStaticProps(context) {
+  const res = await fetch('https://dev.to/api/articles?username=thomasledoux1')
+  const data = await res.json()
+  console.log('fetched blogs', data)
+
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      blogs: data,
+    }, // will be passed to the page component as props
+  }
 }
 
 export default Home

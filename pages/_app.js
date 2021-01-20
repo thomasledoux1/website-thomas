@@ -1,6 +1,7 @@
 import '../styles/index.css'
 import 'aos/dist/aos.css'
 import Head from 'next/head'
+import {ThemeProvider} from 'next-themes'
 import * as React from 'react'
 import Layout from '../components/Layout'
 
@@ -23,14 +24,16 @@ export default function MyApp({Component, pageProps}) {
     )
   }, [])
   return (
-    <Layout>
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
-        />
-      </Head>
-      <Component {...pageProps} />
-    </Layout>
+    <ThemeProvider attribute="class">
+      <Layout>
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+          />
+        </Head>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
   )
 }
