@@ -2,10 +2,6 @@ module.exports = {
   purge: ['./pages/*.js', './components/*.js'],
   darkMode: 'class',
   theme: {
-    fontFamily: {
-      display: ['Nunito', 'sans-serif'],
-      body: ['Nunito', 'sans-serif'],
-    },
     rotate: {
       0: '0',
       135: '135deg',

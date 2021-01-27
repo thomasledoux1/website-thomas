@@ -832,7 +832,6 @@ const Home = ({blogs}) => {
 export async function getStaticProps(context) {
   const res = await fetch('https://dev.to/api/articles?username=thomasledoux1')
   const data = await res.json()
-  console.log('fetched blogs', data)
 
   if (!data) {
     return {

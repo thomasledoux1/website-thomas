@@ -25,28 +25,6 @@ class MyDocument extends Document {
               `,
             }}
           ></script>
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="true"
-          />
-          <link
-            rel="preload"
-            as="style"
-            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
-          />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
-            media="print"
-            onLoad="this.media='all'"
-          />
-          <noscript>
-            <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
-            />
-          </noscript>
           <link rel="preconnect" href="https://www.google-analytics.com" />
           <link rel="shortcut icon" type="image/x-icon" href="/myAvatar.ico" />
           <meta
