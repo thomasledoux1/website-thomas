@@ -32,14 +32,6 @@ html.dark .timeline-item:after {
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-snap-type: y mandatory;
-}
-
-section {
-  scroll-snap-align: start;
-}
-
 .logo:hover .letter {
   animation: bounce 0.3s ease alternate;
 }
