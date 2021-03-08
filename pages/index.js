@@ -519,7 +519,11 @@ const Home = ({blogs}) => {
         <div className="container grid md:grid-cols-3 gap-6 min-h-screen-without-nav content-center align-items">
           <div className="p-6 flex justify-center flex-col items-center">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 561.8 654.5">
-              <path d="M96.1 393.8h254.5v221H96.1z" />
+              <path
+                className="text-darkPurple dark:text-orange"
+                d="M96.1 393.8h254.5v221H96.1z"
+                fill="currentColor"
+              />
               <path
                 fill="#FFB8B8"
                 d="M260.5 160s2.8 10.8-3.4 18.4c-6.2 7.6 26.6 34.8 26.6 34.8l17.3-3s-3.8-33.1 1.3-41.4-41.8-8.8-41.8-8.8z"
