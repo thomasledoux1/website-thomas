@@ -2,8 +2,10 @@ import React, {useEffect} from 'react'
 import AOS from 'aos'
 import Head from 'next/head'
 import Image from 'next/image'
-import Rating from '../components/Rating'
-import Timeline from '../components/Timeline'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faStar as faStarEmpty} from '@fortawesome/free-regular-svg-icons'
+import {faStar as faStarFull} from '@fortawesome/free-solid-svg-icons'
+import TimelineItem from '../components/TimelineItem'
 
 const CV = () => {
   const age = Math.floor(
@@ -21,33 +23,19 @@ const CV = () => {
     {name: 'HTML', numberOfStars: 5},
     {name: 'CSS', numberOfStars: 4},
   ]
-  const experiences = [
-    {
-      text:
-        'Frontend Developer at <a target="_blank" rel="noopener noreferrer" class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://reference.be">The Reference</a>, Ghent',
-      date: 'October 2018 - now',
-    },
-    {
-      text:
-        'Full Stack Developer at <a target="_blank" rel="noopener noreferrer" class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://happsdevelopment.com">Happs Development</a>, Ghent',
-      date: 'September 2017 - October 2018',
-    },
-    {
-      text:
-        'Internship as Swift Developer at <a target="_blank" rel="noopener noreferrer" class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://getrialto.com">Rialto</a>, Ghent',
-      date: 'February 2017 - June 2017',
-    },
-    {
-      text:
-        'Bachelor Applied Computer Sciences at <a target="_blank" rel="noopener noreferrer" class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://hogent.be">Hogeschool Gent</a>',
-      date: 'September 2014 - June 2017',
-    },
-    {
-      text:
-        'Support Engineer at <a target="_blank" rel="noopener noreferrer" class="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow" href="https://telenet.be">Telenet</a>, Lochristi',
-      date: 'May 2012 - August 2014',
-    },
-  ]
+  const renderStars = amount =>
+    Array.apply(null, {length: 5}).map((_, i) => (
+      <span className="star" key={i}>
+        <FontAwesomeIcon
+          className={
+            i < amount
+              ? 'full fill-current text-darkPurple dark:text-orange'
+              : 'fill-current text-darkPurple dark:text-orange'
+          }
+          icon={i < amount ? faStarFull : faStarEmpty}
+        />
+      </span>
+    ))
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -68,7 +56,7 @@ const CV = () => {
                 loading="eager"
                 priority
                 alt="Profile picture"
-                src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky"
+                src="/me.jpg"
                 width={320}
                 height={320}
               />
@@ -104,11 +92,100 @@ const CV = () => {
             </div>
           </div>
           <div className="col-span-1 mx-6 mt-6 sm:mt-0 sm:mx-0">
-            <Rating title="Technologies" elements={technologies}></Rating>
+            <h2>Technologies</h2>
+            {technologies.map((technology, i) => (
+              <div key={i} className="flex justify-between mt-4">
+                <div>{technology.name}</div>
+                <div>{renderStars(technology.numberOfStars)}</div>
+              </div>
+            ))}
           </div>
           <div className="col-span-1 mx-6 mt-6 sm:mt-0 sm:mx-0 sm:col-span-2">
             <h2 className="mb-4">My timeline</h2>
-            <Timeline experiences={experiences} />
+            <div className="flex w-full flex-col timeline-container relative">
+              <TimelineItem index={0} url="https://reference.be">
+                <time className="text-xs text-grey">October 2018 - now</time>
+                <p>
+                  Frontend Developer at{' '}
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow"
+                    href="https://reference.be"
+                  >
+                    The Reference
+                  </a>
+                  , Ghent
+                </p>
+              </TimelineItem>
+              <TimelineItem index={1} url="https://happsdevelopment.com">
+                <time className="text-xs text-grey">
+                  September 2017 - October 2018
+                </time>
+                <p>
+                  Full Stack Developer at{' '}
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow"
+                    href="https://happsdevelopment.com"
+                  >
+                    Happs Development
+                  </a>
+                  , Ghent
+                </p>
+              </TimelineItem>
+              <TimelineItem index={2} url="https://getrialto.com">
+                <time className="text-xs text-grey">
+                  February 2017 - June 2017
+                </time>
+                <p>
+                  Internship as Swift Developer at{' '}
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow"
+                    href="https://getrialto.com"
+                  >
+                    Rialto
+                  </a>
+                  , Ghent
+                </p>
+              </TimelineItem>
+              <TimelineItem index={3} url="https://hogent.be">
+                <time className="text-xs text-grey">
+                  September 2014 - June 2017
+                </time>
+                <p>
+                  Bachelor Applied Computer Sciences at{' '}
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow"
+                    href="https://hogent.be"
+                  >
+                    Hogeschool Gent
+                  </a>
+                </p>
+              </TimelineItem>
+              <TimelineItem index={4} url="https://telenet.be">
+                <time className="text-xs text-grey">
+                  May 2012 - August 2014
+                </time>
+                <p>
+                  Support Engineer at{' '}
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow"
+                    href="https://telenet.be"
+                  >
+                    Telenet
+                  </a>
+                  , Lochristi
+                </p>
+              </TimelineItem>
+            </div>
           </div>
         </div>
       </section>

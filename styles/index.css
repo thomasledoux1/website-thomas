@@ -1,9 +1,4 @@
 @tailwind base;
-
-:root {
-  --vh: 8.21px;
-}
-
 h1 {
   font-size: 1.4rem;
   margin-bottom: 1rem;

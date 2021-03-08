@@ -83,7 +83,7 @@ const Navigation = () => {
     <nav className="fixed bg-purple dark:bg-darkgrey dark:text-whitedarktheme h-16 w-full z-50">
       <div className="flex h-full container mx-auto justify-between items-center px-4 md:px-0">
         <Link href={{pathname: '/'}}>
-          <a className="logo flex flex-row text-2xl">
+          <button className="logo flex flex-row text-2xl">
             <div className="letter inline-block top-0 relative">t</div>
             <div className="letter inline-block top-0 relative">h</div>
             <div className="letter inline-block top-0 relative">m</div>
@@ -91,7 +91,7 @@ const Navigation = () => {
             <div className="letter inline-block top-0 relative">l</div>
             <div className="letter inline-block top-0 relative">d</div>
             <div className="letter inline-block top-0 relative">x</div>
-          </a>
+          </button>
         </Link>
         <ul className="hidden md:flex">{renderNavigationItems()}</ul>
         <ul
