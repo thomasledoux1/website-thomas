@@ -144,7 +144,6 @@ const Home = ({blogs}) => {
           <div>
             <Image
               className="rounded-full"
-              loading="eager"
               priority
               alt="Profile picture"
               src="/me.jpg"

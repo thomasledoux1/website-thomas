@@ -53,7 +53,6 @@ const CV = () => {
             <div className="text-center">
               <Image
                 className="rounded-full"
-                loading="eager"
                 priority
                 alt="Profile picture"
                 src="/me.jpg"
