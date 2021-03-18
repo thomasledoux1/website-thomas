@@ -57,6 +57,13 @@ const Navigation = () => {
           </Link>
         </li>
         <li className="mt-2 sm:mt-0 sm:mr-6">
+          <Link href={{pathname: '/', hash: 'stats'}}>
+            <a className="relative" onClick={linkClicked}>
+              Stats
+            </a>
+          </Link>
+        </li>
+        <li className="mt-2 sm:mt-0 sm:mr-6">
           <Link href={{pathname: '/', hash: 'contact'}}>
             <a className="relative" onClick={linkClicked}>
               Contact

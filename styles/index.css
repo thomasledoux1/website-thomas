@@ -14,6 +14,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html.dark progress[value]::-webkit-progress-value {
+  background-color: #b55400;
+}
+
 html.dark nav ul li a:before,
 html.dark nav ul li a:after {
   background-color: #b55400;
@@ -180,6 +184,26 @@ li.performance {
 li.showdev {
   background-color: #091b47;
   color: #b2ffe1;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #6c63ff;
+}
+
+.toggleStats__btn {
+  padding: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .toggleStats__btn {
+    padding: 2rem;
+  }
 }
 
 @keyframes pop {
