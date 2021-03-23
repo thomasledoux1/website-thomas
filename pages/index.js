@@ -509,7 +509,7 @@ const Home = ({blogs, stravaStats}) => {
                       {blog.readable_publish_date}
                     </time>
                   </div>
-                  <p className="mb-2">{blog.description}</p>
+                  <p className="mb-3">{blog.description}</p>
                   <ul className="flex flex-wrap">
                     {blog.tag_list.map((tag, i) => (
                       <li
@@ -530,135 +530,122 @@ const Home = ({blogs, stravaStats}) => {
         id="stats"
         className="dark:bg-lightgrey dark:text-whitedarktheme"
       >
-        <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-6 md:py-12">
+        <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-6 md:py-12 w-full">
           <h2 className="text-center mb-6 md:mb-12">My Strava stats</h2>
-          <div className="border-2 flex flex-col w-11/12 lg:flex-row lg:mx-auto relative lg:w-1/2 mx-6">
-            <div className="flex lg:flex-col justify-evenly border-b-2 lg:border-b-0 lg:border-r-2">
+          <div className="flex flex-col w-full lg:mx-auto relative lg:w-1/2">
+            <div className="flex rounded-full self-center mb-4">
               <div
                 role="button"
-                className={`toggleStats__btn flex justify-center cursor-pointer border-r-2 w-1/2 lg:w-auto text-center lg:border-r-0 lg:border-b-2 ${
-                  !showRunning ? 'bg-darkPurple dark:bg-orange text-white' : ''
+                className={`px-6 lg:px-12 py-2 lg:py-4 border-2 rounded-tl-full rounded-bl-full flex justify-center cursor-pointer  w-1/2 text-center ${
+                  !showRunning
+                    ? 'bg-darkPurple dark:bg-orange text-white border-darkPurple dark:border-orange'
+                    : ''
                 }`}
                 onClick={() => setShowRunning(false)}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" height="65" width="100">
-                  <g
-                    clipPath="url(#clipPath4733)"
-                    transform="matrix(1.25 0 0 -1.25 -529.55 352)"
-                    fill="currentColor"
-                  >
-                    <g clipPath="url(#clipPath4739)">
-                      <path d="M450.23 271.14l-4.66-15.44c-.69-2.18-2.04-4.26-2.97-5-.24-.2-.1-.94.5-.59.59.34 2.77 2.02 3.86 5.39l4.16 13.66h22.37l.69 1.49h-22.67l.2.49h-1.48" />
-                      <path d="M450.32 270.85l.7 2.55c-1.59 0-4.61 0-5.74-1.66-1.14-1.64-.73-3.08.81-3.62 1.29-.44 2.8-.47 3.49-.47v-.96c-2.13 0-3.56.2-4.7.84-.89.49-1.58 1.95-1.34 2.99.33 1.38.82 2.16 1.96 2.85 1.14.69 3.34 1.04 4.53 1.04 1.19 0 1.48-.1 1.83-.15.35-.1.39-.22.2-.82l-.79-2.74-.95.15" />
-                      <path d="M445.28 273.07c-.5-.24-1.39-.34-2.08 0-.7.35-.94.7-1.19 1.09-.25.4-.6.55-.89-.15-.3-.69-.6-1.98-.55-2.97.1-.99.1-2.37-.2-2.97-.29-.59.1-.79.4-.34.3.44.45 1.48.4 2.13-.1.64-.1 1.33.1 1.83.49-.2 1.18-.65 1.48-.89.3-.25.69-.55 1.09-.7l1.44 2.97M430.33 250.45c0 7 5.67 12.67 12.67 12.67s12.67-5.67 12.67-12.67c0-6.99-5.67-12.67-12.67-12.67s-12.67 5.68-12.67 12.67zm12.67-14c7.73 0 14 6.27 14 14s-6.27 14-14 14-14-6.27-14-14 6.27-14 14-14zM471.61 250.45c0 7 5.67 12.67 12.67 12.67s12.67-5.67 12.67-12.67c0-6.99-5.67-12.67-12.67-12.67s-12.67 5.68-12.67 12.67zm12.67-14c7.73 0 14 6.27 14 14s-6.27 14-14 14-14-6.27-14-14 6.27-14 14-14z" />
-                      <path d="M463.34 247.48a4.41 4.41 0 008.82 0c0-2.43-1.98-4.41-4.41-4.41a4.41 4.41 0 00-4.41 4.41zm4.41-3.57c1.97 0 3.57 1.6 3.57 3.57 0 1.97-1.6 3.57-3.57 3.57-1.97 0-3.57-1.6-3.57-3.57 0-1.97 1.6-3.57 3.57-3.57z" />
-                      <path d="M474.98 270.65l-6.04-21.98 14.75 2.67.1-.99-15.35-3.26-1.28.29-17.83 18.02.6 1.19 17.42-17.62 6.04 21.97 1.59-.29" />
-                      <path d="M467.5 248.27l-1.78-6.93h-2.53v-.39l.8-.3c.59-.2.84-.34 1.23-.64.4-.3 1.38.1 1.64.49.39.65-.2.84-.2.84l1.58 6.54-.74.39M474.04 268.22l2.27 7.87-1.14.18-2.27-7.87" />
-                      <path d="M470.27 277.03c1.69.1 4.01-.94 4.8-1.63.8-.69 1.89 0 2.68.3.79.29 1.58.79 1.58 1.48s-.39 1.78-1.38 1.49c-.99-.3-3.87-.5-5.45-.5s-3.91.4-4.55-.94c-.26-.54 1.09-.39 2.32-.2M474.58 270.15l9.5-18.51-.49-.79-9.51 18.51" />
-                      <path d="M484.28 248.35a2.1 2.1 0 110 4.2 2.1 2.1 0 010-4.2" />
-                      <path d="M483.23 247.4l2.04 1.37c.33.12.86-.48.27-.81l-1.95-1.35c-.33-.12-.62.53-.36.79" />
-                      <path d="M483.39 247.27a.805.805 0 11.011 1.611.805.805 0 01-.011-1.611M485.22 245.74a.805.805 0 11.011 1.609.805.805 0 01-.011-1.609" />
-                      <path d="M483.79 247.48c.89-.44 1.04-.89 1.14-1.24h.69c-.1.5-.2 1.34-.35 1.59l-1.48-.4" />
-                    </g>
-                  </g>
-                </svg>
+                <FontAwesomeIcon size="2x" icon={faBiking} />
               </div>
               <div
                 role="button"
-                className={`cursor-pointer w-1/2 flex justify-center lg:w-auto flex justify-center ${
-                  showRunning ? 'bg-darkPurple dark:bg-orange text-white' : ''
-                } toggleStats__btn`}
+                className={`px-6 lg:px-12 py-2 lg:py-4 border-2 cursor-pointer w-1/2 rounded-tr-full rounded-br-full  flex justify-center flex justify-center ${
+                  showRunning
+                    ? 'bg-darkPurple dark:bg-orange text-white border-darkPurple dark:border-orange'
+                    : ''
+                }`}
                 onClick={() => setShowRunning(true)}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 205.716 205.716"
-                  height="65"
-                  width="65"
-                >
-                  <g fill="currentColor">
-                    <path d="M77.478 44.306c.841 0 1.696-.047 2.541-.143a21.99 21.99 0 0014.827-8.228c3.69-4.627 5.347-10.418 4.674-16.298C98.236 8.446 88.787 0 77.539 0c-.845 0-1.707.047-2.545.15-12.139 1.385-20.882 12.38-19.501 24.523 1.285 11.194 10.73 19.633 21.985 19.633zm.05-40.566c9.348 0 17.2 7.018 18.266 16.323a18.239 18.239 0 01-3.879 13.542c-3.049 3.854-7.43 6.281-12.311 6.839-.709.079-1.414.118-2.115.118-9.352 0-17.207-7.011-18.266-16.32a18.253 18.253 0 013.89-13.535A18.305 18.305 0 0177.528 3.74z" />
-                    <path d="M193.565 184.261c-7.845-13.324-14.713-26.881-21.359-39.983-6.65-13.131-13.528-26.695-21.473-40.198a14.587 14.587 0 00-1.256-1.807 26.627 26.627 0 00-1.013-2.233c-7.308-14.201-14.77-27.962-22.175-40.888 14.709-3.837 27.421 1.449 37.431 15.482 2.963 4.137 6.682 6.413 10.472 6.413 3.514 0 6.617-1.954 8.303-5.225 2.283-4.434 1.439-10.175-2.262-15.35-12.343-17.297-32.85-28.04-53.504-28.04-10.314 0-20.002 2.648-28.795 7.863-.676.401-2.527 1.435-4.499 2.534-1.886 1.052-3.754 2.097-4.445 2.516-8.704 5.164-18.13 7.895-27.26 7.895-12.755 0-23.724-5.526-30.885-15.557-3.092-4.323-7.079-6.71-11.213-6.71-3.701 0-7.04 2.033-8.725 5.293-2.14 4.173-1.342 9.394 2.187 14.33 14.258 19.97 32.764 30.52 53.522 30.52 5.766 0 11.66-.841 17.533-2.512 7.523 12.973 14.859 26.38 22.414 40.964-10.618 5.59-20.804 12.619-30.295 20.883-2.849 2.494-4.477 5.554-4.699 8.865-.225 3.346.984 6.753 3.407 9.62 1.167 2.394 3.031 4.381 5.544 5.887 7.587 4.563 17.257 9.33 26.666 13.979 6.213 3.067 12.648 6.249 18.377 9.323 2.641 1.406 5.3 2.115 7.927 2.115 5.794 0 10.672-3.554 12.143-8.861 1.177-4.245-.004-10.236-6.854-14.351-4.295-2.58-10.221-6.338-14.981-9.369l-.229-.147c-4.227-2.681-8.582-5.451-12.272-7.716 7.423-4.749 15.153-8.539 22.98-11.263.945-.333 1.84-.737 2.673-1.22l36.189 61.46c2.634 4.481 6.438 6.947 10.697 6.947 4.162 0 8.128-2.423 10.364-6.32 2.583-4.532 2.361-10.047-.635-15.139zm-9.734 17.722c-2.885 0-5.54-1.811-7.476-5.1l-38.279-65.021-1.682 1.321c-.977.777-2.115 1.385-3.368 1.822-8.994 3.139-17.841 7.612-26.29 13.313l-2.434 1.646 2.512 1.507c4.166 2.505 9.656 5.987 14.97 9.359l.24.157c5.254 3.339 10.683 6.785 14.824 9.258 4.284 2.58 6.216 6.367 5.171 10.146-1.016 3.658-4.449 6.127-8.539 6.127-2.001 0-4.069-.573-6.156-1.693-5.791-3.092-12.243-6.281-18.606-9.423-9.269-4.585-18.839-9.316-26.28-13.779-1.94-1.163-3.35-2.681-4.234-4.574l-.251-.372c-1.875-2.154-2.824-4.678-2.663-7.104.161-2.326 1.313-4.445 3.429-6.284 9.76-8.511 20.26-15.654 31.204-21.244l1.671-.859-.855-1.675c-8.178-15.829-16.062-30.241-24.1-44.052l-.748-1.285-1.421.437c-5.991 1.84-12.007 2.77-17.862 2.77-19.487 0-36.948-10.01-50.476-28.96-2.684-3.754-3.371-7.562-1.9-10.432 1.052-2.047 3.067-3.267 5.397-3.267 2.902 0 5.805 1.825 8.163 5.136C35.684 50.909 47.734 56.99 61.738 56.99c9.795-.004 19.881-2.913 29.153-8.425.684-.404 2.534-1.435 4.477-2.527a350.456 350.456 0 004.477-2.523c8.203-4.874 17.246-7.347 26.881-7.347 19.462 0 38.795 10.146 50.458 26.473 2.874 4.023 3.607 8.303 1.983 11.467-1.034 1.997-2.895 3.189-4.978 3.189-2.545 0-5.189-1.718-7.415-4.842-8.654-12.125-19.229-18.266-31.419-18.266-4.005 0-8.196.684-12.451 2.044l-2.219.712 1.17 2.004c7.813 13.557 15.647 27.962 23.28 42.807.347.68.673 1.381 1.016 2.24l.243.415c.469.569.82 1.063 1.117 1.564 7.841 13.335 14.709 26.881 21.373 40.029 6.671 13.159 13.564 26.763 21.455 40.162 2.294 3.89 2.512 8.038.605 11.384-1.569 2.737-4.297 4.433-7.113 4.433z" />
-                  </g>
-                </svg>
+                <FontAwesomeIcon size="2x" icon={faRunning} />
               </div>
             </div>
-            {showRunning ? (
-              <div className="px-8 py-4 flex flex-col justify-evenly">
-                <p className="mb-2 lg:mb-0">
-                  <FontAwesomeIcon size="1x" icon={faRoad} className="mr-2" />
-                  {Math.floor(stravaStats.all_run_totals.distance / 1000)}
-                  km
-                </p>
-                <p className="mb-2 lg:mb-0">
-                  <FontAwesomeIcon
-                    size="1x"
-                    icon={faMountain}
-                    className="mr-2"
-                  />
-                  {stravaStats.all_run_totals.elevation_gain}m
-                </p>
-                <p className="mb-2 lg:mb-0">
-                  <FontAwesomeIcon size="1x" icon={faClock} className="mr-2" />
-                  {Math.floor(stravaStats.all_run_totals.moving_time / 3600)}h
-                </p>
-                <p className="mb-2 lg:mb-0">
-                  <FontAwesomeIcon
-                    size="1x"
-                    icon={faTachometerAlt}
-                    className="mr-2"
-                  />
-                  {(
-                    stravaStats.all_run_totals.distance /
-                    1000 /
-                    (stravaStats.all_run_totals.moving_time / 3600)
-                  ).toFixed(2)}{' '}
-                  km/h
-                </p>
-                Running towards 5000km goal
-                <progress
-                  value={stravaStats.all_run_totals.distance / 10 / 5000}
-                  max={100}
-                ></progress>
-              </div>
-            ) : (
-              <div className="px-8 py-4 flex flex-col justify-evenly">
-                <p className="mb-2 lg:mb-0">
-                  <FontAwesomeIcon size="1x" icon={faRoad} className="mr-2" />
-                  {Math.floor(stravaStats.all_ride_totals.distance / 1000)}km
-                </p>
-                <p className="mb-2 lg:mb-0">
-                  <FontAwesomeIcon
-                    size="1x"
-                    icon={faMountain}
-                    className="mr-2"
-                  />
-                  {stravaStats.all_ride_totals.elevation_gain}m
-                </p>
-                <p className="mb-2 lg:mb-0">
-                  <FontAwesomeIcon size="1x" icon={faClock} className="mr-2" />
-                  {Math.floor(stravaStats.all_ride_totals.moving_time / 3600)}h
-                </p>
-                <p className="mb-2 lg:mb-0">
-                  <FontAwesomeIcon
-                    size="1x"
-                    icon={faTachometerAlt}
-                    className="mr-2"
-                  />
-                  {(
-                    stravaStats.all_ride_totals.distance /
-                    1000 /
-                    (stravaStats.all_ride_totals.moving_time / 3600)
-                  ).toFixed(2)}{' '}
-                  km/h
-                </p>
-                Biking towards 5000km goal
-                <progress
-                  value={stravaStats.all_ride_totals.distance / 10 / 5000}
-                  max={100}
-                ></progress>
-              </div>
-            )}
+            <div className="border-2  mx-6">
+              {showRunning ? (
+                <div className="px-8 py-4 flex flex-col justify-evenly">
+                  <p className="mb-3">
+                    <FontAwesomeIcon size="1x" icon={faRoad} className="mr-2" />
+                    {Math.floor(stravaStats.all_run_totals.distance / 1000)}
+                    km
+                  </p>
+                  <p className="mb-3">
+                    <FontAwesomeIcon
+                      size="1x"
+                      icon={faMountain}
+                      className="mr-2"
+                    />
+                    {stravaStats.all_run_totals.elevation_gain}m
+                  </p>
+                  <p className="mb-3">
+                    <FontAwesomeIcon
+                      size="1x"
+                      icon={faClock}
+                      className="mr-2"
+                    />
+                    {Math.floor(stravaStats.all_run_totals.moving_time / 3600)}h
+                  </p>
+                  <p className="mb-3">
+                    <FontAwesomeIcon
+                      size="1x"
+                      icon={faTachometerAlt}
+                      className="mr-2"
+                    />
+                    {(
+                      stravaStats.all_run_totals.distance /
+                      1000 /
+                      (stravaStats.all_run_totals.moving_time / 3600)
+                    ).toFixed(2)}{' '}
+                    km/h
+                  </p>
+                  Running towards 5000km goal
+                  <progress
+                    className="mt-2"
+                    value={stravaStats.all_run_totals.distance / 10 / 5000}
+                    max={100}
+                  ></progress>
+                </div>
+              ) : (
+                <div className="px-8 py-4 flex flex-col justify-evenly">
+                  <p className="mb-3">
+                    <FontAwesomeIcon size="1x" icon={faRoad} className="mr-2" />
+                    {Math.floor(stravaStats.all_ride_totals.distance / 1000)}km
+                  </p>
+                  <p className="mb-3">
+                    <FontAwesomeIcon
+                      size="1x"
+                      icon={faMountain}
+                      className="mr-2"
+                    />
+                    {stravaStats.all_ride_totals.elevation_gain}m
+                  </p>
+                  <p className="mb-3">
+                    <FontAwesomeIcon
+                      size="1x"
+                      icon={faClock}
+                      className="mr-2"
+                    />
+                    {Math.floor(stravaStats.all_ride_totals.moving_time / 3600)}
+                    h
+                  </p>
+                  <p className="mb-3">
+                    <FontAwesomeIcon
+                      size="1x"
+                      icon={faTachometerAlt}
+                      className="mr-2"
+                    />
+                    {(
+                      stravaStats.all_ride_totals.distance /
+                      1000 /
+                      (stravaStats.all_ride_totals.moving_time / 3600)
+                    ).toFixed(2)}{' '}
+                    km/h
+                  </p>
+                  Biking towards 5000km goal
+                  <progress
+                    className="mt-2"
+                    value={stravaStats.all_ride_totals.distance / 10 / 5000}
+                    max={100}
+                  ></progress>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -742,7 +729,7 @@ const Home = ({blogs, stravaStats}) => {
               method="POST"
             >
               <div className="flex flex-col">
-                <label className="mb-2" htmlFor="email">
+                <label className="mb-3" htmlFor="email">
                   E-mail
                 </label>
                 <input

@@ -196,16 +196,6 @@ progress[value]::-webkit-progress-value {
   background-color: #6c63ff;
 }
 
-.toggleStats__btn {
-  padding: 0.5rem;
-}
-
-@media (min-width: 1024px) {
-  .toggleStats__btn {
-    padding: 2rem;
-  }
-}
-
 @keyframes pop {
   50% {
     transform: scale(1.2);
