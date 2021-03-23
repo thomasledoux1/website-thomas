@@ -844,41 +844,31 @@ const Home = ({blogs, stravaStats}) => {
 export async function getStaticProps(context) {
   const entries = await db.collection('access_tokens').get()
   let [{access_token, refresh_token}] = entries.docs.map(entry => entry.data())
-  let resStats
-  resStats = await fetch(
+  const resToken = await fetch(
+    `https://www.strava.com/api/v3/oauth/token?client_id=${process.env.CLIENT_ID_STRAVA}&client_secret=${process.env.CLIENT_SECRET_STRAVA}&grant_type=refresh_token&refresh_token=${refresh_token}`,
+    {
+      method: 'POST',
+    },
+  )
+  const {
+    access_token: newToken,
+    refresh_token: newRefreshToken,
+  } = await resToken.json()
+  const resStats = await fetch(
     'https://www.strava.com/api/v3/athletes/40229513/stats',
     {
       headers: {
-        Authorization: `Bearer ${access_token}`,
+        Authorization: `Bearer ${newToken}`,
       },
     },
   )
-  if (resStats.status !== 200) {
-    const resToken = await fetch(
-      `https://www.strava.com/api/v3/oauth/token?client_id=${process.env.CLIENT_ID_STRAVA}&client_secret=${process.env.CLIENT_SECRET_STRAVA}&grant_type=refresh_token&refresh_token=${refresh_token}`,
-      {
-        method: 'POST',
-      },
-    )
-    const {
+  db.collection('access_tokens')
+    .doc('CSXyda8OfK75Aw0vtbtZ')
+    .update({
       access_token: newToken,
       refresh_token: newRefreshToken,
-    } = await resToken.json()
-    const resStats = await fetch(
-      'https://www.strava.com/api/v3/athletes/40229513/stats',
-      {
-        headers: {
-          Authorization: `Bearer ${newToken}`,
-        },
-      },
-    )
-    db.collection('access_tokens')
-      .doc('CSXyda8OfK75Aw0vtbtZ')
-      .update({
-        access_token: newToken,
-        refresh_token: newRefreshToken,
-      })
-  }
+    })
+
   const stravaStats = await resStats.json()
   const res = await fetch('https://dev.to/api/articles?username=thomasledoux1')
   const blogs = await res.json()
