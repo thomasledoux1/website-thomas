@@ -20,6 +20,7 @@ module.exports = {
         darkgrey: '#222831',
         whitedarktheme: '#EEEEEE',
         orange: '#b55400',
+        facebook: '#4267B2',
       },
       inset: {
         16: '4rem',

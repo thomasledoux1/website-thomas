@@ -1,4 +1,15 @@
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  --primary: #6c63ff;
+}
+
+html.dark {
+  --primary: #b55400;
+}
+
 h1 {
   font-size: 1.4rem;
   margin-bottom: 1rem;
@@ -15,21 +26,13 @@ html {
 }
 
 html.dark progress[value]::-webkit-progress-value {
-  background-color: #b55400;
-}
-
-html.dark nav ul li a:before,
-html.dark nav ul li a:after {
-  background-color: #b55400;
+  background-color: var(--primary);
 }
 
 html.dark .timeline-container:after,
 html.dark .timeline-item:after {
   background-color: #222831;
 }
-
-@tailwind components;
-@tailwind utilities;
 
 .logo:hover .letter {
   animation: bounce 0.3s ease alternate;
@@ -102,7 +105,7 @@ nav ul li a:after {
   margin: 5px 0 0;
   transition: all 0.3s ease-in-out;
   opacity: 0;
-  background-color: #6c63ff;
+  background-color: var(--primary);
 }
 
 nav ul li a.active:before,
@@ -193,7 +196,7 @@ progress[value]::-webkit-progress-bar {
 }
 
 progress[value]::-webkit-progress-value {
-  background-color: #6c63ff;
+  background-color: var(--primary);
 }
 
 @keyframes pop {
