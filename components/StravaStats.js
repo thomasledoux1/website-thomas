@@ -82,7 +82,7 @@ const StravaStats = ({stravaStats}) => {
             ).toFixed(2)}{' '}
             km/h
           </p>
-          Running towards 5000km goal
+{showRunning ? 'Running' : 'Biking'} towards 5000km goal
           <progress
             className="mt-2"
             value={
