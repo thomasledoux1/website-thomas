@@ -56,7 +56,7 @@ const Blog = ({blogs, scrollToBlogRef}) => {
           <button
             key={i}
             onClick={() => changeBlogpage(i)}
-            className={`bg-white rounded-full ${
+            className={`bg-white rounded-full focus:outline-none focus:ring focus:orange ${
               i === blogPage ? 'h-4 w-4' : 'h-2 w-2'
             } ${i < blogPages - 1 ? 'mr-2' : ''}`}
           />
