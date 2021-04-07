@@ -9,7 +9,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
-const StravaStats = ({stravaStats}) => {
+const StravaStats = ({
+  stravaStats,
+  stravaMostRecentRun,
+  stravaMostRecentRide,
+}) => {
   const [showRunning, setShowRunning] = React.useState(false)
   return (
     <div className="flex flex-col w-full lg:mx-auto relative lg:w-1/2">
@@ -37,10 +41,11 @@ const StravaStats = ({stravaStats}) => {
           <FontAwesomeIcon size="2x" icon={faRunning} />
         </div>
       </div>
-      <div className="border-2  mx-6">
-        <div className="px-8 py-4 flex flex-col justify-evenly">
+      <div className="border-2 mx-6 flex">
+        <div className="px-8 py-4 flex flex-col md:w-1/2">
+          <h3 className="font-bold text-xl mb-4">All time</h3>
           <p className="mb-3">
-            <FontAwesomeIcon size="1x" icon={faRoad} className="mr-2" />
+            <FontAwesomeIcon icon={faRoad} className="mr-2" />
             {Math.floor(
               (showRunning
                 ? stravaStats.all_run_totals.distance
@@ -49,14 +54,14 @@ const StravaStats = ({stravaStats}) => {
             km
           </p>
           <p className="mb-3">
-            <FontAwesomeIcon size="1x" icon={faMountain} className="mr-2" />
+            <FontAwesomeIcon icon={faMountain} className="mr-2" />
             {showRunning
               ? stravaStats.all_run_totals.elevation_gain
               : stravaStats.all_ride_totals.elevation_gain}
             m
           </p>
           <p className="mb-3">
-            <FontAwesomeIcon size="1x" icon={faClock} className="mr-2" />
+            <FontAwesomeIcon icon={faClock} className="mr-2" />
             {Math.floor(
               (showRunning
                 ? stravaStats.all_run_totals.moving_time
@@ -65,11 +70,7 @@ const StravaStats = ({stravaStats}) => {
             h
           </p>
           <p className="mb-3">
-            <FontAwesomeIcon
-              size="1x"
-              icon={faTachometerAlt}
-              className="mr-2"
-            />
+            <FontAwesomeIcon icon={faTachometerAlt} className="mr-2" />
             {(
               (showRunning
                 ? stravaStats.all_run_totals.distance
@@ -82,7 +83,7 @@ const StravaStats = ({stravaStats}) => {
             ).toFixed(2)}{' '}
             km/h
           </p>
-{showRunning ? 'Running' : 'Biking'} towards 5000km goal
+          {showRunning ? 'Running' : 'Biking'} towards 5000km goal
           <progress
             className="mt-2"
             value={
@@ -94,6 +95,58 @@ const StravaStats = ({stravaStats}) => {
             }
             max={100}
           ></progress>
+        </div>
+        <div className="px-8 py-4 flex flex-col md:w-1/2">
+          <h3 className="font-bold text-xl mb-4">
+            Most recent {showRunning ? 'run' : 'ride'}
+          </h3>
+          <p className="mb-3">
+            <FontAwesomeIcon icon={faRoad} className="mr-2" />
+            {Math.floor(
+              (showRunning
+                ? stravaMostRecentRun.distance
+                : stravaMostRecentRide.distance) / 1000,
+            )}
+            km
+          </p>
+          <p className="mb-3">
+            <FontAwesomeIcon icon={faMountain} className="mr-2" />
+            {showRunning
+              ? stravaMostRecentRun.total_elevation_gain
+              : stravaMostRecentRide.total_elevation_gain}
+            m
+          </p>
+          <p className="mb-3">
+            <FontAwesomeIcon icon={faClock} className="mr-2" />
+            {Math.floor(
+              (showRunning
+                ? stravaMostRecentRun.moving_time
+                : stravaMostRecentRide.moving_time) / 3600,
+            )}
+            h{' '}
+            {Math.floor(
+              ((showRunning
+                ? stravaMostRecentRun.moving_time
+                : stravaMostRecentRide.moving_time) %
+                3600) /
+                60,
+            )}
+            m
+          </p>
+          <p className="mb-3">
+            <FontAwesomeIcon icon={faTachometerAlt} className="mr-2" />
+            {(
+              (showRunning
+                ? stravaMostRecentRun.distance
+                : stravaMostRecentRide.distance) /
+              1000 /
+              ((showRunning
+                ? stravaMostRecentRun.moving_time
+                : stravaMostRecentRide.moving_time) /
+                3600)
+            ).toFixed(2)}{' '}
+            km/h
+          </p>
         </div>
       </div>
     </div>

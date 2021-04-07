@@ -12,17 +12,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.34",
-    "@fortawesome/free-brands-svg-icons": "^5.15.2",
-    "@fortawesome/free-regular-svg-icons": "^5.15.2",
-    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "aos": "^2.3.4",
-    "firebase-admin": "^9.5.0",
-    "next": "10.0.8",
+    "firebase-admin": "^9.6.0",
+    "next": "10.1.2",
     "next-themes": "0.0.12",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "smoothscroll-polyfill": "^0.4.4",
     "strava-v3": "^2.0.9",
     "swr": "^0.4.2"
@@ -30,6 +30,6 @@
   "devDependencies": {
     "autoprefixer": "^10.2.5",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^2.0.3"
+    "tailwindcss": "^2.0.4"
   }
 }

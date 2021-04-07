@@ -1,27 +1,25 @@
 import React, {useEffect, useRef, useState} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import {
-  faGithub,
-  faLinkedin,
-  faFacebook,
-  faDev,
-} from '@fortawesome/free-brands-svg-icons'
 import smoothscroll from 'smoothscroll-polyfill'
 import db from '../utils/db'
-import SocialLink from '../components/SocialLink'
 import Portfolio from '../components/Portfolio'
 import StravaStats from '../components/StravaStats'
+import Blog from '../components/Blog'
+import Contact from '../components/Contact'
 
-const Home = ({blogs, stravaStats}) => {
-  console.log(stravaStats)
+const Home = ({
+  blogs,
+  stravaMostRecentRide,
+  stravaMostRecentRun,
+  stravaStats,
+}) => {
   const textWrapper = useRef(null)
   const personalRef = useRef(null)
   const portfolioRef = useRef(null)
   const statsRef = useRef(null)
   const contactRef = useRef(null)
   const blogRef = useRef(null)
-  const formSubmitBtnRef = useRef(null)
   const charCounterRef = useRef(0)
   const timeOutRef = useRef(null)
   const forwardRef = useRef(true)
@@ -33,12 +31,14 @@ const Home = ({blogs, stravaStats}) => {
     'travel lover',
   ])
   const currentTextRef = useRef(suggestionsRef.current[0])
-  const [formResult, setFormResult] = useState('')
-  const [showRunning, setShowRunning] = useState(false)
   const age = Math.floor(
     (new Date() - new Date('1991-07-11').getTime()) / 3.15576e10,
   )
   const speed = 100
+
+  const scrollToBlogRef = () => {
+    blogRef.current.scrollIntoView({behavior: 'smooth'})
+  }
 
   const createTextAnimation = React.useCallback(() => {
     if (
@@ -73,9 +73,7 @@ const Home = ({blogs, stravaStats}) => {
     smoothscroll.polyfill()
     createTextAnimation()
 
-    return function cleanup() {
-      clearTimeout(timeOutRef.current)
-    }
+    return () => clearTimeout(timeOutRef.current)
   }, [createTextAnimation])
 
   useEffect(() => {
@@ -117,25 +115,6 @@ const Home = ({blogs, stravaStats}) => {
     }
     return () => observer.disconnect()
   }, [personalRef, portfolioRef, contactRef, blogRef, statsRef])
-
-  const submitForm = ev => {
-    ev.preventDefault()
-    const form = ev.target
-    const data = new FormData(form)
-    const xhr = new XMLHttpRequest()
-    xhr.open(form.method, form.action)
-    xhr.setRequestHeader('Accept', 'application/json')
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState !== XMLHttpRequest.DONE) return
-      if (xhr.status === 200) {
-        form.reset()
-        setFormResult('ok')
-      } else {
-        setFormResult('error')
-      }
-    }
-    xhr.send(data)
-  }
 
   return (
     <>
@@ -217,40 +196,9 @@ const Home = ({blogs, stravaStats}) => {
         ref={blogRef}
         className="bg-purple dark:bg-darkgrey dark:text-whitedarktheme"
       >
-        <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-6">
+        <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-6 md:py-12">
           <h2 className="text-center mb-6 md:mb-12">Personal blog</h2>
-          {blogs &&
-            blogs.map(blog => (
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                key={blog.id}
-                href={blog.url}
-                aria-label={blog.title}
-              >
-                <article className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mb-6 mx-6 sm:mx-0 ">
-                  <div className="flex justify-between">
-                    <h3 className="text-xl font-medium mb-3 dark:text-white pr-2">
-                      {blog.title}
-                    </h3>
-                    <time className="text-right text-sm">
-                      {blog.readable_publish_date}
-                    </time>
-                  </div>
-                  <p className="mb-3">{blog.description}</p>
-                  <ul className="flex flex-wrap">
-                    {blog.tag_list.map((tag, i) => (
-                      <li
-                        className={`text-sm my-1 py-1 px-4 mr-2 rounded-md ${tag}`}
-                        key={i}
-                      >
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              </a>
-            ))}
+          <Blog blogs={blogs} scrollToBlogRef={() => scrollToBlogRef()} />
         </div>
       </section>
       <section
@@ -260,7 +208,11 @@ const Home = ({blogs, stravaStats}) => {
       >
         <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-6 md:py-12 w-full">
           <h2 className="text-center mb-6 md:mb-12">My Strava stats</h2>
-          <StravaStats stravaStats={stravaStats} />
+          <StravaStats
+            stravaStats={stravaStats}
+            stravaMostRecentRun={stravaMostRecentRun}
+            stravaMostRecentRide={stravaMostRecentRide}
+          />
         </div>
       </section>
       <section
@@ -269,91 +221,7 @@ const Home = ({blogs, stravaStats}) => {
         className="bg-purple dark:bg-darkgrey dark:text-whitedarktheme"
       >
         <div className="container grid md:grid-cols-3 gap-6 min-h-screen-without-nav content-center align-items">
-          <div className="p-6 flex justify-center flex-col items-center">
-            <img src="contact.svg" className="contact__img" />
-          </div>
-          <div className="p-6 flex justify-center flex-col">
-            <h2 className="mb-6">Drop me a message</h2>
-            <form
-              onSubmit={e => submitForm(e)}
-              action="https://formspree.io/xzbgjqdq"
-              method="POST"
-            >
-              <div className="flex flex-col">
-                <label className="mb-3" htmlFor="email">
-                  E-mail
-                </label>
-                <input
-                  className="py-2 px-4 bg-white border-darkPurple dark:border-orange border-2"
-                  id="email"
-                  type="email"
-                  name="email"
-                  placeholder="info@example.com"
-                  required
-                />
-              </div>
-              <div className="flex flex-col">
-                <label className="my-2" htmlFor="message">
-                  Message
-                </label>
-                <textarea
-                  className="py-2 px-4 bg-white border-darkPurple dark:border-orange border-2"
-                  rows="3"
-                  id="message"
-                  type="text"
-                  name="message"
-                  placeholder="Hey, I would like to get in touch with you"
-                  required
-                />
-              </div>
-
-              <button
-                ref={formSubmitBtnRef}
-                className="w-full mt-4 py-4 bg-darkPurple dark:bg-orange text-white dark:text-whitedarktheme"
-                type="submit"
-              >
-                Submit
-              </button>
-              {formResult === 'error' && (
-                <p className="error">
-                  Ooops! There was an error. Try again later.
-                </p>
-              )}
-              {formResult === 'ok' && (
-                <p className="success">
-                  I received your message. I'll get back to you ASAP.
-                </p>
-              )}
-            </form>
-          </div>
-          <div className="p-6 flex justify-center items-center flex-col">
-            <h2 className="mb-6">You can also find me here</h2>
-            <ul className="flex">
-              <SocialLink
-                label="linkedin"
-                href="https://www.linkedin.com/in/thomasledoux91"
-                fill="text-linkedIn"
-                icon={faLinkedin}
-              />
-              <SocialLink
-                label="github"
-                href="https://github.com/thomasledoux1"
-                icon={faGithub}
-              />
-              <SocialLink
-                label="facebook"
-                href="https://github.com/thomasledoux1"
-                icon={faFacebook}
-                fill="text-facebook"
-              />
-              <SocialLink
-                label="dev.to"
-                href="https://dev.to/thomasledoux1"
-                icon={faDev}
-                lastItem
-              />
-            </ul>
-          </div>
+          <Contact />
         </div>
       </section>
     </>
@@ -381,6 +249,14 @@ export async function getStaticProps(context) {
       },
     },
   )
+  const resActivities = await fetch(
+    'https://www.strava.com/api/v3/athlete/activities',
+    {
+      headers: {
+        Authorization: `Bearer ${newToken}`,
+      },
+    },
+  )
   db.collection('access_tokens')
     .doc('CSXyda8OfK75Aw0vtbtZ')
     .update({
@@ -389,12 +265,23 @@ export async function getStaticProps(context) {
     })
 
   const stravaStats = await resStats.json()
-  const res = await fetch('https://dev.to/api/articles?username=thomasledoux1')
+  const stravaActivies = await resActivities.json()
+  const res = await fetch(`https://dev.to/api/articles/me/published`, {
+    headers: {
+      'api-key': process.env.DEV_KEY,
+    },
+  })
   const blogs = await res.json()
 
   return {
     props: {
       stravaStats,
+      stravaMostRecentRide: stravaActivies.filter(
+        activity => activity.type === 'Ride',
+      )[0],
+      stravaMostRecentRun: stravaActivies.filter(
+        activity => activity.type === 'Run',
+      )[0],
       blogs,
     },
     revalidate: 86400,
