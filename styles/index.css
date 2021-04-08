@@ -189,6 +189,11 @@ li.showdev {
   color: #b2ffe1;
 }
 
+li.gatsby {
+  background-color: #663399;
+  color: white;
+}
+
 progress[value]::-webkit-progress-bar {
   background-color: #eee;
   border-radius: 2px;

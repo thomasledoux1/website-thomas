@@ -2,7 +2,6 @@ import React, {useState, useRef} from 'react'
 
 const Blog = ({blogs, scrollToBlogRef}) => {
   const [blogPage, setBlogPage] = useState(0)
-  const blogWrapperRef = useRef(null)
   const blogsToShow = blogs
     .sort((a, b) => b.page_views_count - a.page_views_count)
     .slice(blogPage * 5, (blogPage + 1) * 5)
@@ -14,7 +13,7 @@ const Blog = ({blogs, scrollToBlogRef}) => {
   }
 
   return (
-    <div ref={blogWrapperRef}>
+    <>
       {blogsToShow &&
         blogsToShow.map((blog, i) => (
           <a
@@ -62,7 +61,7 @@ const Blog = ({blogs, scrollToBlogRef}) => {
           />
         ))}
       </div>
-    </div>
+    </>
   )
 }
 

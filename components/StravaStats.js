@@ -41,8 +41,8 @@ const StravaStats = ({
           <FontAwesomeIcon size="2x" icon={faRunning} />
         </div>
       </div>
-      <div className="border-2 mx-6 flex">
-        <div className="px-8 py-4 flex flex-col md:w-1/2">
+      <div className="border-2 mx-6 flex flex-col md:flex-row">
+        <div className="px-8 py-4 flex flex-col md:w-1/2 order-2 md:order-1">
           <h3 className="font-bold text-xl mb-4">All time</h3>
           <p className="mb-3">
             <FontAwesomeIcon icon={faRoad} className="mr-2" />
@@ -96,7 +96,7 @@ const StravaStats = ({
             max={100}
           ></progress>
         </div>
-        <div className="px-8 py-4 flex flex-col md:w-1/2">
+        <div className="px-8 py-4 flex flex-col md:w-1/2 md:order-2">
           <h3 className="font-bold text-xl mb-4">
             Most recent {showRunning ? 'run' : 'ride'}
           </h3>

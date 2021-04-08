@@ -16,6 +16,7 @@ const CV = () => {
     {name: 'Vue.js', numberOfStars: 2},
     {name: 'Angular', numberOfStars: 2},
     {name: 'Gatsby.js', numberOfStars: 3},
+    {name: 'Next.js', numberOfStars: 4},
     {name: 'React Native', numberOfStars: 3},
     {name: 'Swift', numberOfStars: 2},
     {name: 'Wordpress', numberOfStars: 3},
