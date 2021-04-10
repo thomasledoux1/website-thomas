@@ -63,12 +63,14 @@ module.exports = {
     },
   },
   variants: {
-    backgroundColor: ['checked', 'dark'],
-    boxShadow: ['checked', 'hover', 'dark'],
-    animation: ['hover', 'focus'],
-    justifyContent: ['odd'],
-    alignSelf: ['even'],
-    padding: ['odd', 'even'],
+    extend: {
+      backgroundColor: ['checked', 'dark', 'hover'],
+      boxShadow: ['checked', 'hover', 'dark'],
+      animation: ['hover', 'focus'],
+      justifyContent: ['odd'],
+      alignSelf: ['even'],
+      padding: ['odd', 'even'],
+    },
   },
   plugins: [],
 }
