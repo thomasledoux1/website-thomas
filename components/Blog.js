@@ -45,7 +45,7 @@ const Blog = ({blogs, scrollToBlogRef}) => {
                   ))}
                 </ul>
               </div>
-              <div>
+              <div className="flex flex-col md:flex-row items-center">
                 <FontAwesomeIcon className="mr-2" icon={faEye} />
                 <span>{blog.page_views_count}</span>
               </div>
