@@ -26,7 +26,7 @@ const Blog = ({blogs, scrollToBlogRef}) => {
             >
               <>
                 <div className="flex justify-between">
-                  <div className="flex justify-between mb-3 items-center w-full">
+                  <div className="flex justify-between mb-3 items-start w-full">
                     <h3 className="text-xl font-medium dark:text-white pr-4">
                       {blog.title}
                     </h3>
