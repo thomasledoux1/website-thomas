@@ -93,7 +93,6 @@ const Home = ({
           const navElement = document.querySelector(
             `a[href="/#${entry.target.id}"]`,
           )
-          console.log(navElement)
           if (
             entry.isIntersecting &&
             !navElement.classList.contains('active')

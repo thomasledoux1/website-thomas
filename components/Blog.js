@@ -6,7 +6,6 @@ const Blog = ({blogs, scrollToBlogRef}) => {
   const blogsToShow = blogs
     .sort((a, b) => b.page_views_count - a.page_views_count)
     .slice(0, 5)
-  console.log(blogsToShow)
 
   return (
     <>
