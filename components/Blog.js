@@ -20,18 +20,21 @@ const Blog = ({blogs, scrollToBlogRef}) => {
             aria-label={blog.title}
           >
             <article
-              className={`bg-white relative flex rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mx-6 sm:mx-0 ${
+              className={`bg-white relative rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mx-6 sm:mx-0 ${
                 i !== blogsToShow.length - 1 ? 'mb-6' : ''
               }`}
             >
-              <div className="pr-6">
+              <>
                 <div className="flex justify-between">
-                  <h3 className="text-xl font-medium mb-3 dark:text-white pr-2">
-                    {blog.title}
-                  </h3>
-                  <time className="text-right text-sm">
-                    {blog.readable_publish_date}
-                  </time>
+                  <div className="flex justify-between mb-3 items-center w-full">
+                    <h3 className="text-xl font-medium dark:text-white pr-4">
+                      {blog.title}
+                    </h3>
+                    <div className="flex flex-col md:flex-row items-center">
+                      <FontAwesomeIcon className="md:mr-2" icon={faEye} />
+                      <span>{blog.page_views_count}</span>
+                    </div>
+                  </div>
                 </div>
                 <p className="mb-3">{blog.description}</p>
                 <ul className="flex flex-wrap">
@@ -44,11 +47,7 @@ const Blog = ({blogs, scrollToBlogRef}) => {
                     </li>
                   ))}
                 </ul>
-              </div>
-              <div className="flex flex-col md:flex-row items-center">
-                <FontAwesomeIcon className="mr-2" icon={faEye} />
-                <span>{blog.page_views_count}</span>
-              </div>
+              </>
             </article>
           </a>
         ))}

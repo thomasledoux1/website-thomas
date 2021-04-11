@@ -16,7 +16,7 @@ const StravaStats = ({
 }) => {
   const [showRunning, setShowRunning] = React.useState(false)
   return (
-    <div className="flex flex-col w-full lg:mx-auto relative lg:w-1/2">
+    <div className="flex flex-col w-full lg:mx-auto relative lg:w-1/2 text-center md:text-left">
       <div className="flex rounded-full self-center mb-4">
         <div
           role="button"
@@ -83,18 +83,20 @@ const StravaStats = ({
             ).toFixed(2)}{' '}
             km/h
           </p>
-          {showRunning ? 'Running' : 'Biking'} towards 5000km goal
-          <progress
-            className="mt-2"
-            value={
-              (showRunning
-                ? stravaStats.all_run_totals.distance
-                : stravaStats.all_ride_totals.distance) /
-              10 /
-              5000
-            }
-            max={100}
-          ></progress>
+          <div className="flex flex-col items-center md:items-start">
+            {showRunning ? 'Running' : 'Biking'} towards 5000km goal
+            <progress
+              className="mt-2"
+              value={
+                (showRunning
+                  ? stravaStats.all_run_totals.distance
+                  : stravaStats.all_ride_totals.distance) /
+                10 /
+                5000
+              }
+              max={100}
+            ></progress>
+          </div>
         </div>
         <div className="px-8 py-4 flex flex-col md:w-1/2 md:order-2">
           <h3 className="font-bold text-xl mb-4">

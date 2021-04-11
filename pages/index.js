@@ -197,7 +197,9 @@ const Home = ({
         className="bg-purple dark:bg-darkgrey dark:text-whitedarktheme"
       >
         <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-6 md:py-12">
-          <h2 className="text-center mb-6 md:mb-12">Personal blog</h2>
+          <h2 className="text-center mb-6 md:mb-12">
+            Personal blog - most read
+          </h2>
           <Blog blogs={blogs} scrollToBlogRef={() => scrollToBlogRef()} />
         </div>
       </section>
