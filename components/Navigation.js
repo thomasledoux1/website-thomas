@@ -3,17 +3,16 @@ import Link from 'next/link'
 import {useRouter} from 'next/router'
 import {useTheme} from 'next-themes'
 import useWindowSize from '../hooks/useWindowSize'
+import useIsMounted from '../hooks/useIsMounted'
 
 const Navigation = () => {
   const navigationMobileRef = useRef(null)
   const mobileIconRef = useRef(null)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const isMounted = useIsMounted()
   const router = useRouter()
   const {width} = useWindowSize()
   const {theme, setTheme} = useTheme()
-
-  React.useEffect(() => setMounted(true), [])
 
   const toggleMobileNavigation = () => {
     navigationMobileRef.current.classList.add('touched')
@@ -104,7 +103,7 @@ const Navigation = () => {
         <ul
           ref={navigationMobileRef}
           className={`md:hidden absolute flex flex-col w-full top-16 left-0 py-3 items-center bg-darkPurple dark:bg-orange transform translate-x-full ${
-            mounted ? 'transition-transform' : ''
+            isMounted ? 'transition-transform' : ''
           }`}
         >
           {renderNavigationItems()}
@@ -136,7 +135,7 @@ const Navigation = () => {
           className="p-3 h-12 w-12 order-2 md:order-3 absolute left-2/4 transform -translate-x-2/4 md:relative md:left-0"
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         >
-          {mounted && (
+          {isMounted && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
