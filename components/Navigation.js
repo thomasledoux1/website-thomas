@@ -103,7 +103,7 @@ const Navigation = () => {
         <ul
           ref={navigationMobileRef}
           className={`md:hidden absolute flex flex-col w-full top-16 left-0 py-3 items-center bg-darkPurple dark:bg-orange transform translate-x-full ${
-            isMounted ? 'transition-transform' : ''
+            isMounted.current ? 'transition-transform' : ''
           }`}
         >
           {renderNavigationItems()}
@@ -135,7 +135,7 @@ const Navigation = () => {
           className="p-3 h-12 w-12 order-2 md:order-3 absolute left-2/4 transform -translate-x-2/4 md:relative md:left-0"
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         >
-          {isMounted && (
+          {isMounted.current && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
