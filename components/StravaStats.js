@@ -19,6 +19,7 @@ const StravaStats = ({
     <div className="flex flex-col w-full lg:mx-auto relative lg:w-1/2 text-center md:text-left">
       <div className="flex rounded-full self-center mb-4">
         <button
+          aria-label="Toggle bike mode"
           type="button"
           className={`px-6 lg:px-12 py-2 lg:py-4 border-2 rounded-tl-full rounded-bl-full flex justify-center cursor-pointer  w-1/2 text-center ${
             !showRunning
@@ -30,6 +31,7 @@ const StravaStats = ({
           <FontAwesomeIcon size="2x" icon={faBiking} />
         </button>
         <button
+          aria-label="Toggle run mode"
           type="button"
           className={`px-6 lg:px-12 py-2 lg:py-4 border-2 cursor-pointer w-1/2 rounded-tr-full rounded-br-full  flex justify-center flex justify-center ${
             showRunning

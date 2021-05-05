@@ -109,6 +109,7 @@ const Navigation = () => {
           {renderNavigationItems()}
         </ul>
         <button
+          aria-label="Toggle mobile menu"
           type="button"
           ref={mobileIconRef}
           onClick={toggleMobileNavigation}
