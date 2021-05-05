@@ -102,7 +102,7 @@ const Navigation = () => {
         <ul className="hidden md:flex">{renderNavigationItems()}</ul>
         <ul
           ref={navigationMobileRef}
-          className={`md:hidden absolute flex flex-col w-full top-16 left-0 py-3 items-center bg-darkPurple dark:bg-orange transform translate-x-full ${
+          className={`md:hidden absolute flex flex-col w-full top-16 left-0 py-3 items-center text-white bg-darkPurple dark:bg-orange transform translate-x-full ${
             isMounted.current ? 'transition-transform' : ''
           }`}
         >
