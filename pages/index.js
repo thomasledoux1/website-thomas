@@ -155,7 +155,13 @@ const Home = ({
         ref={personalRef}
       >
         <div className="container mx-auto grid md:grid-cols-2 min-h-screen-without-nav items-center content-center">
-          <img src="/personal.svg" />
+          <Image
+            height={150}
+            width={194}
+            layout="responsive"
+            alt="Illustration of me working on laptop"
+            src="/personal.svg"
+          />
           <div className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mt-6 sm:mt-0 mx-6 sm:mx-0">
             <div>
               <h2 className="mb-6">Personal Information</h2>

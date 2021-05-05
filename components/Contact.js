@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Image from 'next/image'
 import {
   faGithub,
   faLinkedin,
@@ -31,7 +32,13 @@ const Contact = () => {
   return (
     <>
       <div className="p-6 flex justify-center flex-col items-center">
-        <img src="contact.svg" className="contact__img" />
+        <Image
+          alt="Illustration of man sitting on a block"
+          src="/contact.svg"
+          width={129}
+          height={150}
+          layout="responsive"
+        />
       </div>
       <div className="p-6 flex justify-center flex-col">
         <h2 className="mb-6">Drop me a message</h2>

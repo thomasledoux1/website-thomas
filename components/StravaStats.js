@@ -18,8 +18,8 @@ const StravaStats = ({
   return (
     <div className="flex flex-col w-full lg:mx-auto relative lg:w-1/2 text-center md:text-left">
       <div className="flex rounded-full self-center mb-4">
-        <div
-          role="button"
+        <button
+          type="button"
           className={`px-6 lg:px-12 py-2 lg:py-4 border-2 rounded-tl-full rounded-bl-full flex justify-center cursor-pointer  w-1/2 text-center ${
             !showRunning
               ? 'bg-darkPurple dark:bg-orange text-white border-darkPurple dark:border-orange'
@@ -28,9 +28,9 @@ const StravaStats = ({
           onClick={() => setShowRunning(false)}
         >
           <FontAwesomeIcon size="2x" icon={faBiking} />
-        </div>
-        <div
-          role="button"
+        </button>
+        <button
+          type="button"
           className={`px-6 lg:px-12 py-2 lg:py-4 border-2 cursor-pointer w-1/2 rounded-tr-full rounded-br-full  flex justify-center flex justify-center ${
             showRunning
               ? 'bg-darkPurple dark:bg-orange text-white border-darkPurple dark:border-orange'
@@ -39,7 +39,7 @@ const StravaStats = ({
           onClick={() => setShowRunning(true)}
         >
           <FontAwesomeIcon size="2x" icon={faRunning} />
-        </div>
+        </button>
       </div>
       <div className="border-2 mx-6 flex flex-col md:flex-row">
         <div className="px-8 py-4 flex flex-col md:w-1/2 order-2 md:order-1">
