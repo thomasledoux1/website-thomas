@@ -39,10 +39,7 @@ class MyDocument extends Document {
             property="og:title"
             content="Thomas Ledoux, Frontend Developer from Ghent"
           />
-          <meta
-            property="og:image"
-            content="https://res.cloudinary.com/dzrea5zhv/image/upload/w_300/v1583171588/me_qvrwky.jpg"
-          />
+          <meta property="og:image" content="/me.jpg" />
           <meta
             name="keywords"
             content="HTML, CSS, JavaScript, Frontend, Ghent, Thomas, Ledoux"

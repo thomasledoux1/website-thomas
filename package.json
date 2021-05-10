@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
@@ -23,9 +22,7 @@
     "next-themes": "^0.0.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "smoothscroll-polyfill": "^0.4.4",
-    "strava-v3": "^2.0.9",
-    "swr": "^0.4.2"
+    "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",

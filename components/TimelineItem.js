@@ -6,7 +6,7 @@ export default function TimelineItem({index, url, children}) {
     >
       <div
         href={url}
-        className="rounded sm:max-w-80 shadow dark:bg-darkgrey p-4 relative"
+        className="rounded sm:max-w-[80%] shadow dark:bg-darkgrey p-4 relative"
       >
         {children}
         <span
