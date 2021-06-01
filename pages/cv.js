@@ -28,11 +28,7 @@ const CV = () => {
     Array.apply(null, {length: 5}).map((_, i) => (
       <span className="star" key={i}>
         <FontAwesomeIcon
-          className={
-            i < amount
-              ? 'full fill-current text-darkPurple dark:text-orange'
-              : 'fill-current text-darkPurple dark:text-orange'
-          }
+          className={`fill-current text-primary ${i < amount ? 'full' : ''}`}
           icon={i < amount ? faStarFull : faStarEmpty}
         />
       </span>
@@ -48,7 +44,7 @@ const CV = () => {
       <Head>
         <title>Thomas Ledoux' Portfolio - CV</title>
       </Head>
-      <section id="cv" className="dark:bg-lightgrey dark:text-whitedarktheme">
+      <section id="cv" className="dark:bg-lightgrey text-text">
         <div className="container py-12 mx-auto grid grid-cols-1 sm:grid-cols-3 sm:gap-16">
           <div className="col-span-1 mx-6 sm:mx-0">
             <div className="text-center">
@@ -64,7 +60,7 @@ const CV = () => {
             </div>
           </div>
           <div className="col-span-1 mx-6 mt-6 sm:mt-0 sm:mx-0 sm:col-span-2 flex flex-col justify-center">
-            <h1>A bit about me</h1>
+            <h1 className="text-2xl md:text-4xl mb-4">A bit about me</h1>
             <div>
               <p>
                 Hi, I'm Thomas. I'm {age} years old, living in Ghent. I'm a
@@ -92,16 +88,16 @@ const CV = () => {
             </div>
           </div>
           <div className="col-span-1 mx-6 mt-6 sm:mt-0 sm:mx-0">
-            <h2>Technologies</h2>
+            <h2 className="text-xl lg:text-2xl mb-4">Technologies</h2>
             {technologies.map((technology, i) => (
-              <div key={i} className="flex justify-between mt-4">
+              <div key={i} className="flex justify-between mb-4">
                 <div>{technology.name}</div>
                 <div>{renderStars(technology.numberOfStars)}</div>
               </div>
             ))}
           </div>
           <div className="col-span-1 mx-6 mt-6 sm:mt-0 sm:mx-0 sm:col-span-2">
-            <h2 className="mb-4">My timeline</h2>
+            <h2 className="text-xl lg:text-2xl mb-4">My timeline</h2>
             <div className="flex w-full flex-col timeline-container relative">
               <TimelineItem index={0} url="https://reference.be">
                 <time className="text-xs text-grey">October 2018 - now</time>

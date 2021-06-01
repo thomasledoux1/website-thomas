@@ -1,12 +1,5 @@
 import React, {useState} from 'react'
 import Image from 'next/image'
-import {
-  faGithub,
-  faLinkedin,
-  faFacebook,
-  faDev,
-} from '@fortawesome/free-brands-svg-icons'
-import SocialLink from './SocialLink'
 
 const Contact = () => {
   const [formResult, setFormResult] = useState('')
@@ -31,7 +24,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className="p-6">
+      <div className="p-6 flex flex-col justify-center">
         <Image
           alt="Illustration of man sitting on a block"
           src="/contact.svg"
@@ -41,18 +34,18 @@ const Contact = () => {
         />
       </div>
       <div className="p-6 flex justify-center flex-col">
-        <h2 className="mb-6">Drop me a message</h2>
+        <h2 className="mb-6 text-2xl">Drop me a message</h2>
         <form
           onSubmit={e => submitForm(e)}
           action="https://formspree.io/xzbgjqdq"
           method="POST"
         >
-          <div className="flex flex-col">
+          <div className="flex flex-col mb-4">
             <label className="mb-3" htmlFor="email">
-              E-mail
+              Your e-mail
             </label>
             <input
-              className="py-2 px-4 bg-white border-darkPurple dark:border-orange border-2"
+              className="py-2 px-4 bg-white border-primary border-2 rounded-md"
               id="email"
               type="email"
               name="email"
@@ -62,10 +55,10 @@ const Contact = () => {
           </div>
           <div className="flex flex-col">
             <label className="my-2" htmlFor="message">
-              Message
+              Your message
             </label>
             <textarea
-              className="py-2 px-4 bg-white border-darkPurple dark:border-orange border-2"
+              className="py-2 px-4 bg-white border-primary border-2 rounded-md"
               rows="3"
               id="message"
               type="text"
@@ -76,7 +69,7 @@ const Contact = () => {
           </div>
 
           <button
-            className="w-full mt-4 py-4 bg-darkPurple dark:bg-orange text-white dark:text-whitedarktheme"
+            className="px-8 mt-4 py-4 bg-primary text-white rounded-md"
             type="submit"
           >
             Submit
@@ -90,34 +83,6 @@ const Contact = () => {
             </p>
           )}
         </form>
-      </div>
-      <div className="p-6 flex justify-center items-center flex-col">
-        <h2 className="mb-6">You can also find me here</h2>
-        <ul className="flex">
-          <SocialLink
-            label="linkedin"
-            href="https://www.linkedin.com/in/thomasledoux91"
-            fill="text-linkedIn"
-            icon={faLinkedin}
-          />
-          <SocialLink
-            label="github"
-            href="https://github.com/thomasledoux1"
-            icon={faGithub}
-          />
-          <SocialLink
-            label="facebook"
-            href="https://github.com/thomasledoux1"
-            icon={faFacebook}
-            fill="text-facebook"
-          />
-          <SocialLink
-            label="dev.to"
-            href="https://dev.to/thomasledoux1"
-            icon={faDev}
-            lastItem
-          />
-        </ul>
       </div>
     </>
   )

@@ -1,3 +1,4 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   mode: 'jit',
   purge: ['./pages/*.js', './components/*.js'],
@@ -6,14 +7,15 @@ module.exports = {
     extend: {
       colors: {
         purple: '#F5EBFF',
-        darkPurple: '#665ffa',
+        primary: 'var(--primary)',
         lightgrey: '#393e46',
         linkedIn: '#0076b5',
-        facebook: '#1095f5',
-        darkgrey: '#222831',
-        whitedarktheme: '#EEEEEE',
+        darkgrey: 'var(--darkgray)',
+        text: 'var(--text)',
         orange: '#b55400',
-        facebook: '#4267B2',
+        yellow: 'var(--yellow)',
+        blue: 'var(--blue)',
+        secondary: 'var(--secondary)',
       },
       inset: {
         timelineCircle: 'calc(50% - 0.5em)',
@@ -30,6 +32,25 @@ module.exports = {
       },
       minHeight: {
         'screen-without-nav': 'calc(100vh - 4rem)',
+      },
+      keyframes: {
+        'title-part1': {
+          '0%, 100%': {color: 'var(--text)'},
+          '50%': {color: 'var(--primary)'},
+        },
+        'title-part2': {
+          '0%, 100%': {color: 'var(--text)'},
+          '50%': {color: 'var(--yellow)'},
+        },
+        'title-part3': {
+          '0%, 100%': {color: 'var(--text)'},
+          '50%': {color: 'var(--blue)'},
+        },
+      },
+      animation: {
+        'title-part1': 'title-part1 3s ease-in-out infinite',
+        'title-part2': 'title-part2 3s ease-in-out 1s infinite',
+        'title-part3': 'title-part3 3s ease-in-out 2s infinite',
       },
     },
   },

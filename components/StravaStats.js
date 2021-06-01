@@ -15,16 +15,17 @@ const StravaStats = ({
   stravaMostRecentRide,
 }) => {
   const [showRunning, setShowRunning] = React.useState(false)
+  const btnClass =
+    'px-6 lg:px-12 py-2 lg:py-4 border-2 flex justify-center cursor-pointer  w-1/2 text-center'
+  const btnActiveClass = 'bg-primary text-white border-primary'
   return (
     <div className="flex flex-col w-full lg:mx-auto relative lg:w-1/2 text-center md:text-left">
       <div className="flex rounded-full self-center mb-4">
         <button
           aria-label="Toggle bike mode"
           type="button"
-          className={`px-6 lg:px-12 py-2 lg:py-4 border-2 rounded-tl-full rounded-bl-full flex justify-center cursor-pointer  w-1/2 text-center ${
-            !showRunning
-              ? 'bg-darkPurple dark:bg-orange text-white border-darkPurple dark:border-orange'
-              : ''
+          className={`${btnClass} rounded-tl-full rounded-bl-full ${
+            !showRunning ? btnActiveClass : ''
           }`}
           onClick={() => setShowRunning(false)}
         >
@@ -33,17 +34,15 @@ const StravaStats = ({
         <button
           aria-label="Toggle run mode"
           type="button"
-          className={`px-6 lg:px-12 py-2 lg:py-4 border-2 cursor-pointer w-1/2 rounded-tr-full rounded-br-full  flex justify-center flex justify-center ${
-            showRunning
-              ? 'bg-darkPurple dark:bg-orange text-white border-darkPurple dark:border-orange'
-              : ''
+          className={`${btnClass} rounded-tr-full rounded-br-full ${
+            showRunning ? btnActiveClass : ''
           }`}
           onClick={() => setShowRunning(true)}
         >
           <FontAwesomeIcon size="2x" icon={faRunning} />
         </button>
       </div>
-      <div className="border-2 mx-6 flex flex-col md:flex-row">
+      <div className="border-2 rounded-md mx-6 flex flex-col md:flex-row">
         <div className="px-8 py-4 flex flex-col md:w-1/2 order-2 md:order-1">
           <h3 className="font-bold text-xl mb-4">All time</h3>
           <p className="mb-3">

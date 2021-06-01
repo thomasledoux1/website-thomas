@@ -2,7 +2,7 @@ import React from 'react'
 import {faEye} from '@fortawesome/free-regular-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
-const Blog = ({blogs, scrollToBlogRef}) => {
+const Blog = ({blogs}) => {
   const blogsToShow = blogs
     .sort((a, b) => b.page_views_count - a.page_views_count)
     .slice(0, 5)
@@ -17,9 +17,10 @@ const Blog = ({blogs, scrollToBlogRef}) => {
             key={blog.id}
             href={blog.url}
             aria-label={blog.title}
+            className="transform transition-transform hover:scale-[1.02]"
           >
             <article
-              className={`bg-white relative rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mx-6 sm:mx-0 ${
+              className={`bg-white relative rounded-lg dark:bg-lightgrey text-text p-6 mx-6 sm:mx-0 ${
                 i !== blogsToShow.length - 1 ? 'mb-6' : ''
               }`}
             >
@@ -54,7 +55,7 @@ const Blog = ({blogs, scrollToBlogRef}) => {
         href="https://dev.to/thomasledoux1"
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 px-4 py-2 text-darkPurple dark:text-orange rounded-md border-2 border-darkPurple dark:border-orange"
+        className="mt-4 px-4 py-2 text-primary rounded-md border-2 border-primary"
       >
         Read more blogs
       </a>

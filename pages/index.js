@@ -14,67 +14,18 @@ const Home = ({
   stravaMostRecentRun,
   stravaStats,
 }) => {
-  const textWrapper = useRef(null)
   const personalRef = useRef(null)
   const portfolioRef = useRef(null)
   const statsRef = useRef(null)
   const contactRef = useRef(null)
   const blogRef = useRef(null)
-  const charCounterRef = useRef(0)
-  const timeOutRef = useRef(null)
-  const forwardRef = useRef(true)
-  const currentIndexRef = useRef(0)
-  const suggestionsRef = useRef([
-    'developer',
-    'cyclist',
-    'badminton player',
-    'travel lover',
-  ])
-  const currentTextRef = useRef(suggestionsRef.current[0])
   const age = Math.floor(
     (new Date() - new Date('1991-07-11').getTime()) / 3.15576e10,
   )
-  const speed = 100
-
-  const scrollToBlogRef = () => {
-    blogRef.current.scrollIntoView({behavior: 'smooth'})
-  }
-
-  const createTextAnimation = React.useCallback(() => {
-    if (
-      charCounterRef.current < currentTextRef.current.length &&
-      charCounterRef.current > -1
-    ) {
-      textWrapper.current.innerHTML = forwardRef.current
-        ? textWrapper.current.innerHTML +
-          currentTextRef.current.charAt(charCounterRef.current)
-        : textWrapper.current.innerHTML.replace(/(\s+)?.$/, '')
-      charCounterRef.current = forwardRef.current
-        ? charCounterRef.current + 1
-        : charCounterRef.current - 1
-      timeOutRef.current = setTimeout(createTextAnimation, speed)
-    } else if (charCounterRef.current === currentTextRef.current.length) {
-      forwardRef.current = false
-      charCounterRef.current -= 1
-      timeOutRef.current = setTimeout(createTextAnimation, speed * 4)
-    } else if (charCounterRef.current === -1) {
-      currentIndexRef.current =
-        currentIndexRef.current + 1 === suggestionsRef.current.length
-          ? 0
-          : currentIndexRef.current + 1
-      currentTextRef.current = suggestionsRef.current[currentIndexRef.current]
-      charCounterRef.current = 0
-      forwardRef.current = true
-      timeOutRef.current = setTimeout(createTextAnimation, speed)
-    }
-  }, [])
 
   useEffect(() => {
     smoothscroll.polyfill()
-    createTextAnimation()
-
-    return () => clearTimeout(timeOutRef.current)
-  }, [createTextAnimation])
+  }, [])
 
   useEffect(() => {
     let observer
@@ -122,15 +73,22 @@ const Home = ({
       </Head>
       <section
         id="hero"
-        className="relative min-h-screen-without-nav items-center content-center flex pb-16 dark:bg-lightgrey dark:text-whitedarktheme"
+        className="relative min-h-screen-without-nav items-center content-center flex pb-16 dark:bg-lightgrey text-text"
       >
-        <div className="container mx-6 sm:mx-auto grid md:grid-cols-2 items-center content-center">
-          <div>
-            <h1 className="md:text-4xl">
-              Thomas is a <span ref={textWrapper}></span>
-            </h1>
-          </div>
-          <div>
+        <div className="container gap-8 md:gap-0 mx-6 sm:mx-auto grid md:grid-cols-2 items-center content-center justify-items-center">
+          <h1 className="text-4xl md:text-6xl flex flex-col items-center md:items-start">
+            <span>Thomas is a</span>
+            <span className="animate-title-part1" href="#portfolio">
+              developer
+            </span>
+            <span className="animate-title-part2" href="#stats">
+              cyclist
+            </span>
+            <span className="animate-title-part3" href="#personal">
+              travel lover
+            </span>
+          </h1>
+          <div className="w-3/4">
             <Image
               className="rounded-full"
               priority
@@ -162,26 +120,39 @@ const Home = ({
             alt="Illustration of me working on laptop"
             src="/personal.svg"
           />
-          <div className="bg-white rounded-lg dark:bg-lightgrey dark:text-whitedarktheme p-6 mt-6 sm:mt-0 mx-6 sm:mx-0">
+          <div className="bg-white rounded-lg dark:bg-lightgrey text-text p-6 mt-12 sm:mt-0 mx-6 sm:mx-0">
             <div>
-              <h2 className="mb-6">Personal Information</h2>
-              <p>
-                Hi, I'm Thomas. I'm {age} years old, living in Ghent. I'm a
-                professional Frontend Developer, currently working at The
+              <h2 className="mb-6 text-2xl">Personal Information</h2>
+              <p className="mb-4">
+                Hi, I'm Thomas. I'm {age} years old, living in Ghent.<br></br>
+                I'm a professional Frontend Developer, currently working at The
                 Reference.
               </p>
-              <p>
+              <p className="mb-4">
+                In general I really love to travel. My favourite kind of holiday
+                is a roadtrip with a campervan, doing lots of hikes in nature
+                and going for a swim in the sea at the end of the day!<br></br>
+                When I'm not traveling I like to sport a lot. I play badminton,
+                cycle a lot, and I go for the occasional run.
+              </p>
+              <p className="mb-4">
                 I studied Applied Computer Sciences at Hogeschool Gent. I chose
                 the Mobile Development track, and went on Erasmus to Barcelona
-                to learn more about Swift and Java. During my internship for
-                Rialto I created an iOS app in Swift.
+                to learn more about Swift and Java. <br></br>After graduating I
+                worked for the startup Happs as a full-stack developer, where I
+                created and maintained the website. <br></br>I also created an
+                app for a client in React Native during this period.
               </p>
               <p>
-                After graduating I worked for the startup Happs as a full-stack
-                developer, where I created and maintained the website. I also
-                created an app for a client in React Native during this period.
+                You can read more about my work in the{' '}
+                <a
+                  className="shadow-link hover:shadow-link-hover dark:shadow-link-dark dark:hover:shadow-link-dark-hover transition-shadow"
+                  href="#portfolio"
+                >
+                  section below
+                </a>
+                .
               </p>
-              <p>You can read more about my work in the section below.</p>
             </div>
           </div>
         </div>
@@ -189,32 +160,36 @@ const Home = ({
       <section
         id="portfolio"
         ref={portfolioRef}
-        className="dark:bg-lightgrey dark:text-whitedarktheme"
+        className="dark:bg-lightgrey text-text"
       >
-        <div className="container mx-auto min-h-screen-without-nav items-center content-center py-6 md:py-12">
-          <h2 className="text-center mb-6 md:mb-12">Some of my work</h2>
+        <div className="container mx-auto min-h-screen-without-nav items-center content-center py-12">
+          <h2 className="text-center text-2xl mb-6 md:mb-12">
+            Some of my work
+          </h2>
           <Portfolio />
         </div>
       </section>
       <section
         id="blog"
         ref={blogRef}
-        className="bg-purple dark:bg-darkgrey dark:text-whitedarktheme"
+        className="bg-purple dark:bg-darkgrey text-text"
       >
-        <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-6 md:py-12">
-          <h2 className="text-center mb-6 md:mb-12">
+        <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-12">
+          <h2 className="text-center text-2xl mb-6 md:mb-12">
             Personal blog - most read
           </h2>
-          <Blog blogs={blogs} scrollToBlogRef={() => scrollToBlogRef()} />
+          <Blog blogs={blogs} />
         </div>
       </section>
       <section
         ref={statsRef}
         id="stats"
-        className="dark:bg-lightgrey dark:text-whitedarktheme"
+        className="dark:bg-lightgrey text-text"
       >
-        <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-6 md:py-12 w-full">
-          <h2 className="text-center mb-6 md:mb-12">My Strava stats</h2>
+        <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-12 w-full">
+          <h2 className="text-center text-2xl mb-6 md:mb-12">
+            My Strava stats
+          </h2>
           <StravaStats
             stravaStats={stravaStats}
             stravaMostRecentRun={stravaMostRecentRun}
@@ -225,9 +200,9 @@ const Home = ({
       <section
         id="contact"
         ref={contactRef}
-        className="bg-purple dark:bg-darkgrey dark:text-whitedarktheme"
+        className="bg-purple dark:bg-darkgrey text-text"
       >
-        <div className="container grid md:grid-cols-3 gap-6 min-h-screen-without-nav content-center align-items">
+        <div className="container grid md:grid-cols-2 gap-6 min-h-screen-without-nav content-center align-items">
           <Contact />
         </div>
       </section>

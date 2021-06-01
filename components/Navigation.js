@@ -85,24 +85,34 @@ const Navigation = () => {
     )
   }
 
+  const LogoLetter = ({letter}) => (
+    <span className="letter inline-block top-0 relative">{letter}</span>
+  )
+
   return (
-    <nav className="fixed bg-purple dark:bg-darkgrey dark:text-whitedarktheme h-16 w-full z-50">
+    <nav className="fixed bg-purple dark:bg-darkgrey text-text h-16 w-full z-50">
       <div className="flex h-full container mx-auto justify-between items-center px-6 md:px-0">
         <Link passHref href={{pathname: '/'}}>
-          <a className="logo flex flex-row text-2xl">
-            <div className="letter inline-block top-0 relative">t</div>
-            <div className="letter inline-block top-0 relative">h</div>
-            <div className="letter inline-block top-0 relative">m</div>
-            <div className="letter inline-block top-0 relative">s</div>
-            <div className="letter inline-block top-0 relative">l</div>
-            <div className="letter inline-block top-0 relative">d</div>
-            <div className="letter inline-block top-0 relative">x</div>
+          <a className="logo flex flex-row text-lg lg:text-2xl">
+            <LogoLetter letter="t" />
+            <LogoLetter letter="h" />
+            <LogoLetter letter="o" />
+            <LogoLetter letter="m" />
+            <LogoLetter letter="a" />
+            <LogoLetter letter="s" />
+            <span>&nbsp;</span>
+            <LogoLetter letter="l" />
+            <LogoLetter letter="e" />
+            <LogoLetter letter="d" />
+            <LogoLetter letter="o" />
+            <LogoLetter letter="u" />
+            <LogoLetter letter="x" />
           </a>
         </Link>
         <ul className="hidden md:flex">{renderNavigationItems()}</ul>
         <ul
           ref={navigationMobileRef}
-          className={`md:hidden absolute flex flex-col w-full top-16 left-0 py-3 items-center text-white bg-darkPurple dark:bg-orange transform translate-x-full ${
+          className={`md:hidden absolute flex flex-col w-full top-16 left-0 py-3 items-center text-white bg-primary transform translate-x-full ${
             isMounted.current ? 'transition-transform' : ''
           }`}
         >
@@ -116,17 +126,17 @@ const Navigation = () => {
           className="md:hidden order-3 cursor-pointer relative w-5 h-6"
         >
           <span
-            className={`transform transition-transform duration-300 absolute h-1 w-full bg-darkPurple dark:bg-orange rounded-lg left-0 top-1 ${
+            className={`transform transition-transform duration-300 absolute h-1 w-full bg-primary rounded-lg left-0 top-1 ${
               mobileNavOpen ? 'rotate-135 top-3' : 'rotate-0'
             }`}
           ></span>
           <span
-            className={`absolute transition-opacity duration-300 h-1 w-full bg-darkPurple dark:bg-orange rounded-lg left-0 top-3 ${
+            className={`absolute transition-opacity duration-300 h-1 w-full bg-primary rounded-lg left-0 top-3 ${
               mobileNavOpen ? 'opacity-0 -left-40' : 'opacity-100'
             }`}
           ></span>
           <span
-            className={`transform transition-transform duration-300 absolute h-1 w-full bg-darkPurple dark:bg-orange rounded-lg left-0 ${
+            className={`transform transition-transform duration-300 absolute h-1 w-full bg-primary rounded-lg left-0 ${
               mobileNavOpen ? '-rotate-135 top-3' : 'rotate-0 top-5'
             }`}
           ></span>
@@ -134,7 +144,7 @@ const Navigation = () => {
         <button
           aria-label="Toggle Dark Mode"
           type="button"
-          className="p-3 h-12 w-12 order-2 md:order-3 absolute left-2/4 transform -translate-x-2/4 md:relative md:left-0"
+          className="p-3 h-12 w-12 order-2 md:order-3 absolute left-2/4 transform -translate-x-2/4 lg:transform-none md:relative md:left-0"
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         >
           {isMounted.current && (

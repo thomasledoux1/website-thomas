@@ -1,10 +1,11 @@
 import Navigation from './Navigation'
-import * as React from 'react'
-const Layout = props => {
+import Footer from './Footer'
+const Layout = ({children}) => {
   return (
     <>
       <Navigation />
-      <main className="pt-16">{props.children}</main>
+      <main className="pt-16">{children}</main>
+      <Footer />
     </>
   )
 }

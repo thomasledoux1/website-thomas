@@ -10,7 +10,7 @@ export default function Case({
   children,
 }) {
   return (
-    <div className="p-6 shadow-case rounded-lg hover:shadow-case-hover transition transition-shadow transition-duration-300 ease-in-out dark:bg-darkgrey dark:text-whitedarktheme">
+    <div className="p-6 shadow-case rounded-lg hover:shadow-case-hover transition transition-shadow transition-duration-300 ease-in-out dark:bg-darkgrey text-text">
       <div className="portfolio-case h-full">
         <a
           target="_blank"
@@ -33,7 +33,7 @@ export default function Case({
             <ul className="flex flex-wrap">
               {tags.map((tag, i) => (
                 <li
-                  className="bg-darkPurple dark:bg-orange text-white dark:text-whitedarktheme text-sm my-1 py-1 px-4 mr-2 rounded-md"
+                  className="bg-primary text-white text-sm my-1 py-1 px-4 mr-2 rounded-md"
                   key={i}
                 >
                   {tag}
