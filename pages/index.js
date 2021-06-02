@@ -76,7 +76,7 @@ const Home = ({
         className="relative min-h-screen-without-nav items-center content-center flex pb-16 dark:bg-lightgrey text-text"
       >
         <div className="container gap-8 md:gap-0 mx-6 sm:mx-auto grid md:grid-cols-2 items-center content-center justify-items-center">
-          <h1 className="text-4xl md:text-6xl flex flex-col items-center md:items-start">
+          <h1 className="text-4xl font-bold md:text-6xl flex flex-col items-center md:items-start">
             <span>Thomas is a</span>
             <span className="animate-title-part1" href="#portfolio">
               developer
@@ -122,7 +122,7 @@ const Home = ({
           />
           <div className="bg-white rounded-lg dark:bg-lightgrey text-text p-6 mt-12 sm:mt-0 mx-6 sm:mx-0">
             <div>
-              <h2 className="mb-6 text-2xl">Personal Information</h2>
+              <h2 className="mb-6 text-2xl font-bold">Personal Information</h2>
               <p className="mb-4">
                 Hi, I'm Thomas. I'm {age} years old, living in Ghent.<br></br>
                 I'm a professional Frontend Developer, currently working at The
@@ -163,7 +163,7 @@ const Home = ({
         className="dark:bg-lightgrey text-text"
       >
         <div className="container mx-auto min-h-screen-without-nav items-center content-center py-12">
-          <h2 className="text-center text-2xl mb-6 md:mb-12">
+          <h2 className="text-center text-2xl mb-6 md:mb-12 font-bold">
             Some of my work
           </h2>
           <Portfolio />
@@ -175,7 +175,7 @@ const Home = ({
         className="bg-purple dark:bg-darkgrey text-text"
       >
         <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-12">
-          <h2 className="text-center text-2xl mb-6 md:mb-12">
+          <h2 className="text-center text-2xl mb-6 md:mb-12 font-bold">
             Personal blog - most read
           </h2>
           <Blog blogs={blogs} />
@@ -187,7 +187,7 @@ const Home = ({
         className="dark:bg-lightgrey text-text"
       >
         <div className="container mx-auto min-h-screen-without-nav flex flex-col items-center justify-center py-12 w-full">
-          <h2 className="text-center text-2xl mb-6 md:mb-12">
+          <h2 className="text-center text-2xl mb-6 md:mb-12 font-bold">
             My Strava stats
           </h2>
           <StravaStats

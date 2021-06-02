@@ -34,7 +34,7 @@ const Contact = () => {
         />
       </div>
       <div className="p-6 flex justify-center flex-col">
-        <h2 className="mb-6 text-2xl">Drop me a message</h2>
+        <h2 className="mb-6 text-2xl font-bold">Drop me a message</h2>
         <form
           onSubmit={e => submitForm(e)}
           action="https://formspree.io/xzbgjqdq"

@@ -60,7 +60,9 @@ const CV = () => {
             </div>
           </div>
           <div className="col-span-1 mx-6 mt-6 sm:mt-0 sm:mx-0 sm:col-span-2 flex flex-col justify-center">
-            <h1 className="text-2xl md:text-4xl mb-4">A bit about me</h1>
+            <h1 className="text-2xl md:text-4xl mb-4 font-bold">
+              A bit about me
+            </h1>
             <div>
               <p>
                 Hi, I'm Thomas. I'm {age} years old, living in Ghent. I'm a
@@ -88,7 +90,7 @@ const CV = () => {
             </div>
           </div>
           <div className="col-span-1 mx-6 mt-6 sm:mt-0 sm:mx-0">
-            <h2 className="text-xl lg:text-2xl mb-4">Technologies</h2>
+            <h2 className="text-xl lg:text-2xl mb-4 font-bold">Technologies</h2>
             {technologies.map((technology, i) => (
               <div key={i} className="flex justify-between mb-4">
                 <div>{technology.name}</div>
@@ -97,7 +99,7 @@ const CV = () => {
             ))}
           </div>
           <div className="col-span-1 mx-6 mt-6 sm:mt-0 sm:mx-0 sm:col-span-2">
-            <h2 className="text-xl lg:text-2xl mb-4">My timeline</h2>
+            <h2 className="text-xl lg:text-2xl mb-4 font-bold">My timeline</h2>
             <div className="flex w-full flex-col timeline-container relative">
               <TimelineItem index={0} url="https://reference.be">
                 <time className="text-xs text-grey">October 2018 - now</time>

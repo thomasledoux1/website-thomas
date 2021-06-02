@@ -21,8 +21,6 @@ module.exports = {
         timelineCircle: 'calc(50% - 0.5em)',
       },
       boxShadow: {
-        checkbox: 'inset 0.125em 0.125em 0 0.125em rgba(0,0,0,.3)',
-        'checkbox-checked': 'inset 0.125em 0.125em 0 0.125em rgba(0,0,0,.1)',
         case: '0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24)',
         'case-hover': '0 10px 28px rgba(0,0,0,.25), 0 8px 10px rgba(0,0,0,.22)',
         link: 'inset 0 -4px 0 #6c63ff',
@@ -51,6 +49,10 @@ module.exports = {
         'title-part1': 'title-part1 3s ease-in-out infinite',
         'title-part2': 'title-part2 3s ease-in-out 1s infinite',
         'title-part3': 'title-part3 3s ease-in-out 2s infinite',
+      },
+      rotate: {
+        '135': '135deg',
+        '-135': '-135deg',
       },
     },
   },
