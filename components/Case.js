@@ -1,14 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-export default function Case({
-  url,
-  logoWidth,
-  logoAlt,
-  logoSrc,
-  tags,
-  children,
-}) {
+export default function Case({url, logoWidth, logoAlt, img, tags, children}) {
   return (
     <div className="p-6 shadow-case rounded-lg hover:shadow-case-hover transition transition-shadow transition-duration-300 ease-in-out dark:bg-darkgrey text-text">
       <div className="portfolio-case h-full">
@@ -18,15 +11,14 @@ export default function Case({
           className="flex flex-col h-full"
           href={url}
         >
-          <div className="h-24 flex justify-center items-center max-w-full mb-4">
-            <div className="max-h-24">
-              <Image
-                width={logoWidth}
-                height={100}
-                alt={`Logo ${logoAlt}`}
-                src={logoSrc}
-              />
-            </div>
+          <div className="h-24 max-h-24 text-center mb-4">
+            <Image
+              placeholder="blur"
+              width={logoWidth}
+              height={100}
+              alt={`Logo ${logoAlt}`}
+              src={img}
+            />
           </div>
           {children}
           <div className="flex flex-col mt-4 flex-grow justify-end">

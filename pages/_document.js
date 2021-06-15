@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import Document, {Html, Head, Main, NextScript} from 'next/document'
 import * as React from 'react'
 
@@ -11,10 +12,11 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <script
+          <Script
             async
             src="https://www.googletagmanager.com/gtag/js?id=UA-125864873-1"
-          ></script>
+            strategy="afterInteractive"
+          ></Script>
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -39,7 +41,7 @@ class MyDocument extends Document {
             property="og:title"
             content="Thomas Ledoux, Frontend Developer from Ghent"
           />
-          <meta property="og:image" content="/me.jpg" />
+          <meta property="og:image" content="/me.jpeg" />
           <meta
             name="keywords"
             content="HTML, CSS, JavaScript, Frontend, Ghent, Thomas, Ledoux"

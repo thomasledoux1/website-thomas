@@ -79,7 +79,7 @@ const Contact = () => {
           )}
           {formResult === 'ok' && (
             <p className="success">
-              I received your message. I'll get back to you ASAP.
+              I received your message. I&apos;ll get back to you ASAP.
             </p>
           )}
         </form>

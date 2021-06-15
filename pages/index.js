@@ -7,6 +7,7 @@ import Portfolio from '../components/Portfolio'
 import StravaStats from '../components/StravaStats'
 import Blog from '../components/Blog'
 import Contact from '../components/Contact'
+import me from '../public/me.jpeg'
 
 const Home = ({
   blogs,
@@ -69,7 +70,7 @@ const Home = ({
   return (
     <>
       <Head>
-        <title>Thomas Ledoux' Portfolio - Home</title>
+        <title>Thomas Ledoux&apos; Portfolio - Home</title>
       </Head>
       <section
         id="hero"
@@ -93,9 +94,8 @@ const Home = ({
               className="rounded-full"
               priority
               alt="Profile picture"
-              src="/me.jpg"
-              width={500}
-              height={500}
+              src={me}
+              placeholder="blur"
             />
           </div>
         </div>
@@ -124,16 +124,17 @@ const Home = ({
             <div>
               <h2 className="mb-6 text-2xl font-bold">Personal Information</h2>
               <p className="mb-4">
-                Hi, I'm Thomas. I'm {age} years old, living in Ghent.<br></br>
-                I'm a professional Frontend Developer, currently working at The
-                Reference.
+                Hi, I&apos;m Thomas. I&apos;m {age} years old, living in Ghent.
+                <br></br>
+                I&apos;m a professional Frontend Developer, currently working at
+                The Reference.
               </p>
               <p className="mb-4">
                 In general I really love to travel. My favourite kind of holiday
                 is a roadtrip with a campervan, doing lots of hikes in nature
                 and going for a swim in the sea at the end of the day!<br></br>
-                When I'm not traveling I like to sport a lot. I play badminton,
-                cycle a lot, and I go for the occasional run.
+                When I&apos;m not traveling I like to sport a lot. I play
+                badminton, cycle a lot, and I go for the occasional run.
               </p>
               <p className="mb-4">
                 I studied Applied Computer Sciences at Hogeschool Gent. I chose
@@ -232,7 +233,7 @@ export async function getStaticProps(context) {
     },
   )
   const resActivities = await fetch(
-    'https://www.strava.com/api/v3/athlete/activities',
+    'https://www.strava.com/api/v3/athlete/activities?per_page=100',
     {
       headers: {
         Authorization: `Bearer ${newToken}`,
@@ -254,16 +255,14 @@ export async function getStaticProps(context) {
     },
   })
   const blogs = await res.json()
-
   return {
     props: {
       stravaStats,
       stravaMostRecentRide: stravaActivies.filter(
         activity => activity.type === 'Ride',
       )[0],
-      stravaMostRecentRun: stravaActivies.filter(
-        activity => activity.type === 'Run',
-      )[0],
+      stravaMostRecentRun:
+        stravaActivies.filter(activity => activity.type === 'Run')?.[0] ?? null,
       blogs,
     },
     revalidate: 86400,

@@ -1,10 +1,20 @@
 import Case from '../components/Case'
+import logoKaraton from '../public/logokaraton.png'
+import logoRialto from '../public/logorialto.png'
+import logoCarlier from '../public/logocarlier.png'
+import logoCarglass from '../public/logocarglass.png'
+import logoNalo from '../public/logonalo.png'
+import logoAchterderegenboog from '../public/logoachterderegenboog.png'
+import logoDeckdeckgo from '../public/logodeckdeckgo.png'
+import logoAccent from '../public/logoaccent.png'
+import logoPoa from '../public/logopoa.png'
+
 const Portfolio = () => (
   <div className="grid mx-6 sm:mx-0 grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
     <Case
       url="https://www.karaton.be"
       logoAlt="Karaton"
-      logoSrc="/logokaraton.png"
+      img={logoKaraton}
       logoWidth={218}
       tags={['mongodb', 'expressjs', 'angular', 'nodejs']}
     >
@@ -26,7 +36,7 @@ const Portfolio = () => (
     <Case
       url="https://www.getrialto.com"
       logoAlt="Rialto"
-      logoSrc="/logorialto.png"
+      img={logoRialto}
       logoWidth={321}
       tags={['swift', 'ios']}
     >
@@ -47,7 +57,7 @@ const Portfolio = () => (
     <Case
       url="https://play.google.com/store/apps/details?id=com.carlierkathleen.rekenen&hl=nl"
       logoAlt="Carlier Rekenen"
-      logoSrc="/logocarlier.png"
+      img={logoCarlier}
       logoWidth={100}
       tags={['react-native', 'reactjs']}
     >
@@ -69,7 +79,7 @@ const Portfolio = () => (
     <Case
       url="https://www.carglass.be"
       logoAlt="Carglass"
-      logoSrc="/logocarglass.png"
+      img={logoCarglass}
       logoWidth={374}
       tags={['sitecore', 'reactjs', 'less']}
     >
@@ -91,7 +101,7 @@ const Portfolio = () => (
     <Case
       url="https://www.nationale-loterij.be"
       logoAlt="Nationale Loterij"
-      logoSrc="/logonalo.png"
+      img={logoNalo}
       logoWidth={240}
       tags={['sitecore', 'reactjs', 'sass']}
     >
@@ -106,14 +116,14 @@ const Portfolio = () => (
         animations..).
       </p>
       <p>
-        The feature I'm most proud of is the interactive Sponsoring Map of
+        The feature I&apos;m most proud of is the interactive Sponsoring Map of
         Belgium we created with some nice animations and beautiful design.
       </p>
     </Case>
     <Case
       url="https://www.achterderegenboog.be"
       logoAlt="Achter De Regenboog"
-      logoSrc="/logoachterderegenboog.png"
+      img={logoAchterderegenboog}
       logoWidth={150}
       tags={['wordpress', 'html', 'css']}
     >
@@ -134,7 +144,7 @@ const Portfolio = () => (
     <Case
       url="https://www.deckdeckgo.com"
       logoAlt="DeckDeckGo"
-      logoSrc="/logoduckduckgo.png"
+      img={logoDeckdeckgo}
       logoWidth={100}
       tags={['open source', 'hacktoberfest', 'stencil', 'typescript']}
     >
@@ -145,14 +155,14 @@ const Portfolio = () => (
       </p>
       <p>
         It was a lot of fun to coloborate with other open source contributors,
-        and to work in a new technological stack. I'm definitely going to
+        and to work in a new technological stack. I&apos;m definitely going to
         continue contributing to open source in the future!
       </p>
     </Case>
     <Case
       url="https://www.accentjobs.be"
       logoAlt="Accent Jobs"
-      logoSrc="/logoaccent.png"
+      img={logoAccent}
       logoWidth={532}
       tags={['gatsby', 'drupal', 'typescript', 'emotion']}
     >
@@ -163,13 +173,13 @@ const Portfolio = () => (
       <p className="mb-4">
         This was the first time I was using Gatsby for a production website, and
         I must say it makes developing a breeze. Connecting everything through
-        API's, no hard dependecies on a CMS.. I love it.
+        API&apos;s, no hard dependecies on a CMS.. I love it.
       </p>
     </Case>
     <Case
       url="https://www.portofantwerp.be"
       logoAlt="Port Of Antwerp"
-      logoSrc="/poa.png"
+      img={logoPoa}
       logoWidth={199}
       tags={['nextjs', 'drupal', 'typescript', 'tailwind']}
     >
@@ -180,10 +190,10 @@ const Portfolio = () => (
       </p>
       <p>
         I really like this combo (this website is made with these technologies),
-        so I couldn't be happier to be the lead frontend developer on this
-        project. So far I've learned a lot about the many features and
-        possibilities of Next.js, and I'm hoping to create the most performant
-        website for this high profile client.
+        so I couldn&apos;t be happier to be the lead frontend developer on this
+        project. So far I&apos;ve learned a lot about the many features and
+        possibilities of Next.js, and I&apos;m hoping to create the most
+        performant website for this high profile client.
       </p>
     </Case>
   </div>

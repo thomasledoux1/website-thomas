@@ -85,15 +85,15 @@ const StravaStats = ({
             km/h
           </p>
           <div className="flex flex-col items-center md:items-start">
-            {showRunning ? 'Running' : 'Biking'} towards 5000km goal
+            {showRunning ? 'Running' : 'Biking'} towards{' '}
+            {showRunning ? '1000' : '5000'}km goal
             <progress
               className="mt-2"
               value={
                 (showRunning
                   ? stravaStats.all_run_totals.distance
                   : stravaStats.all_ride_totals.distance) /
-                10 /
-                5000
+                (showRunning ? 10000 : 50000)
               }
               max={100}
             ></progress>

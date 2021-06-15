@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faStar as faStarEmpty} from '@fortawesome/free-regular-svg-icons'
 import {faStar as faStarFull} from '@fortawesome/free-solid-svg-icons'
 import TimelineItem from '../components/TimelineItem'
+import me from '../public/me.jpeg'
 
 const CV = () => {
   const age = Math.floor(
@@ -42,7 +43,7 @@ const CV = () => {
   return (
     <>
       <Head>
-        <title>Thomas Ledoux' Portfolio - CV</title>
+        <title>Thomas Ledoux&apos; Portfolio - CV</title>
       </Head>
       <section id="cv" className="dark:bg-lightgrey text-text">
         <div className="container py-12 mx-auto grid grid-cols-1 sm:grid-cols-3 sm:gap-16">
@@ -52,11 +53,10 @@ const CV = () => {
                 className="rounded-full"
                 priority
                 alt="Profile picture"
-                src="/me.jpg"
-                width={320}
-                height={320}
+                src={me}
+                placeholder="blur"
               />
-              <p>Hello, is it me you're looking for?</p>
+              <p>Hello, is it me you&apos;re looking for?</p>
             </div>
           </div>
           <div className="col-span-1 mx-6 mt-6 sm:mt-0 sm:mx-0 sm:col-span-2 flex flex-col justify-center">
@@ -65,8 +65,8 @@ const CV = () => {
             </h1>
             <div>
               <p>
-                Hi, I'm Thomas. I'm {age} years old, living in Ghent. I'm a
-                professional Frontend Developer, currently working at{' '}
+                Hi, I&apos;m Thomas. I&apos;m {age} years old, living in Ghent.
+                I&apos;m a professional Frontend Developer, currently working at{' '}
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
@@ -84,7 +84,7 @@ const CV = () => {
                 yearly new features in ECMAScript..
               </p>
               <p>
-                I'm always eager to discover the latest updates, apps,
+                I&apos;m always eager to discover the latest updates, apps,
                 technologies..!
               </p>
             </div>
