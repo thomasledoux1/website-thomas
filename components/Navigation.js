@@ -32,48 +32,50 @@ const Navigation = () => {
   }
 
   const renderNavigationItems = () => {
+    const linkClasses =
+      'relative before:absolute before:bottom-[-5px] before:h-[5px] before:w-[0] before:mt-[5px] before:bg-primary before:transition-all before:duration-300'
     return (
-      <React.Fragment>
-        <li className="sm:mr-6">
+      <>
+        <li>
           <Link href={{pathname: '/', hash: 'personal'}}>
-            <a className="relative" onClick={linkClicked}>
+            <a className={linkClasses} onClick={linkClicked}>
               Personal
             </a>
           </Link>
         </li>
-        <li className="mt-2 sm:mt-0 sm:mr-6">
+        <li>
           <Link href={{pathname: '/', hash: 'portfolio'}}>
-            <a className="relative" onClick={linkClicked}>
+            <a className={linkClasses} onClick={linkClicked}>
               Portfolio
             </a>
           </Link>
         </li>
-        <li className="mt-2 sm:mt-0 sm:mr-6">
+        <li>
           <Link href={{pathname: '/', hash: 'blog'}}>
-            <a className="relative" onClick={linkClicked}>
+            <a className={linkClasses} onClick={linkClicked}>
               Blog
             </a>
           </Link>
         </li>
-        <li className="mt-2 sm:mt-0 sm:mr-6">
+        <li>
           <Link href={{pathname: '/', hash: 'stats'}}>
-            <a className="relative" onClick={linkClicked}>
+            <a className={linkClasses} onClick={linkClicked}>
               Stats
             </a>
           </Link>
         </li>
-        <li className="mt-2 sm:mt-0 sm:mr-6">
+        <li>
           <Link href={{pathname: '/', hash: 'contact'}}>
-            <a className="relative" onClick={linkClicked}>
+            <a className={linkClasses} onClick={linkClicked}>
               Contact
             </a>
           </Link>
         </li>
-        <li className="mt-2 sm:mt-0">
+        <li>
           <Link href="/cv">
             <a
               onClick={linkClicked}
-              className={`relative ${
+              className={`${linkClasses} ${
                 router.pathname === '/cv' ? 'active' : ''
               }`}
             >
@@ -81,7 +83,7 @@ const Navigation = () => {
             </a>
           </Link>
         </li>
-      </React.Fragment>
+      </>
     )
   }
 
@@ -109,10 +111,10 @@ const Navigation = () => {
             <LogoLetter letter="x" />
           </a>
         </Link>
-        <ul className="hidden md:flex">{renderNavigationItems()}</ul>
+        <ul className="hidden md:flex md:gap-6">{renderNavigationItems()}</ul>
         <ul
           ref={navigationMobileRef}
-          className={`md:hidden absolute flex flex-col w-full top-16 left-0 py-3 items-center text-white bg-primary transform translate-x-full ${
+          className={`md:hidden absolute flex flex-col w-full top-16 left-0 py-3 items-center text-white bg-primary transform translate-x-full gap-2 ${
             isMounted.current ? 'transition-transform' : ''
           }`}
         >

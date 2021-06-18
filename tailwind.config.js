@@ -16,6 +16,7 @@ module.exports = {
         yellow: 'var(--yellow)',
         blue: 'var(--blue)',
         secondary: 'var(--secondary)',
+        lightpurple: 'var(--lightpurple)',
       },
       inset: {
         timelineCircle: 'calc(50% - 0.5em)',

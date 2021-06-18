@@ -100,7 +100,7 @@ const CV = () => {
           </div>
           <div className="col-span-1 mx-6 mt-6 sm:mt-0 sm:mx-0 sm:col-span-2">
             <h2 className="text-xl lg:text-2xl mb-4 font-bold">My timeline</h2>
-            <div className="flex w-full flex-col timeline-container relative">
+            <div className="flex w-full flex-col timeline-container relative after:bg-lightpurple dark:after:bg-darkgrey after:absolute after:w-1 after:h-full">
               <TimelineItem index={0} url="https://reference.be">
                 <time className="text-xs text-grey">October 2018 - now</time>
                 <p>

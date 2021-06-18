@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 html {
+  --purple: #f5ebff;
   --primary: #665ffa;
   --text: #000;
   --yellow: #f7df1e;
@@ -10,6 +11,7 @@ html {
   --darkgray: #222831;
   --beige: #eee;
   --secondary: #f5ebff;
+  --lightpurple: #f0efff;
 }
 
 html.dark {
@@ -24,11 +26,6 @@ html {
 
 html.dark progress[value]::-webkit-progress-value {
   background-color: var(--primary);
-}
-
-html.dark .timeline-container:after,
-html.dark .timeline-item:after {
-  background-color: var(--darkgray);
 }
 
 .logo:hover .letter {
@@ -88,44 +85,16 @@ html.dark .timeline-item:after {
 }
 
 .timeline-container::after {
-  background-color: #f0efff;
-  content: '';
-  position: absolute;
   left: calc(50% - 2px);
-  width: 4px;
-  height: 100%;
 }
 
 .timeline-item:after {
-  content: ' ';
-  background-color: #fff;
   box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  right: 1rem;
   top: calc(50% - 0.5rem);
-  transform: rotate(45deg);
-  width: 15px;
-  height: 15px;
 }
 
 .timeline-item:nth-child(even)::after {
-  right: auto;
-  left: 1em;
   box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
-}
-
-nav ul li a:before,
-nav ul li a:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 0px;
-  height: 5px;
-  margin: 5px 0 0;
-  transition: all 0.3s ease-in-out;
-  opacity: 0;
-  background-color: var(--primary);
 }
 
 nav ul li a.active:before,
@@ -133,7 +102,6 @@ nav ul li a.active:after,
 nav ul li:hover a:before,
 nav ul li:hover a:after {
   width: 100%;
-  opacity: 1;
 }
 
 @keyframes bounce {
