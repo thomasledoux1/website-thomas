@@ -1,4 +1,3 @@
-import Script from 'next/script'
 import Document, {Html, Head, Main, NextScript} from 'next/document'
 import * as React from 'react'
 
@@ -12,11 +11,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <Script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=UA-125864873-1"
-            strategy="afterInteractive"
-          ></Script>
           <script
             dangerouslySetInnerHTML={{
               __html: `
