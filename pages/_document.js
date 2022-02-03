@@ -11,17 +11,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){window.dataLayer.push(arguments)}
-                gtag("js", new Date());
-                gtag("config", "UA-125864873-1");
-              `,
-            }}
-          ></script>
-          <link rel="preconnect" href="https://www.google-analytics.com" />
           <link rel="shortcut icon" type="image/x-icon" href="/myAvatar.ico" />
           <meta
             name="description"

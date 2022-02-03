@@ -9,11 +9,6 @@ import Layout from '../components/Layout'
 export default function MyApp({Component, pageProps}) {
   return (
     <>
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=UA-125864873-1"
-        strategy="afterInteractive"
-      ></Script>
       <ThemeProvider attribute="class">
         <Layout>
           <Component {...pageProps} />
