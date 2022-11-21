@@ -4,7 +4,13 @@ export const config = {
   runtime: 'experimental-edge',
 }
 
+const font = fetch(new URL('../../assets/Inter.ttf', import.meta.url)).then(
+  res => res.arrayBuffer(),
+)
+
 export default function handler(req) {
+  const fontData = await font;
+
   try {
     const {searchParams} = new URL(req.url)
 
@@ -26,6 +32,7 @@ export default function handler(req) {
             alignItems: 'center',
             justifyContent: 'center',
             flexDirection: 'column',
+            fontFamily: 'Inter',
             backgroundImage:
               'radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)',
             backgroundSize: '100px 100px',
@@ -48,6 +55,13 @@ export default function handler(req) {
       {
         width: 1200,
         height: 600,
+        fonts: [
+          {
+            name: 'Inter',
+            data: fontData,
+            style: 'normal',
+          },
+        ],
       },
     )
   } catch (e) {
