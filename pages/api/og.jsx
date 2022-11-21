@@ -8,8 +8,8 @@ const font = fetch(new URL('../../assets/Inter.ttf', import.meta.url)).then(
   res => res.arrayBuffer(),
 )
 
-export default function handler(req) {
-  const fontData = await font;
+export default async function handler(req) {
+  const fontData = await font
 
   try {
     const {searchParams} = new URL(req.url)
