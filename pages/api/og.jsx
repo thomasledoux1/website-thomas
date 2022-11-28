@@ -17,7 +17,7 @@ export default async function handler(req) {
     // ?title=<title>
     const hasTitle = searchParams.has('title')
     const title = hasTitle
-      ? searchParams.get('title')?.slice(0, 100)
+      ? searchParams.get('title')?.slice(0, 200)
       : 'My default title'
 
     return new ImageResponse(
