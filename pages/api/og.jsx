@@ -31,8 +31,9 @@ export default async function handler(req) {
             textAlign: 'center',
             alignItems: 'center',
             justifyContent: 'center',
-            flexDirection: 'column',
             fontFamily: 'Inter',
+            paddingLeft: '32px',
+            paddingRight: '32px',
             backgroundImage:
               'radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)',
             backgroundSize: '100px 100px',
@@ -40,7 +41,26 @@ export default async function handler(req) {
         >
           <div
             style={{
-              width: '80%',
+              width: '35%',
+              display: 'flex',
+              flexDirection: 'column',
+              textAlign: 'center',
+              alignItems: 'center',
+              marginRight: '5%',
+            }}
+          >
+            <img
+              alt="avatar"
+              width="100%"
+              src="https://res.cloudinary.com/dzrea5zhv/image/upload/v1583171588/me_qvrwky.jpg"
+              style={{
+                borderRadius: '100%',
+              }}
+            />
+          </div>
+          <div
+            style={{
+              width: '60%',
               display: 'flex',
               flexDirection: 'column',
               textAlign: 'center',
