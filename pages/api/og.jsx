@@ -28,7 +28,6 @@ export default async function handler(req) {
             width: '100%',
             height: '100%',
             display: 'flex',
-            textAlign: 'center',
             alignItems: 'center',
             justifyContent: 'center',
             fontFamily: 'Inter',
@@ -44,7 +43,6 @@ export default async function handler(req) {
               width: '35%',
               display: 'flex',
               flexDirection: 'column',
-              textAlign: 'center',
               alignItems: 'center',
               marginRight: '5%',
             }}
@@ -63,8 +61,6 @@ export default async function handler(req) {
               width: '60%',
               display: 'flex',
               flexDirection: 'column',
-              textAlign: 'center',
-              alignItems: 'center',
             }}
           >
             <p style={{fontSize: 32}}>Thomas Ledoux&apos;s blog</p>
